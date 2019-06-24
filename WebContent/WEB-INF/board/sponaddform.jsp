@@ -136,7 +136,7 @@
 				            <div class="panel-body">
 				            <div class="form-group">
 				              <label for="destmony">금액(만 원)</label>
-				              <input type="number" class="form-control" value="0" name="destmoney" id="destmoney" step="1" min="0" max="1000">
+				              <input type="number" class="form-control" value="0" name="minmoney" id="minmoney" step="1" min="0" max="10">
 				              <input type="button" class="btn btn-primary" name="check3" value="확인">
 				              </div>
 				            </div>

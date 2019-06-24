@@ -131,7 +131,7 @@ public class SponDAO {
  	   		pstmt.setInt(6, dto.getDestmoney());
  	   		pstmt.setInt(7, dto.getMinmoney());
  	   		pstmt.setDate(8, Date.valueOf(dto.getFinaldate()));
- 	   		pstmt.setInt(9, dto.getBankno());
+ 	   		pstmt.setString(9, dto.getBankno());
  	   		result=pstmt.executeUpdate();
  	   	}finally{
  	   		if(pstmt!=null) {

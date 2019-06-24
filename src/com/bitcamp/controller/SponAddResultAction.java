@@ -39,7 +39,7 @@ public class SponAddResultAction implements Action {
 		int destmoney = Integer.parseInt(multi.getParameter("destmoney"));
 		int minmoney = Integer.parseInt(multi.getParameter("minmoney"));
 		String finaldate = multi.getParameter("finaldate");
-		int bankno = Integer.parseInt(multi.getParameter("bankno"));
+		String bankno = multi.getParameter("bankno");
 		SponDTO dto = new SponDTO();
 		dto.setBankno(bankno);
 		dto.setBoardcontent(scontent);

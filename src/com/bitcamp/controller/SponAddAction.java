@@ -19,6 +19,10 @@ public class SponAddAction implements Action {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
+		MemberDTO testMember = new MemberDTO();
+		testMember.setMid("ding");
+		testMember.setMno(1);
+		session.setAttribute("member", testMember);
 		MemberDTO member = (MemberDTO)session.getAttribute("member");
 		ForwardAction act=new ForwardAction();
 		if(member != null) {

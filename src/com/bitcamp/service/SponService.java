@@ -42,7 +42,7 @@ public class SponService {
 		return result;
 	}
 	
-	public int sponDataAddService(SponDTO spondata) {
+	public int sponDataAddService(SponDTO dto) {
 		Connection conn=null;
 		int result = 0;
 		try{
@@ -50,7 +50,7 @@ public class SponService {
 		conn=DBConn.getDB().getConnection();
 		conn.setAutoCommit(false);
 		SponDAO dao=SponDAO.getSponDAO();
-		result = dao.sponDataAdd(conn, spondata);
+		result = dao.sponDataAdd(conn, dto);
 		
 		conn.commit();
 		} catch(SQLException | NamingException e)

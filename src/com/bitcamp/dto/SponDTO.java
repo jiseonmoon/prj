@@ -12,9 +12,9 @@ public class SponDTO {
 	private String finaldate;
 	private String imagepath;
 	private int nowmoney;
-	private int bankno;
+	private String bankno;
 	public SponDTO(int boardno, String boardtitle, String boardcontent, String boardtag, int writerno,
-			String boardwriter ,int destmoney, int minmoney, String finaldate, String imagepath, int nowmoney, int bankno) {
+			String boardwriter ,int destmoney, int minmoney, String finaldate, String imagepath, int nowmoney, String bankno) {
 		super();
 		this.boardno = boardno;
 		this.boardtitle = boardtitle;
@@ -99,10 +99,10 @@ public class SponDTO {
 		this.boardwriter = boardwriter;
 	}
 	
-	public int getBankno() {
+	public String getBankno() {
 		return bankno;
 	}
-	public void setBankno(int bankno) {
+	public void setBankno(String bankno) {
 		this.bankno = bankno;
 	}
 	@Override
