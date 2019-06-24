@@ -3,11 +3,9 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -25,7 +23,13 @@
 	  		<div class="col-md-4">
 	  			${ result.nowmoney }<br> <!-- 현재모금액 -->
 	  			${ result.finaldate }<br> <!-- 마감일 -->
-	  			${ result.destmoney } <!-- 목표모금액 -->
+	  			${ result.destmoney }<br> <!-- 목표모금액 -->
+	  			
+	  			<!-- dto객체 넘겨주기 -->
+	  			<form action="pay.do" method="post">
+	  				<input type="hidden" name="dto" value="${ result }"> 
+	  				<button type="submit" class="btn btn-primary">후원하기</button>
+	  			</form>
 	  		</div>
 		</div>
 	 	글내용: <br>
@@ -35,7 +39,6 @@
 	</div>
 	
 	<div class="center-block" style='width:60%;'>
-
   		<!-- Nav tabs -->
   		<ul class="nav nav-tabs" role="tablist">
 		    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">상세내용</a></li>
@@ -44,10 +47,16 @@
 
   		<!-- Tab panes -->
 	  	<div class="tab-content">
-		    <div role="tabpanel" class="tab-pane active" id="home">${ result.boardcontent }</div> <!-- 글내용 -->
-		    <div role="tabpanel" class="tab-pane" id="profile">댓글내용</div>
+		    <div role="tabpanel" class="tab-pane active" id="home">
+		    	${ result.boardcontent } <!-- 글내용 -->
+		    </div>
+		    <div role="tabpanel" class="tab-pane" id="profile">
+		    	<form action="sponsubadd.do" method="post">
+					<textarea name="text" class="form-control" rows="3" maxlength="100" style='width:90%;'></textarea>
+					<button type="submit" class="btn btn-info">작성</button>
+				</form>
+		    </div>
   		</div>
-
 	</div>
 	
 	
