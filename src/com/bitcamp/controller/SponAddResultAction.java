@@ -49,6 +49,7 @@ public class SponAddResultAction implements Action {
 		dto.setDestmoney(destmoney);
 		dto.setFinaldate(finaldate);
 		dto.setImagepath(imgpath);
+		System.out.println(imgpath); 
 		dto.setMinmoney(minmoney);
 		dto.setWriterno(member.getMno());
 		

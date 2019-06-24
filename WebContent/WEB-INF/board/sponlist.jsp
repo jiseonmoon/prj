@@ -67,31 +67,44 @@
 		<input type="checkbox" id="finishcheck" name="finishcheck" value="true">
 		<label for="finishcheck">마감된 프로젝트 제외</label>
 		</div>
-			
-		<table class="table">
+	</div>
+		<!-- <table class="table">
 			<thead>
 			<tr><td>번호</td><td>제목</td><td>내용</td><td>작성자</td><td>이미지</td></tr>
 			</thead>
-			<tbody>
+			<tbody> -->
+			<div class="container">
 				<c:choose>
 					<c:when test="${empty list }">
 						<tr><td colspan="5">게시물이 없습니다.</td></tr>
 					</c:when>
 					<c:otherwise>
 						<c:forEach var="board" items="${list }">
-							<tr>
+						
+							<div class="col-md-2 col-md-offset-1" >
+								<div class="thumbnail" style="height: 200px;">
+									<img src="upload/${board.imagepath }" alt="img">
+         							<div class="caption">
+            							<h3><a href="spondetail.do?no=${board.boardno }">${board.boardtitle }</a> </h3>
+            							<p>${board.boardwriter }</p>
+       								</div>
+								</div>
+							</div>
+							
+							<%-- <tr>
 								<td>${board.boardno }</td>
 								<td><a href="spondetail.do?no=${board.boardno }">${board.boardtitle }</a></td>
 								<td>${board.boardcontent }</td>
 								<td>${board.boardwriter }</td>
 								<td>${board.imagepath }</td>
-							</tr>
+							</tr> --%>
 						</c:forEach>
 					</c:otherwise>	
 				</c:choose>
-			</tbody>
-		</table>
-		
+			<!-- </tbody>
+		</table> -->
+		</div>
+	<div class="container">
 		<div class="col-md-4 col-md-offset-4">
 			<ul class="pagination">
 				<c:if test="${pageinfo.startblock > 1 }">
@@ -124,7 +137,7 @@
 				</div>
 			</form>
 		</div>
-	
 	</div>
+	
 </body>
 </html>
