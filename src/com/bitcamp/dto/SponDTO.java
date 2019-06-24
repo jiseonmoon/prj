@@ -12,8 +12,9 @@ public class SponDTO {
 	private String finaldate;
 	private String imagepath;
 	private int nowmoney;
+	private int bankno;
 	public SponDTO(int boardno, String boardtitle, String boardcontent, String boardtag, int writerno,
-			String boardwriter ,int destmoney, int minmoney, String finaldate, String imagepath, int nowmoney) {
+			String boardwriter ,int destmoney, int minmoney, String finaldate, String imagepath, int nowmoney, int bankno) {
 		super();
 		this.boardno = boardno;
 		this.boardtitle = boardtitle;
@@ -26,6 +27,7 @@ public class SponDTO {
 		this.finaldate = finaldate;
 		this.imagepath = imagepath;
 		this.nowmoney = nowmoney;
+		this.bankno = bankno;
 	}
 	public SponDTO() {
 		super();
@@ -96,12 +98,20 @@ public class SponDTO {
 	public void setBoardwriter(String boardwriter) {
 		this.boardwriter = boardwriter;
 	}
+	
+	public int getBankno() {
+		return bankno;
+	}
+	public void setBankno(int bankno) {
+		this.bankno = bankno;
+	}
 	@Override
 	public String toString() {
 		return "SponDTO [boardno=" + boardno + ", boardtitle=" + boardtitle + ", boardcontent=" + boardcontent
 				+ ", boardtag=" + boardtag + ", writerno=" + writerno + ", boardwriter=" + boardwriter + ", destmoney="
 				+ destmoney + ", minmoney=" + minmoney + ", finaldate=" + finaldate + ", imagepath=" + imagepath
-				+ ", nowmoney=" + nowmoney + "]";
+				+ ", nowmoney=" + nowmoney + ", bankno=" + bankno + "]";
 	}
+	
 	
 }

@@ -64,7 +64,7 @@ public class SponDAO {
 		ResultSet rs = null;
 		StringBuilder sql = new StringBuilder();
 		ArrayList<SponDTO> list = new ArrayList<>();
-		sql.append(" select sno, e.mno, mid, Stitle, Scontent, imgpath, tag, destmoney, minmoney, finaldate, nowmoney ");
+		sql.append(" select sno, e.mno, mid, Stitle, Scontent, imgpath, tag, destmoney, minmoney, finaldate, nowmoney, bankno ");
 		sql.append(" from SponBoard e inner join Member m on e.mno = m.mno ");
 		if(isFinish) {
 			sql.append(" where tag like ? and stitle like ? and (finaldate > sysdate()) ");
