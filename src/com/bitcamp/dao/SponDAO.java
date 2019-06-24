@@ -23,7 +23,7 @@ public class SponDAO {
 		sql.append(" select count(*) ");
 		sql.append(" from SponBoard ");
 		if(isFinish) {
-			sql.append(" where tag like ? and stitle like ? and (finaldate > now) ");
+			sql.append(" where tag like ? and stitle like ? and (finaldate > sysdate()) ");
 		}else {
 			sql.append(" where tag like ? and stitle like ? ");
 		}
@@ -68,11 +68,14 @@ public class SponDAO {
 		sql.append(" select sno, e.mno, mid, Stitle, Scontent, imgpath, tag, destmoney, minmoney, finaldate, nowmoney, bankno ");
 		sql.append(" from SponBoard e inner join Member m on e.mno = m.mno ");
 		if(isFinish) {
-			sql.append(" where tag like ? and stitle like ? and (finaldate > now) ");
+			sql.append(" where tag like ? and stitle like ? and (finaldate > sysdate()) ");
+			sql.append(" order by sno desc ");
 			sql.append(" limit ?, ? ");
+			
 			
 		}else {
 			sql.append(" where tag like ? and stitle like ? ");
+			sql.append(" order by sno desc");
 			sql.append(" limit ?, ? ");
 			
 		}
