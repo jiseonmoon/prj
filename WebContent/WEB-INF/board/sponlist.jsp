@@ -81,7 +81,7 @@
 						<c:forEach var="board" items="${list }">
 							<tr>
 								<td>${board.boardno }</td>
-								<td>${board.boardtitle }</td>
+								<td><a href="spondetail.do?no=${board.boardno }">${board.boardtitle }</a></td>
 								<td>${board.boardcontent }</td>
 								<td>${board.boardwriter }</td>
 								<td>${board.imagepath }</td>
