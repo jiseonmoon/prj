@@ -116,4 +116,44 @@ public class SponDAO {
 	public int sponDataAdd(Connection conn, SponDTO spondata) {
 		return 0;
 	}
+	
+	
+	
+	// Detail
+	
+	public SponDTO getDetail(Connection conn, int boardno) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		SponDTO dto = new SponDTO();
+		StringBuilder sql = new StringBuilder();
+		sql.append(" select sno, e.mno, mid, Stitle, Scontent, imgpath, tag, destmoney, minmoney, finaldate, nowmoney ");
+		sql.append(" from SponBoard e inner join Member m on e.mno = m.mno ");
+		sql.append(" where sno = ? ");
+		try {
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, boardno);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				dto.setBoardno(rs.getInt("sno"));
+				dto.setWriterno(rs.getInt("mno"));
+				dto.setBoardwriter(rs.getString("mid"));
+				dto.setBoardtitle(rs.getString("Stitle"));
+				dto.setBoardcontent(rs.getString("Scontent"));
+				dto.setImagepath(rs.getString("imgpath"));
+				dto.setBoardtag(rs.getString("tag"));
+				dto.setDestmoney(rs.getInt("destmoney"));
+				dto.setMinmoney(rs.getInt("minmoney"));
+				dto.setFinaldate(rs.getDate("finaldate").toString());
+				dto.setNowmoney(rs.getInt("nowmoney"));
+			}
+			
+		} catch (SQLException e) {
+			System.out.println(e);
+		} finally {
+			if ( rs != null) try { rs.close(); } catch(SQLException e) {}
+			if ( pstmt != null) try { pstmt.close(); } catch(SQLException e) {}
+		}
+		return dto;
+	}
 }

@@ -45,4 +45,20 @@ public class SponService {
 	public int sponDataAddService(SponDTO spondata) {
 		return 0;
 	}
+	
+	
+	
+	// Detail
+	
+	public SponDTO getDetail(int boardno) {
+		DBConn db = DBConn.getDB();
+		SponDTO result = null;
+		try(Connection conn = db.getConnection();){
+			SponDAO dao = SponDAO.getSponDAO();
+			result = dao.getDetail(conn, boardno);
+		} catch(SQLException | NamingException e) {
+			System.out.println(e);
+		}
+		return result;
+	}
 }
