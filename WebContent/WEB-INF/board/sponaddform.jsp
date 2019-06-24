@@ -176,7 +176,8 @@
 				          <div id="collapseTwo3" class="panel-collapse collapse ">
 				            <div class="panel-body">
 				              <div class="form-group">
-				              	
+				              	<label for="bankno">'-'를 빼고 입력해주세요.</label>
+				              	<input type="text" class="form-control" id="bankno" name="bankno" placeholder="은행 계좌 번호 입력 ex)94102399350">
 				              </div>
 				            </div>
 				          </div>

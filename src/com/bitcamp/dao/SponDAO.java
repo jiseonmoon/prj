@@ -1,6 +1,7 @@
 package com.bitcamp.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -113,8 +114,33 @@ public class SponDAO {
 		return list;
 	}
 	
-	public int sponDataAdd(Connection conn, SponDTO spondata) {
-		return 0;
+	public int sponDataAdd(Connection conn, SponDTO dto) throws SQLException{
+		PreparedStatement pstmt=null;
+		StringBuilder sb=new StringBuilder();
+ 	   	sb.append("  insert   into   SponBoard 							      ");
+ 	   	sb.append("  (mno, stitle, scontent, imgpath, tag, destmoney, minmoney, finaldate, bankno)  ");
+ 	   	sb.append(" values (?, ?, ?, ?, ?, ?, ?, ?, ?)                   ");
+ 	   	int result=0;
+ 	   	try{
+ 	   		pstmt=conn.prepareStatement(sb.toString());
+ 	   		pstmt.setInt(1, dto.getWriterno());
+ 	   		pstmt.setString(2, dto.getBoardtitle());
+ 	   		pstmt.setString(3, dto.getBoardcontent());
+ 	   		pstmt.setString(4, dto.getImagepath());
+ 	   		pstmt.setString(5, dto.getBoardtag());
+ 	   		pstmt.setInt(6, dto.getDestmoney());
+ 	   		pstmt.setInt(7, dto.getMinmoney());
+ 	   		pstmt.setDate(8, Date.valueOf(dto.getFinaldate()));
+ 	   		pstmt.setInt(9, dto.getBankno());
+ 	   		result=pstmt.executeUpdate();
+ 	   	}finally{
+ 	   		if(pstmt!=null) {
+ 	   			try {
+ 	   				pstmt.close();
+ 	   			}catch(SQLException e) {}
+ 	   		}
+ 	   	}
+ 	   	return result;
 	}
 	
 	

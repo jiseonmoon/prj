@@ -1,14 +1,23 @@
 package com.bitcamp.dto;
 
 public class MemberDTO {
-	private int mid;
+	private int mno;
+	private String mid;
 
-	public int getMid() {
+	public String getMid() {
 		return mid;
 	}
 
-	public void setMid(int mid) {
+	public void setMid(String mid) {
 		this.mid = mid;
+	}
+
+	public int getMno() {
+		return mno;
+	}
+
+	public void setMno(int mno) {
+		this.mno = mno;
 	}
 	
 }

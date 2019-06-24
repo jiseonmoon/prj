@@ -43,7 +43,33 @@ public class SponService {
 	}
 	
 	public int sponDataAddService(SponDTO spondata) {
-		return 0;
+		Connection conn=null;
+		int result = 0;
+		try{
+		
+		conn=DBConn.getDB().getConnection();
+		conn.setAutoCommit(false);
+		SponDAO dao=SponDAO.getSponDAO();
+		result = dao.sponDataAdd(conn, spondata);
+		
+		conn.commit();
+		} catch(SQLException | NamingException e)
+		{
+			System.out.println(e);
+			try{conn.rollback();} catch(SQLException e1){}
+		}catch(RuntimeException e)
+		{
+			System.out.println(e);
+			try{ conn.rollback();} catch(SQLException e1){}
+		}
+		finally{
+			if(conn!=null) {
+				try {
+					conn.close();
+				}catch(SQLException e) {}
+			}
+		}
+		return result;
 	}
 	
 	
