@@ -15,7 +15,11 @@ public class SponAddAction implements Action {
 	public ForwardAction execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		return null;
+		ForwardAction act=new ForwardAction();
+		act.setRedirect(false);
+		act.setPath("/WEB-INF/board/templete.jsp?page=sponaddform.jsp");
+		
+		return act;
 	}
 
 }
