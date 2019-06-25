@@ -245,4 +245,25 @@ public class SponDAO {
 		}
 		return list;
 	}
+	
+	// 댓글 삭제하기
+	public int subDelete(Connection conn, int subNo) {
+		PreparedStatement pstmt = null;
+		StringBuilder sql = new StringBuilder();
+		int result = 0;
+		
+		sql.append(" delete from SubBoard ");
+		sql.append(" where SBno = ? ");
+		
+		try {
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, subNo);
+			result = pstmt.executeUpdate();
+		} catch(SQLException e) {
+			System.out.println(e);
+		} finally {
+			if ( pstmt != null) try { pstmt.close(); } catch(SQLException e) {}
+		}
+		return result;
+	}
 }
