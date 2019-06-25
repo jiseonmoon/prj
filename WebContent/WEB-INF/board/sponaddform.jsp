@@ -41,7 +41,27 @@
 			right:5%;
 		}
 	}
-	
+	.jumbotron{
+		background-image: url("image/back.jpg");
+		background-size: cover;
+		background-position: center;
+	}
+	.jumbotron h1, p{
+		color:white;
+	}
+	#subbtn{
+		padding:5px 30px;
+	}
+	@media (max-width:992px){
+		#subbtn{
+			margin-top:10px;
+		}
+	}
+	@media(max-width: 576px){
+		#subbtn{
+			padding: 5px 20px;
+		}
+	}
 	
 </style>
 <script>
@@ -277,16 +297,17 @@
  	 	<div class="container">
     		<h1>후원 프로젝트 생성</h1>
     		<p> 당신의 도전을 응원합니다.</p>
-    		<p><a class="btn btn-primary btn-lg" href="sponlist.do">목록으로</a></p>
+    		<p><a class="btn btn-success btn-lg" href="sponlist.do">목록으로</a></p>
   		</div>
 	</div>
-	<div class="container">
+	<hr>
+	<div class="container">	
 		<form action="sponaddresult.do" method="POST" enctype="multipart/form-data" role="form" name="frm">
 			<ul class="nav nav-tabs" role="tablist">
 	   			<li class="active" role="presentation col-md-1 col-sm-1 col-xs-1"><a href="#first" aria-controls="first" role="tab" data-toggle="tab">1단계</a></li>
 	   			<li role="presentation col-md-1 col-sm-1 col-xs-1"><a href="#second" aria-controls="second" role="tab" data-toggle="tab">2단계</a></li>
 	   			<li role="presentation col-md-1 col-sm-1 col-xs-1"><a href="#third" aria-controls="third" role="tab" data-toggle="tab">3단계</a></li>
-	   			<li class="col-md-1 col-md-offset-8 col-sm-1 col-sm-offset-8 col-xs-8 col-xs-offset-1 d-flex justify-content-end"><input class="btn btn-primary btn-md" type="button" value="제출" onclick="submitcheck()"></li>
+	   			<li class="col-md-3 col-md-offset-6 col-sm-1 col-sm-offset-8 col-xs-8 col-xs-offset-1 d-flex justify-content-end"><input class="btn btn-info btn-md" id="subbtn" type="button" value="제출" onclick="submitcheck()"></li>
 	  		</ul>
 	  		
 	  		<div class="tab-content float-none">
@@ -456,5 +477,6 @@
   			</div>
 		</form>
 	</div>
+	<hr>
 </body>
 </html>
