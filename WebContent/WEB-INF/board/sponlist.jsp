@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko-kr">
 <head>
@@ -36,9 +37,15 @@
 		padding:0;
 	}
 	.thumbnail{
-		height:270px; width:200px;
+		height:300px; width:200px;
 		margin-top:20px;
-		padding:7px;
+		padding:0;
+		border: 0px transparent;
+		background-color: #f8f9fa;
+		box-shadow: 3px 3px 5px silver;
+	}
+	.thumbnail > div{
+		background-color: white;
 	}
 	
 	.sponfilter{
@@ -52,7 +59,10 @@
 	}
 	
 	.thumbnail img{
-		height:150px;
+		height:180px;
+		width:100%;
+		border:0px transparent;
+		border-radius: 5px;
 	}
 	
 	hr{
@@ -61,15 +71,32 @@
 	}
 	
 	.caption{
-		border: 1px solid silver;
-		margin-top: 5px;
+		margin-top: 9px;
+		box-shadow: 1px 0px 1px silver;
+		border-radius: 5px;
 	}
 	.caption h5{
 		margin:0;
 		margin-bottom: 5px;
-		text-align: center;
 	}
-
+	.caption h5 a:link, a:visited{
+		color: black;
+		font-weight: bolder;
+		text-decoration: none;
+	}
+	.caption p{
+		font-size: 0.8em;
+	}
+	.progress{
+		height : 6px;
+		margin-bottom:8px;
+	}
+	.glyphicon-gift{
+		color:red;
+	}
+	body{
+		background-color: rgba(250,239,220, 0.1);
+	}
 </style>
 </head>
 <body>
@@ -77,6 +104,7 @@
 	<c:set var="list" value="${requestScope.list }"></c:set>
 	<c:set var="tag" value="${requestScope.tag }"></c:set>
 	<c:set var="search" value="${requestScope.search }"></c:set>
+	<jsp:useBean id="now" class="java.util.Date"/>
 	
 	<div class="container-fluid sponfilter">
 		<div class="container">
@@ -112,7 +140,7 @@
 		</div>
 	</div>
 	<hr>
-	<div class="container">
+	<div class="container site">
 			<div class="row" style="position: relative;">
 				<c:choose>
 					<c:when test="${empty list }">
@@ -120,15 +148,25 @@
 					</c:when>
 					<c:otherwise>
 						<c:forEach var="board" items="${list }">
-							<div class="col-md-3 col-sm-4 col-xs-12 d-flex justify-content-center">
+							<c:set var="date" value="${board.finaldate }"/>
+							<fmt:parseDate var="parsedate" value="${date }" pattern="yyyy-MM-dd"></fmt:parseDate>
+							<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 d-flex justify-content-center">
 								<div class="thumbnail">
 									<img class="img-responsive" src="upload/${board.imagepath }" alt="img">
          							<div class="caption">
             							<h5><a href="spondetail.do?no=${board.boardno }">${board.boardtitle }</a> </h5>
-            							<div class="row">
-            								<p class="col-4">${board.boardwriter }</p>
-            								<p class="col-8">${board.finaldate }</p>
+            								<p>${board.boardwriter }</p>
+            							<div class="progress">
+            								<div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: ${board.nowmoney div board.destmoney *100}%;">
+            									<span class="sr-only">90% Complete</span>
+            								</div>
             							</div>
+            							
+            								<fmt:parseNumber value="${now.time/(1000*60*60*24) }" integerOnly="true" var="nowDays"/>
+            								<fmt:parseNumber value="${parsedate.time/(1000*60*60*24) }" integerOnly="true" var="oldDays"/>
+            								<c:set value="${oldDays - nowDays }" var="dateDiff"/>
+            								<span class="glyphicon glyphicon-gift"></span><span>${dateDiff }일</span>
+            							
        								</div>
 								</div>
 							</div>
@@ -138,19 +176,18 @@
 		</div>
 		
 	<div class="row d-flex">
-		<div class="col-md-7 d-flex justify-content-end">
+		<div class="col-md-8 d-flex justify-content-end">
 			<form class="form-inline" role="form" action="sponlist.do?tag=${tag}&isFinish=${isFinish}" method="post" id="frm">
 				<div class="form-group">
 					<label for="search" class="sr-only">검색</label>
 					<input type="text" class="form-control" id="search" name="search" value="${search }" placeholder="입력해주세요">
 				</div>
 				<div class="form-group">
-					<input type="submit" value="검색">
-					<input type="reset" value="취소">
+					<input type="submit" class="btn btn-sm btn-default" value="검색">
 				</div>
 			</form>
 		</div>
-		<div class="col-md-3 col-md-offset-2"><a class="btn btn-default" href="sponadd.do">게시글 작성</a></div>
+		<div class="col-md-2 col-md-offset-2 d-flex justify-content-end"><a class="btn btn-success" href="sponadd.do">게시글 작성</a></div>
 	</div>
 	<div class="row d-flex justify-content-center">
 		<ul class="pagination">
@@ -172,5 +209,6 @@
 	</div>
 	</div>
 	<hr>
+
 </body>
 </html>
