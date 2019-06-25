@@ -10,7 +10,6 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		let no = ${ result.boardno }
-		console.log(no);
 		$.ajax({
             url:"sponsublist.do"   
 		    , data:"no="+no
