@@ -30,6 +30,41 @@
 		})
 	})
 </script>
+<style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	.thumbnail{
+		height:250px; width:160px;
+	}
+	
+	.sponfilter{
+		background-image: url("image/slide1_bg.jpg");
+		background-size: cover;
+		margin:10px 0px;
+		height:50px;
+	}
+	.filterline{
+		margin-top:10px;
+	}
+	
+	.thumbnail img{
+		height:150px;
+	}
+	
+	}
+	
+	@media(max-width:980px){
+		
+	}
+	
+	@media(max-width:408px){
+		.filterline > label{
+			font-size: 0.5em;
+		}
+	}
+</style>
 </head>
 <body>
 	<c:set var="pageinfo" value="${requestScope.pageinfo }"></c:set>
@@ -37,8 +72,9 @@
 	<c:set var="tag" value="${requestScope.tag }"></c:set>
 	<c:set var="search" value="${requestScope.search }"></c:set>
 	
-	<div class="container">
-		<div class="dropdown col-md-4">
+	<div class="container-fluid sponfilter">
+		<div class="container">
+		<div class="dropdown col-md-4 col-sm-4 col-xs-4 filterline">
 			<c:choose>
 				<c:when test="${tag==null || tag=='' }">
 					<a class="btn btn-default" data-toggle="dropdown" href="#">태그</a>
@@ -63,69 +99,37 @@
 	 		 </ul>
 		</div>
 		
-		<div class="col-md-4 col-md-offset-4">
-		<input type="checkbox" id="finishcheck" name="finishcheck" value="true">
-		<label for="finishcheck">마감된 프로젝트 제외</label>
+		<div class="col-md-3 col-md-offset-5 col-sm-3 col-sm-offset-5 col-xs-4 col-xs-offset-4 filterline">
+			<input type="checkbox" id="finishcheck" name="finishcheck" value="true">
+			<label for="finishcheck"><strong>마감 제외</strong></label>
+		</div>
 		</div>
 	</div>
-		<!-- <table class="table">
-			<thead>
-			<tr><td>번호</td><td>제목</td><td>내용</td><td>작성자</td><td>이미지</td></tr>
-			</thead>
-			<tbody> -->
-			<div class="container">
+	<hr>
+	<div class="container">
+			<div class="row" style="position: relative;">
 				<c:choose>
 					<c:when test="${empty list }">
 						<tr><td colspan="5">게시물이 없습니다.</td></tr>
 					</c:when>
 					<c:otherwise>
 						<c:forEach var="board" items="${list }">
-						
-							<div class="col-md-2 col-md-offset-1" >
-								<div class="thumbnail" style="height: 200px;">
-									<img src="upload/${board.imagepath }" alt="img">
+							<div class="col-md-3 col-sm-4 col-xs-12">
+								<div class="thumbnail">
+									<img class="img-thumbnail" src="upload/${board.imagepath }" alt="img">
          							<div class="caption">
-            							<h3><a href="spondetail.do?no=${board.boardno }">${board.boardtitle }</a> </h3>
+            							<h5><a href="spondetail.do?no=${board.boardno }">${board.boardtitle }</a> </h5>
             							<p>${board.boardwriter }</p>
        								</div>
 								</div>
 							</div>
-							
-							<%-- <tr>
-								<td>${board.boardno }</td>
-								<td><a href="spondetail.do?no=${board.boardno }">${board.boardtitle }</a></td>
-								<td>${board.boardcontent }</td>
-								<td>${board.boardwriter }</td>
-								<td>${board.imagepath }</td>
-							</tr> --%>
 						</c:forEach>
 					</c:otherwise>	
 				</c:choose>
-			<!-- </tbody>
-		</table> -->
 		</div>
-	<div class="container">
-		<div class="col-md-4 col-md-offset-4">
-			<ul class="pagination">
-				<c:if test="${pageinfo.startblock > 1 }">
-					<li><a href="sponlist.do?currpage=${pageinfo.startblock-1 }&search=${search}&tag=${tag}&isFinish=${isFinish}">◀</a></li>
-				</c:if>
-				<c:forEach var="i" begin="${pageinfo.startblock }" end="${pageinfo.endblock }">
-					<c:if test="${i==pageinfo.currpage }">
-						<li class="active"><a href="#"><c:out value="${i }"></c:out></a></li>
-					</c:if>
-					<c:if test="${i!=pageinfo.currpage }">
-						<li><a href="sponlist.do?currpage=${i }&search=${search}&tag=${tag}&isFinish=${isFinish}"><c:out value="${i}"></c:out></a></li>
-					</c:if>
-				</c:forEach>
-				<c:if test="${pageinfo.endblock < pageinfo.totalpage }">
-					<li><a href="sponlist.do?currpage=${pageinfo.endblock+1}&search=${search}&tag=${tag}&isFinish=${isFinish}">▶</a></li>
-				</c:if>
-			</ul>
-		</div>
-		<div class="col-md-4"><a class="btn btn-default" href="sponadd.do">게시글 작성</a></div>
 		
-		<div class="col-md-12">
+	<div class="row d-flex">
+		<div class="col-md-7 d-flex justify-content-end">
 			<form class="form-inline" role="form" action="sponlist.do?tag=${tag}&isFinish=${isFinish}" method="post" id="frm">
 				<div class="form-group">
 					<label for="search" class="sr-only">검색</label>
@@ -137,7 +141,27 @@
 				</div>
 			</form>
 		</div>
+		<div class="col-md-3 col-md-offset-2"><a class="btn btn-default" href="sponadd.do">게시글 작성</a></div>
 	</div>
-	
+	<div class="row d-flex justify-content-center">
+		<ul class="pagination">
+			<c:if test="${pageinfo.startblock > 1 }">
+				<li><a href="sponlist.do?currpage=${pageinfo.startblock-1 }&search=${search}&tag=${tag}&isFinish=${isFinish}">◀</a></li>
+			</c:if>
+			<c:forEach var="i" begin="${pageinfo.startblock }" end="${pageinfo.endblock }">
+				<c:if test="${i==pageinfo.currpage }">
+					<li class="active"><a href="#"><c:out value="${i }"></c:out></a></li>
+				</c:if>
+				<c:if test="${i!=pageinfo.currpage }">
+					<li><a href="sponlist.do?currpage=${i }&search=${search}&tag=${tag}&isFinish=${isFinish}"><c:out value="${i}"></c:out></a></li>
+				</c:if>
+			</c:forEach>
+			<c:if test="${pageinfo.endblock < pageinfo.totalpage }">
+				<li><a href="sponlist.do?currpage=${pageinfo.endblock+1}&search=${search}&tag=${tag}&isFinish=${isFinish}">▶</a></li>
+			</c:if>
+		</ul>
+	</div>
+	</div>
+	<hr>
 </body>
 </html>
