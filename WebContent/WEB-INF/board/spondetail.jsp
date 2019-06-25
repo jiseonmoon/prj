@@ -41,7 +41,7 @@
 		
 		<div class="row">
 	  		<div class="col-md-8">
-	  			<img src="upload/${ result.imagepath }" alt="img">  <!-- 이미지 -->
+	  			<img class="img-responsive" src="upload/${ result.imagepath }" alt="img"> <!-- 이미지 -->
 	  		</div>
 	  		<div class="col-md-4">
 	  			${ result.nowmoney }<br> <!-- 현재모금액 -->
