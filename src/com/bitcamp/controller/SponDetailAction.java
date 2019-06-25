@@ -1,7 +1,10 @@
 package com.bitcamp.controller;
 
+import java.awt.Image;
+import java.io.File;
 import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

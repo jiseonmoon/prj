@@ -31,6 +31,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<c:set var="path" value="${ requestScope.image }"></c:set> 
 	<c:set var="result" value="${ requestScope.result }"></c:set>
 	
 	<div class="center-block" style='width:60%; background:pink'>
@@ -39,7 +40,9 @@
 		<p class="text-center">${ result.boardwriter }</p><br> <!-- 글작성자 -->
 		
 		<div class="row">
-	  		<div class="col-md-8">${ result.imagepath }</div> <!-- 이미지 -->
+	  		<div class="col-md-8">
+	  			<img src="upload/${ result.imagepath }" alt="img">  <!-- 이미지 -->
+	  		</div>
 	  		<div class="col-md-4">
 	  			${ result.nowmoney }<br> <!-- 현재모금액 -->
 	  			${ result.finaldate }<br> <!-- 마감일 -->
@@ -52,7 +55,6 @@
 	  			</form>
 	  		</div>
 		</div>
-	 	글내용: <br>
 		현재모금액: ${ result.nowmoney }<br>
 		마감일: ${ result.finaldate }<br>
 		목표금액: ${ result.destmoney }<br>
