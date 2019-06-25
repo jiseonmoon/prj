@@ -6,6 +6,26 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		let no = ${ result.boardno }
+		console.log(no);
+		$.ajax({
+            url:"sponsublist.do"   
+		    , data:"no="+no
+		    , dataType:"html"
+		    ,success:function(data)
+		    {
+			    $('#result').append(data);
+		    }
+		    ,error:function(data)
+		    {
+			    console.log('error');
+		    }
+	   });
+	});
+</script>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -51,21 +71,18 @@
 		    	${ result.boardcontent } <!-- 글내용 -->
 		    </div>
 		    <div role="tabpanel" class="tab-pane" id="profile">
-		    	<form action="sponsubadd.do" method="post">
-					<textarea name="text" class="form-control" rows="3" maxlength="100" style='width:90%;'></textarea>
+		    	<form action="sponsubadd.do?boardno=${ result.boardno }" method="post" name="frm"> <!-- 글번호랑 같이 넘겨줌 -->
+					<textarea name="content" class="form-control" rows="3" maxlength="100" style='width:90%;'></textarea> <!-- 댓글내용 -->
+					<input type="text" name="memberNo"> <!-- 회원 번호를 세션에서 받아 넘겨주게 바꿔야됨 -->
 					<button type="submit" class="btn btn-info">작성</button>
 				</form>
+				<div id="result"></div>
 		    </div>
   		</div>
 	</div>
 	
-	
-
-	글번호: ${ result.boardno }<br>
 	회원번호: ${ result.writerno }<br>
 	후원최소액: ${ result.minmoney }<br>
-
-  		
-	
+  	
 </body>
 </html>

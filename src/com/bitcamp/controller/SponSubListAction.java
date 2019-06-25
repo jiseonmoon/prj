@@ -1,6 +1,7 @@
 package com.bitcamp.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -11,28 +12,20 @@ import com.bitcamp.comm.ForwardAction;
 import com.bitcamp.dto.SponSubDTO;
 import com.bitcamp.service.SponService;
 
-public class SponSubAddAction implements Action {
+public class SponSubListAction implements Action {
 
 	@Override
 	public ForwardAction execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		request.setCharacterEncoding("utf-8");
-		String content = request.getParameter("content"); // 댓글내용
-		int boardno = Integer.parseInt(request.getParameter("boardno")); // 댓글을 작성할 글번호
-		int memberNo = 1; // 회원번호를 넘겨 받아야됨
-		
-		SponSubDTO dto = new SponSubDTO();
-		dto.setSubContent(content);
-		dto.setSponNo(boardno);
-		dto.setMemberNo(memberNo);
-		
+		int no = Integer.parseInt(request.getParameter("no")); // 댓글이 작성된 글번호
 		SponService service = SponService.getService();
-		service.subAdd(dto);
+		List<SponSubDTO> list = service.subList(no);
+		request.setAttribute("list", list);
 		
 		ForwardAction forward = new ForwardAction();
-		forward.setRedirect(true);
-		forward.setPath("spondetail.do?no="+boardno);
+		forward.setRedirect(false);
+		forward.setPath("/WEB-INF/board/sponsublist.jsp");
 		
 		return forward;
 	}

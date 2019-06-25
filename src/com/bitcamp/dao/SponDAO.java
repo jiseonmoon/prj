@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.bitcamp.dto.PageDTO;
 import com.bitcamp.dto.SponDTO;
+import com.bitcamp.dto.SponSubDTO;
 
 public class SponDAO {
 	private static SponDAO instance = new SponDAO();
@@ -184,5 +185,64 @@ public class SponDAO {
 			if ( pstmt != null) try { pstmt.close(); } catch(SQLException e) {}
 		}
 		return dto;
+	}
+	
+	
+	// ´ñ±Û Ãß°¡
+	public int subAdd(Connection conn, SponSubDTO dto) {
+		PreparedStatement pstmt = null;
+		StringBuilder sql = new StringBuilder();
+		
+		sql.append(" insert into SubBoard (Sno, Mno, SBcontent) ");
+		sql.append(" values (?, ?,?) ");
+		
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, dto.getSponNo());
+			pstmt.setInt(2, dto.getMemberNo());
+			pstmt.setString(3, dto.getSubContent());
+			result = pstmt.executeUpdate();
+		} catch(SQLException e) {
+			System.out.println(e);
+		} finally {
+			if ( pstmt != null) try { pstmt.close(); } catch(SQLException e) {}
+		}
+		
+		return result;
+	}
+	
+	// ´ñ±Û °¡Á®¿À±â
+	public List<SponSubDTO> subList(Connection conn, int no) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		StringBuilder sql = new StringBuilder();
+		
+		sql.append(" select SBno, m.Mno, Sno, SBcontent, m.mid ");
+		sql.append(" from SubBoard sb join Member m on sb.Mno = m.mno ");
+		sql.append(" where Sno = ? ");
+		
+		List<SponSubDTO> list = new ArrayList<>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, no);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				SponSubDTO sdto = new SponSubDTO();
+				sdto.setSubNo(rs.getInt("SBno")); // ´ñ±Û ¹øÈ£
+				sdto.setMemberNo(rs.getInt("Mno")); // ¸â¹ö ¹øÈ£
+				sdto.setSponNo(rs.getInt("Sno")); // ±Û ¹øÈ£
+				sdto.setSubContent(rs.getString("SBcontent")); // ´ñ±Û ³»¿ë
+				sdto.setMemberId(rs.getString("mid"));
+				list.add(sdto);
+			}
+		} catch(SQLException e) {
+			System.out.println(e);
+		} finally {
+			if ( pstmt != null) try { pstmt.close(); } catch(SQLException e) {}
+		}
+		return list;
 	}
 }

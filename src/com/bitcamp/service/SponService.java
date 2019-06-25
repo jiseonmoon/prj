@@ -10,6 +10,7 @@ import com.bitcamp.comm.DBConn;
 import com.bitcamp.dao.SponDAO;
 import com.bitcamp.dto.PageDTO;
 import com.bitcamp.dto.SponDTO;
+import com.bitcamp.dto.SponSubDTO;
 
 public class SponService {
 	private static SponService instance = new SponService();
@@ -87,4 +88,31 @@ public class SponService {
 		}
 		return result;
 	}
+	
+	// 댓글 추가
+	public int subAdd(SponSubDTO dto) {
+		DBConn db = DBConn.getDB();
+		int result = 0;
+		try(Connection conn = db.getConnection();) {
+			SponDAO dao = SponDAO.getSponDAO();
+			result = dao.subAdd(conn, dto);
+		} catch(SQLException | NamingException e) {
+			System.out.println(e);
+		}
+		return result;
+	}
+	
+	// 댓글 리스트 가져오기
+	public List<SponSubDTO> subList(int no) {
+		DBConn db = DBConn.getDB();
+		List<SponSubDTO> list = null;
+		try(Connection conn = db.getConnection();) {
+			SponDAO dao = SponDAO.getSponDAO();
+			list = dao.subList(conn, no);
+		} catch (SQLException | NamingException e) {
+			System.out.println(e);
+		} 
+		return list;
+	}
+	
 }
