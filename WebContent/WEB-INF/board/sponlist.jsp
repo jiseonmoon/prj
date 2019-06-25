@@ -12,13 +12,19 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="css/jquery.fancybox.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="js/jquery.fancybox.js"></script>
 <%
 	boolean isFinish = (boolean)request.getAttribute("isFinish");
 %>
 <script>
-	$(function(){
+	$(document).ready(function(){
+		$(".fancybox").fancybox({
+	          openEffect  : 'none',
+	          closeEffect : 'none'
+	    });
 		if(<%=isFinish%>==true){
 			document.getElementById("finishcheck").checked = true;
 		}
@@ -58,9 +64,15 @@
 		margin-top:10px;
 	}
 	
-	.thumbnail img{
+	.thumbnail a{
+		border:box;
 		height:180px;
 		width:100%;
+	}
+	
+	.thumbnail img{
+		height:180px !important;
+		width:200px;
 		border:0px transparent;
 		border-radius: 5px;
 	}
@@ -84,7 +96,7 @@
 		font-weight: bolder;
 		text-decoration: none;
 	}
-	.caption p{
+	.caption > p{
 		font-size: 0.8em;
 	}
 	.progress{
@@ -93,6 +105,9 @@
 	}
 	.glyphicon-gift{
 		color:red;
+	}
+	.glyphicon-usd{
+		color:green;
 	}
 	body{
 		background-color: rgba(250,239,220, 0.1);
@@ -152,7 +167,7 @@
 							<fmt:parseDate var="parsedate" value="${date }" pattern="yyyy-MM-dd"></fmt:parseDate>
 							<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 d-flex justify-content-center">
 								<div class="thumbnail">
-									<img class="img-responsive" src="upload/${board.imagepath }" alt="img">
+									<a class="fancybox" rel="img" href="upload/${board.imagepath }"><img class="img-responsive" src="upload/${board.imagepath }" alt="img"></a>
          							<div class="caption">
             							<h5><a href="spondetail.do?no=${board.boardno }">${board.boardtitle }</a> </h5>
             								<p>${board.boardwriter }</p>
@@ -165,7 +180,11 @@
             								<fmt:parseNumber value="${now.time/(1000*60*60*24) }" integerOnly="true" var="nowDays"/>
             								<fmt:parseNumber value="${parsedate.time/(1000*60*60*24) }" integerOnly="true" var="oldDays"/>
             								<c:set value="${oldDays - nowDays }" var="dateDiff"/>
-            								<span class="glyphicon glyphicon-gift"></span><span>${dateDiff }일</span>
+            								<div class="row">
+            									<p class="col-7"><span class="glyphicon glyphicon-gift"></span><span>${dateDiff }일</span></p>
+            									<p class="col-5 d-flex justify-content-center"><span class="glyphicon glyphicon-usd"></span><span>${board.nowmoney }만원</span></p>
+            								</div>
+            								
             							
        								</div>
 								</div>
