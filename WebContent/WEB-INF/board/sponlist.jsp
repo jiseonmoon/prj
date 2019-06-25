@@ -36,7 +36,9 @@
 		padding:0;
 	}
 	.thumbnail{
-		height:250px; width:160px;
+		height:270px; width:200px;
+		margin-top:20px;
+		padding:7px;
 	}
 	
 	.sponfilter{
@@ -53,17 +55,21 @@
 		height:150px;
 	}
 	
+	hr{
+		margin-top:10px;
+		margin-bottom:0;
 	}
 	
-	@media(max-width:980px){
-		
+	.caption{
+		border: 1px solid silver;
+		margin-top: 5px;
 	}
-	
-	@media(max-width:408px){
-		.filterline > label{
-			font-size: 0.5em;
-		}
+	.caption h5{
+		margin:0;
+		margin-bottom: 5px;
+		text-align: center;
 	}
+
 </style>
 </head>
 <body>
@@ -99,7 +105,7 @@
 	 		 </ul>
 		</div>
 		
-		<div class="col-md-3 col-md-offset-5 col-sm-3 col-sm-offset-5 col-xs-4 col-xs-offset-4 filterline">
+		<div class="col-md-6 col-md-offset-2 col-sm-6 col-sm-offset-2 col-xs-6 col-xs-offset-2 d-flex justify-content-end filterline">
 			<input type="checkbox" id="finishcheck" name="finishcheck" value="true">
 			<label for="finishcheck"><strong>마감 제외</strong></label>
 		</div>
@@ -114,12 +120,15 @@
 					</c:when>
 					<c:otherwise>
 						<c:forEach var="board" items="${list }">
-							<div class="col-md-3 col-sm-4 col-xs-12">
+							<div class="col-md-3 col-sm-4 col-xs-12 d-flex justify-content-center">
 								<div class="thumbnail">
-									<img class="img-thumbnail" src="upload/${board.imagepath }" alt="img">
+									<img class="img-responsive" src="upload/${board.imagepath }" alt="img">
          							<div class="caption">
             							<h5><a href="spondetail.do?no=${board.boardno }">${board.boardtitle }</a> </h5>
-            							<p>${board.boardwriter }</p>
+            							<div class="row">
+            								<p class="col-4">${board.boardwriter }</p>
+            								<p class="col-8">${board.finaldate }</p>
+            							</div>
        								</div>
 								</div>
 							</div>
