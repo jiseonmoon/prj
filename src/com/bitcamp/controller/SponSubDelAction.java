@@ -1,34 +1,30 @@
 package com.bitcamp.controller;
 
-import java.awt.Image;
-import java.io.File;
 import java.io.IOException;
 
-import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bitcamp.comm.Action;
 import com.bitcamp.comm.ForwardAction;
-import com.bitcamp.dto.SponDTO;
 import com.bitcamp.service.SponService;
 
-public class SponDetailAction implements Action {
+public class SponSubDelAction implements Action {
 
 	@Override
 	public ForwardAction execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		
-		int boardno = Integer.parseInt(request.getParameter("no"));
+		int subNo = Integer.parseInt(request.getParameter("subNo"));
+		int sponNo = Integer.parseInt(request.getParameter("sponNo"));
+		
 		SponService service = SponService.getService();
-		SponDTO result = service.getDetail(boardno);
+		service.subDelete(subNo);
 		
-		request.setAttribute("result", result);
 		ForwardAction forward = new ForwardAction();
-		forward.setRedirect(false);
-		forward.setPath("/WEB-INF/board/templete.jsp?page=spondetail.jsp");
+		forward.setRedirect(true);
+		forward.setPath("spondetail.do?no="+sponNo);
 		
 		return forward;
 	}

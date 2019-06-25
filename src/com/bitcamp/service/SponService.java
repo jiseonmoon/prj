@@ -114,5 +114,17 @@ public class SponService {
 		} 
 		return list;
 	}
+	public int subDelete(int subNo) {
+		DBConn db = DBConn.getDB();
+		int result = 0;
+		
+		try(Connection conn =db.getConnection();) {
+			SponDAO dao = SponDAO.getSponDAO();
+			result = dao.subDelete(conn, subNo);
+		} catch (SQLException | NamingException e) {
+			System.out.println(e);
+		}
+		return result;
+	}
 	
 }
