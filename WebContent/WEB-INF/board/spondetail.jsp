@@ -70,9 +70,10 @@
 	 
 	  			<br>
 	  			<br>
-	  			<!-- dto객체 넘겨주기 -->
+	  			
+	  			<!-- 글번호 넘겨주기 -->
 	  			<form action="pay.do" method="post">
-	  				<input type="hidden" name="dto" value="${ result }"> 
+	  				<input type="hidden" name="boardno" value="${ result.boardno }">
 	  				<button type="submit" class="btn btn-primary" id="pay">후원하기</button>
 	  			</form>
 	  			<br>
