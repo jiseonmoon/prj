@@ -19,5 +19,4 @@ public class MemberDTO {
 	public void setMno(int mno) {
 		this.mno = mno;
 	}
-	
 }
