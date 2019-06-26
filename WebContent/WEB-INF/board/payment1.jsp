@@ -27,11 +27,13 @@
 					id="tel" required></li>
 				<li><label for="addr">주소</label><input type="text" name="addr"
 					id="addr" required></li>
+				<li><input type="hidden" name="boardno"
+					value=${spondto.boardno }></li>
 			</ul>
 		</div>
 		<div>
 			<ul>
-				<li><input type="submit" value="결제하기">
+				<li><input type="submit" value="결제하기"></li>
 			</ul>
 		</div>
 	</form>

@@ -3,6 +3,7 @@
 <%@page import="com.bitcamp.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,20 +43,34 @@ $(document).ready(function(){
 					msg += '결제 금액 : ' + rsp.paid_amount;
 					msg += '카드 승인번호 : ' + rsp.apply_num;
 					alert(msg);
-					location.href = "psuccess.do"
-				} else {
-					var msg = '결제에 실패하였습니다.';
-					msg += '에러내용 : ' + rsp.error_msg;
-					alert(msg);
-					location.href = "pfailure.do"
-				}
-			});
-		});
-	});
+					location.href = "psuccess.do?boardno=<%=spondto.getBoardno()%>&amount=<%=amount%>";
+																} else {
+																	var msg = '결제에 실패하였습니다.';
+																	msg += '에러내용 : '
+																			+ rsp.error_msg;
+																	alert(msg);
+																	location.href = "pfailure.do"
+																}
+															});
+										});
+					});
 </script>
 </head>
 <body>
-	<h3>결제 정보 확인</h3>
+	<h1>결제 정보 확인</h1>
+	<h3>후원 정보</h3>
+	<c:out value="${spondto.boardno }"></c:out>
+	<c:out value="${spondto.boardtitle }"></c:out>
+	<c:out value="${spondto.boardcontent }"></c:out>
+	<c:out value="${spondto.boardtag }"></c:out>
+	<c:out value="${spondto.destmoney }"></c:out>
+	<c:out value="${spondto.minmoney }"></c:out>
+	<c:out value="${spondto.finaldate }"></c:out>
+	<c:out value="${spondto.nowmoney }"></c:out>
+	<h3>배송지 정보</h3>
+	<c:out value="${deliverydto.name }"></c:out>
+	<c:out value="${deliverydto.tel }"></c:out>
+	<c:out value="${deliverydto.addr }"></c:out>
 	<button type="button" id="payment">결제하기</button>
 </body>
 </html>
