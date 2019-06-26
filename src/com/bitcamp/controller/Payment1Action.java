@@ -17,12 +17,10 @@ public class Payment1Action implements Action {
 	public ForwardAction execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
 		int boardno = Integer.parseInt(request.getParameter("boardno"));
 		SponService service = SponService.getService();
-		SponDTO dto = service.getDetail(boardno);
-		
-		
+		SponDTO spondto = service.getDetail(boardno);
+		request.setAttribute("spondto", spondto);
 		ForwardAction forward = new ForwardAction();
 		forward.setRedirect(false);
 		forward.setPath("/WEB-INF/board/payment1.jsp");

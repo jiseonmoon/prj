@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.bitcamp.comm.Action;
 import com.bitcamp.comm.ForwardAction;
 import com.bitcamp.dto.DeliveryDTO;
+import com.bitcamp.dto.SponDTO;
+import com.bitcamp.service.SponService;
 
 public class Payment2Action implements Action {
 
@@ -24,8 +26,12 @@ public class Payment2Action implements Action {
 		deliverydto.setName(name);
 		deliverydto.setTel(tel);
 		deliverydto.setAddr(addr);
+		int boardno = Integer.parseInt(request.getParameter("boardno"));
+		SponService service = SponService.getService();
+		SponDTO spondto = service.getDetail(boardno);
 		request.setAttribute("amount", amount);
 		request.setAttribute("deliverydto", deliverydto);
+		request.setAttribute("spondto", spondto);
 		ForwardAction forward = new ForwardAction();
 		forward.setRedirect(false);
 		forward.setPath("/WEB-INF/board/payment2.jsp");

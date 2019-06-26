@@ -27,6 +27,8 @@
 					id="tel" required></li>
 				<li><label for="addr">주소</label><input type="text" name="addr"
 					id="addr" required></li>
+				<li><input type="hidden" name="boardno"
+					value=${spondto.boardno }></li>
 			</ul>
 		</div>
 		<div>
