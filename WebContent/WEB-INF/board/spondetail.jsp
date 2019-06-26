@@ -48,8 +48,8 @@
 	  			${ result.destmoney }<br> <!-- 목표모금액 -->
 	  			
 	  			<!-- dto객체 넘겨주기 -->
-	  			<form action="pay.do" method="post">
-	  				<input type="hidden" name="dto" value="${ result }"> 
+	  			<form action="payment1.do" method="post">
+	  				<input type="hidden" name="spondto" value="${ result }"> 
 	  				<button type="submit" class="btn btn-primary">후원하기</button>
 	  			</form>
 	  		</div>
