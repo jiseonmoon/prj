@@ -12,23 +12,22 @@
 	$(document).ready(function(){
 		let no = ${ result.boardno }
 		$.ajax({
-            url:"sponsublist.do"   
-		    , data:"no="+no
-		    , dataType:"html"
-		    ,success:function(data)
-		    {
+            url:"sponsublist.do",
+		    data:"no="+no,
+		    dataType:"html",
+		    success:function(data) {
 			    $('#result').append(data);
-		    }
-		    ,error:function(data)
-		    {
+		    } ,error:function(data) {
 			    console.log('error');
 		    }
 	   });
 	});
 	
 	function formSubmit() {
+		$('#result').empty();
 	    var params = $("#frm").serialize();
 	    console.log(params);
+	    
 	    $.ajax({
 	    	url:"sponsubadd.do",
 	    	data:params,
@@ -37,25 +36,36 @@
 	    		console.log('성공');
 	    	}
 	    });
+	    
+	    let no = ${ result.boardno }
+	    $.ajax({
+            url:"sponsublist.do",
+		    data:"no="+no,
+		    dataType:"html",
+		    success:function(data) {
+			    $('#result').append(data);
+		    } ,error:function(data) {
+			    console.log('error');
+		    }
+	   });
 	};
+	
 	
 	function Submit() {
 		$('#result').empty();
 		let no = ${ result.boardno }
 		$.ajax({
-            url:"sponsublist.do"   
-		    , data:"no="+no
-		    , dataType:"html"
-		    ,success:function(data)
-		    {
+            url:"sponsublist.do",
+		    data:"no="+no,
+		    dataType:"html",
+		    success:function(data) {
 			    $('#result').append(data);
-		    }
-		    ,error:function(data)
-		    {
+		    } ,error:function(data) {
 			    console.log('error');
 		    }
 	   });
 	};
+	
 	
 </script>
 
