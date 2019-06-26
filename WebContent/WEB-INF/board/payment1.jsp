@@ -33,7 +33,7 @@
 		</div>
 		<div>
 			<ul>
-				<li><input type="submit" value="결제하기">
+				<li><input type="submit" value="결제하기"></li>
 			</ul>
 		</div>
 	</form>
