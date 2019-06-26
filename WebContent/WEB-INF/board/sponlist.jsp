@@ -43,12 +43,15 @@
 		padding:0;
 	}
 	.thumbnail{
-		height:300px; width:200px;
+		height:320px; width:200px;
 		margin-top:20px;
 		padding:0;
 		border: 0px transparent;
 		background-color: #f8f9fa;
-		box-shadow: 3px 3px 5px silver;
+		box-shadow: 5px 5px 10px buttonhighlight;
+	}
+	.thumbnail:hover{
+		box-shadow: 3px 3px 10px black;
 	}
 	.thumbnail > div{
 		background-color: white;
@@ -107,15 +110,36 @@
 	.glyphicon-usd{
 		color:green;
 	}
+	.glyphicon-floppy-save{
+		color:grey;
+	}
 	body{
 		background-color: rgba(250,239,220, 0.1);
 	}
 	.header h3{
 		font-weight: bolder;
 	}
+	@media (max-width:992px){
+		#boardwrite{
+			height: 35px;
+			margin-left:200px;
+		}
+	}
 	@media (max-width:767px){
 		.sponfilter h3{
 			font-size: 1.4em;
+		}
+		#downloadfile p{
+			display:none !important;
+		}
+		#boardwrite{
+			height: 35px;
+			margin-left:0px;
+		}
+	}
+	@media (max-width:576px){
+		#downloadfile{
+			display:none !important;
 		}
 	}
 	@media (max-width:445px){
@@ -226,8 +250,12 @@
 				</c:choose>
 		</div>
 		
-	<div class="row d-flex">
-		<div class="col-md-8 d-flex justify-content-end">
+	<div class="row searchfield">
+		<div class="col-md-4 col-sm-1">
+			<a id="downloadfile" href="download.do?currpage=${pageinfo.currpage }&search=${search}&tag=${tag}&isFinish=${isFinish}"><span class="glyphicon glyphicon-floppy-save"></span><p style="display: inline">파일 목록 다운로드</p></a>
+		</div>
+		
+		<div class="col-md-5 col-sm-7 d-flex justify-content-center">
 			<form class="form-inline" role="form" action="sponlist.do?tag=${tag}&isFinish=${isFinish}" method="post" id="frm">
 				<div class="form-group">
 					<label for="search" class="sr-only">검색</label>
@@ -238,7 +266,9 @@
 				</div>
 			</form>
 		</div>
-		<div class="col-md-2 col-md-offset-2 d-flex justify-content-end"><a class="btn btn-success" href="sponadd.do">게시글 작성</a></div>
+		<div class="col-md-1 col-md-offset-2 col-sm-4 d-flex justify-content-center">
+			<a class="btn btn-success" id="boardwrite" href="sponadd.do">게시글 작성</a>
+		</div>
 	</div>
 	<div class="row d-flex justify-content-center">
 		<ul class="pagination">
@@ -258,8 +288,7 @@
 			</c:if>
 		</ul>
 	</div>
-	<div><a href="download.do?currpage=${pageinfo.currpage }&search=${search}&tag=${tag}&isFinish=${isFinish}">엑셀 파일 다운로드</a></div>
-	</div>
+	
 	<hr>
 
 </body>
