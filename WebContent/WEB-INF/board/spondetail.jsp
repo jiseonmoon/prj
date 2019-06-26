@@ -52,6 +52,11 @@
 	  				<input type="hidden" name="dto" value="${ result }"> 
 	  				<button type="submit" class="btn btn-primary">후원하기</button>
 	  			</form>
+	  			<form action="spondel.do" method="post">
+	  				<input type="hidden" name="boardno" value="${ result.boardno }"> <!-- 글번호 -->
+	  				<input type="hidden" name="imagepath" value="${ result.imagepath }"> <!-- 이미지이름 -->
+	  				<button type="submit">삭제</button>
+	  			</form>
 	  		</div>
 		</div>
 		현재모금액: ${ result.nowmoney }<br>

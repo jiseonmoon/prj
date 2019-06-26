@@ -150,7 +150,6 @@ public class SponDAO {
 	
 	
 	// Detail
-	
 	public SponDTO getDetail(Connection conn, int boardno) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -185,6 +184,28 @@ public class SponDAO {
 			if ( pstmt != null) try { pstmt.close(); } catch(SQLException e) {}
 		}
 		return dto;
+	}
+	
+	// ÆÝµù±Û »èÁ¦
+	public int sponDel(Connection conn, int boardno) {
+		PreparedStatement pstmt = null;
+		StringBuilder sql = new StringBuilder();
+		
+		sql.append(" delete from SponBoard ");
+		sql.append(" where sno = ? ");
+		
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, boardno);
+			result = pstmt.executeUpdate();
+		} catch(SQLException e) {
+			System.out.println(e);
+		} finally {
+			if ( pstmt != null) try { pstmt.close(); } catch(SQLException e) {}
+		}
+		return result;
 	}
 	
 	
@@ -266,4 +287,5 @@ public class SponDAO {
 		}
 		return result;
 	}
+	
 }
