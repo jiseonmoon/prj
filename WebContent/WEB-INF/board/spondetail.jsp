@@ -3,9 +3,9 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 <script>
@@ -24,9 +24,10 @@
 	});
 	
 	function formSubmit() {
+		
 		$('#result').empty();
+		
 	    var params = $("#frm").serialize();
-	    console.log(params);
 	    
 	    $.ajax({
 	    	url:"sponsubadd.do",
@@ -36,7 +37,7 @@
 	    		console.log('성공');
 	    	}
 	    });
-	    
+
 	    let no = ${ result.boardno }
 	    $.ajax({
             url:"sponsublist.do",
@@ -49,7 +50,6 @@
 		    }
 	   });
 	};
-	
 	
 	function Submit() {
 		$('#result').empty();
@@ -66,7 +66,6 @@
 	   });
 	};
 	
-	
 </script>
 
 <head>
@@ -74,16 +73,24 @@
 <title>Insert title here</title>
 <style>
 	#pay{
-		padding-left: 50px;
-		padding-right: 50px;
+		padding: 20px 100px;
+	}
+	
+	#del{
+		padding: 10px 100px;
 	}
 	
 	#sub{
-		margin-top: 30px;
+		margin-top: 0px;
 	}
 	
 	#main{
-		padding-bottom: 30px;
+		padding-bottom: 60px;
+		background-color: #FBF6F6;
+	}
+	
+	#disabledInput{
+		width: 110px;
 	}
 </style>
 </head>
@@ -91,7 +98,7 @@
 	<c:set var="path" value="${ requestScope.image }"></c:set> 
 	<c:set var="result" value="${ requestScope.result }"></c:set>
 	
-	<div class="center-block" style='width:100%;' id="main" > <!-- background:pink' -->
+	<div class="center-block" style='width:100%;' id="main"> <!-- background:pink' -->
 		<p class="text-center">${ result.boardtag }</p><br> <!-- 글 태그 -->
 		<h1 class="text-center">${ result.boardtitle }</h1><br> <!-- 글제목 -->
 		<p class="text-center"><strong>${ result.boardwriter }</strong></p><br> <!-- 글작성자 -->
@@ -115,16 +122,18 @@
 	  			<br>
 	  			<br>
 	  			
+	  			<form action="spondel.do" method="post">
+	  				<input type="hidden" name="boardno" value="${ result.boardno }"> <!-- 글번호 -->
+	  				<input type="hidden" name="imagepath" value="${ result.imagepath }"> <!-- 이미지이름 -->
+	  				<button type="submit" class="btn btn-default" id="del">삭제</button>
+	  			</form>
+	  			
+	  			<br>
+	  			
 	  			<!-- 글번호 넘겨주기 -->
 	  			<form action="payment1.do" method="post">
 	  				<input type="hidden" name="boardno" value="${ result.boardno }">
 	  				<button type="submit" class="btn btn-primary" id="pay">후원하기</button>
-	  			</form>
-	  			<br>
-	  			<form action="spondel.do" method="post">
-	  				<input type="hidden" name="boardno" value="${ result.boardno }"> <!-- 글번호 -->
-	  				<input type="hidden" name="imagepath" value="${ result.imagepath }"> <!-- 이미지이름 -->
-	  				<button type="submit" class="btn btn-default">삭제</button>
 	  			</form>
 	  		</div>
 		</div>
@@ -146,10 +155,10 @@
 		    	<form action="sponsubadd.do" method="post" id="frm"> <!-- 글번호랑 같이 넘겨줌 -->
 		    		<input type="hidden" name="boardno" value="${ result.boardno }">
 					<textarea name="content" class="form-control" rows="3" maxlength="100" style='width:90%;'></textarea> <!-- 댓글내용 -->
-					<input type="text" name="memberNo"> <!-- 회원 번호를 세션에서 받아 넘겨주게 바꿔야됨 -->
-					<!-- <button type="submit" class="btn btn-info" id="submit">작성</button> -->
-					<input type="button" class="btn btn-info" value="댓글작성" onclick="formSubmit()" />
-					<input type="button" class="btn btn-info" value="새로고침" onclick="Submit()" />
+					<!-- 회원 번호를 세션에서 받아 넘겨주게 바꿔야됨 -->
+					<input id="disabledInput" type="text" placeholder="아이디" name="memberNo" disabled>
+					<input type="button" class="btn btn-info" value="댓글작성" onclick="formSubmit()"/>
+					<input type="button" class="btn btn-info" value="새로고침" onclick="Submit()"/>
 				</form>
 				<div id="result"></div>
 		    </div>
