@@ -7,7 +7,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script type="text/javascript">
+
+<script>
 	$(document).ready(function(){
 		let no = ${ result.boardno }
 		$.ajax({
@@ -24,7 +25,40 @@
 		    }
 	   });
 	});
+	
+	function formSubmit() {
+	    var params = $("#frm").serialize();
+	    console.log(params);
+	    $.ajax({
+	    	url:"sponsubadd.do",
+	    	data:params,
+	    	type:'post',
+	    	success:function() {
+	    		console.log('성공');
+	    	}
+	    });
+	};
+	
+	function Submit() {
+		$('#result').empty();
+		let no = ${ result.boardno }
+		$.ajax({
+            url:"sponsublist.do"   
+		    , data:"no="+no
+		    , dataType:"html"
+		    ,success:function(data)
+		    {
+			    $('#result').append(data);
+		    }
+		    ,error:function(data)
+		    {
+			    console.log('error');
+		    }
+	   });
+	};
+	
 </script>
+
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -60,13 +94,13 @@
 	  		</div>
 	  		<div class="col-md-5">
 	  			<p>현재모금역</p>
-	  			<h2>${ result.nowmoney }</h2><br><br> <!-- 현재모금액 -->
+	  			<h2>${ result.nowmoney }원</h2><br><br> <!-- 현재모금액 -->
 	  			
 	  			<p>마감일</p>
 	  			<h2>${ result.finaldate }</h2><br><br> <!-- 마감일 -->
 	  			
 	  			<p>목표금액</p>
-	  			<h2>${ result.destmoney }</h2><br><br> <!-- 목표모금액 -->
+	  			<h2>${ result.destmoney }만원</h2><br><br> <!-- 목표모금액 -->
 	 
 	  			<br>
 	  			<br>
@@ -80,7 +114,7 @@
 	  			<form action="spondel.do" method="post">
 	  				<input type="hidden" name="boardno" value="${ result.boardno }"> <!-- 글번호 -->
 	  				<input type="hidden" name="imagepath" value="${ result.imagepath }"> <!-- 이미지이름 -->
-	  				<button type="submit">삭제</button>
+	  				<button type="submit" class="btn btn-default">삭제</button>
 	  			</form>
 	  		</div>
 		</div>
@@ -99,10 +133,13 @@
 		    	${ result.boardcontent } <!-- 글내용 -->
 		    </div>
 		    <div role="tabpanel" class="tab-pane" id="profile">
-		    	<form action="sponsubadd.do?boardno=${ result.boardno }" method="post" name="frm"> <!-- 글번호랑 같이 넘겨줌 -->
+		    	<form action="sponsubadd.do" method="post" id="frm"> <!-- 글번호랑 같이 넘겨줌 -->
+		    		<input type="hidden" name="boardno" value="${ result.boardno }">
 					<textarea name="content" class="form-control" rows="3" maxlength="100" style='width:90%;'></textarea> <!-- 댓글내용 -->
 					<input type="text" name="memberNo"> <!-- 회원 번호를 세션에서 받아 넘겨주게 바꿔야됨 -->
-					<button type="submit" class="btn btn-info">작성</button>
+					<!-- <button type="submit" class="btn btn-info" id="submit">작성</button> -->
+					<input type="button" class="btn btn-info" value="댓글작성" onclick="formSubmit()" />
+					<input type="button" class="btn btn-info" value="새로고침" onclick="Submit()" />
 				</form>
 				<div id="result"></div>
 		    </div>

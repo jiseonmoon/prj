@@ -22,6 +22,9 @@ public class SponSubAddAction implements Action {
 		int boardno = Integer.parseInt(request.getParameter("boardno")); // 댓글을 작성할 글번호
 		int memberNo = 1; // 회원번호를 넘겨 받아야됨
 		
+		System.out.println(content);
+		System.out.println(boardno);
+		
 		SponSubDTO dto = new SponSubDTO();
 		dto.setSubContent(content);
 		dto.setSponNo(boardno);
