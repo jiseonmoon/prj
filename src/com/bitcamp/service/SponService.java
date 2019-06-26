@@ -76,13 +76,25 @@ public class SponService {
 	
 	
 	// Detail
-	
 	public SponDTO getDetail(int boardno) {
 		DBConn db = DBConn.getDB();
 		SponDTO result = null;
 		try(Connection conn = db.getConnection();){
 			SponDAO dao = SponDAO.getSponDAO();
 			result = dao.getDetail(conn, boardno);
+		} catch(SQLException | NamingException e) {
+			System.out.println(e);
+		}
+		return result;
+	}
+	
+	// ÆÝµù±Û »èÁ¦
+	public int sponDel(int boardno) {
+		DBConn db = DBConn.getDB();
+		int result = 0;
+		try(Connection conn = db.getConnection();) {
+			SponDAO dao = SponDAO.getSponDAO();
+			result = dao.sponDel(conn, boardno);
 		} catch(SQLException | NamingException e) {
 			System.out.println(e);
 		}
@@ -114,6 +126,8 @@ public class SponService {
 		} 
 		return list;
 	}
+	
+	// ´ñ±Û »èÁ¦
 	public int subDelete(int subNo) {
 		DBConn db = DBConn.getDB();
 		int result = 0;
