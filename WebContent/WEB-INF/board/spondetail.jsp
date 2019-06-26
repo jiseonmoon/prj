@@ -28,38 +28,65 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	#pay{
+		padding-left: 50px;
+		padding-right: 50px;
+	}
+	
+	#sub{
+		margin-top: 30px;
+	}
+	
+	#main{
+		padding-bottom: 30px;
+	}
+</style>
 </head>
 <body>
 	<c:set var="path" value="${ requestScope.image }"></c:set> 
 	<c:set var="result" value="${ requestScope.result }"></c:set>
 	
-	<div class="center-block" style='width:60%; background:pink'>
+	<div class="center-block" style='width:100%;' id="main" > <!-- background:pink' -->
 		<p class="text-center">${ result.boardtag }</p><br> <!-- 글 태그 -->
 		<h1 class="text-center">${ result.boardtitle }</h1><br> <!-- 글제목 -->
-		<p class="text-center">${ result.boardwriter }</p><br> <!-- 글작성자 -->
+		<p class="text-center"><strong>${ result.boardwriter }</strong></p><br> <!-- 글작성자 -->
 		
 		<div class="row">
-	  		<div class="col-md-8">
+			<div class="col-md-2">
+	  		</div>
+	  		<div class="col-md-5">
 	  			<img class="img-responsive" src="upload/${ result.imagepath }" alt="img"> <!-- 이미지 -->
 	  		</div>
-	  		<div class="col-md-4">
-	  			${ result.nowmoney }<br> <!-- 현재모금액 -->
-	  			${ result.finaldate }<br> <!-- 마감일 -->
-	  			${ result.destmoney }<br> <!-- 목표모금액 -->
+	  		<div class="col-md-5">
+	  			<p>현재모금역</p>
+	  			<h2>${ result.nowmoney }</h2><br><br> <!-- 현재모금액 -->
 	  			
-	  			<!-- dto객체 넘겨주기 -->
+	  			<p>마감일</p>
+	  			<h2>${ result.finaldate }</h2><br><br> <!-- 마감일 -->
+	  			
+	  			<p>목표금액</p>
+	  			<h2>${ result.destmoney }</h2><br><br> <!-- 목표모금액 -->
+	 
+	  			<br>
+	  			<br>
+	  			
+	  			<!-- 글번호 넘겨주기 -->
 	  			<form action="payment1.do" method="post">
-	  				<input type="hidden" name="spondto" value="${ result }"> 
-	  				<button type="submit" class="btn btn-primary">후원하기</button>
+	  				<input type="hidden" name="boardno" value="${ result.boardno }">
+	  				<button type="submit" class="btn btn-primary" id="pay">후원하기</button>
+	  			</form>
+	  			<br>
+	  			<form action="spondel.do" method="post">
+	  				<input type="hidden" name="boardno" value="${ result.boardno }"> <!-- 글번호 -->
+	  				<input type="hidden" name="imagepath" value="${ result.imagepath }"> <!-- 이미지이름 -->
+	  				<button type="submit">삭제</button>
 	  			</form>
 	  		</div>
 		</div>
-		현재모금액: ${ result.nowmoney }<br>
-		마감일: ${ result.finaldate }<br>
-		목표금액: ${ result.destmoney }<br>
 	</div>
 	
-	<div class="center-block" style='width:60%;'>
+	<div class="center-block" style='width:60%;' id="sub">
   		<!-- Nav tabs -->
   		<ul class="nav nav-tabs" role="tablist">
 		    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">상세내용</a></li>
@@ -81,9 +108,7 @@
 		    </div>
   		</div>
 	</div>
-	
 	회원번호: ${ result.writerno }<br>
 	후원최소액: ${ result.minmoney }<br>
-  	
 </body>
 </html>
