@@ -55,10 +55,8 @@
 	}
 	
 	.sponfilter{
-		background-image: url("image/slide1_bg.jpg");
-		background-size: cover;
 		margin:10px 0px;
-		height:50px;
+		height:100px;
 	}
 	.filterline{
 		margin-top:10px;
@@ -112,6 +110,26 @@
 	body{
 		background-color: rgba(250,239,220, 0.1);
 	}
+	.header h3{
+		font-weight: bolder;
+	}
+	@media (max-width:767px){
+		.sponfilter h3{
+			font-size: 1.4em;
+		}
+	}
+	@media (max-width:445px){
+		.sponfilter h3{
+			font-size: 1.3em;
+		}
+	}
+	@media (max-width:384px){
+		.sponfilter h3{
+			font-size: 1.2em;
+		}
+		
+	}
+	
 </style>
 </head>
 <body>
@@ -123,35 +141,49 @@
 	
 	<div class="container-fluid sponfilter">
 		<div class="container">
-		<div class="dropdown col-md-4 col-sm-4 col-xs-4 filterline">
-			<c:choose>
-				<c:when test="${tag==null || tag=='' }">
-					<a class="btn btn-default" data-toggle="dropdown" href="#">태그</a>
-				</c:when>
-				<c:otherwise>
-					<a class="btn btn-default" data-toggle="dropdown" href="#">${tag }</a>
-				</c:otherwise>
-			</c:choose>
-	   		<ul class="dropdown-menu" role="menu">
-	   			<li role="presentation">
-		    		<a role="menuitem" tabindex="-1" href="sponlist.do">모두</a>
-		    	</li>
-		    	<li role="presentation">
-		    		<a role="menuitem" tabindex="-1" href="sponlist.do?tag=<%=URLEncoder.encode("게임", "UTF-8")%>">게임</a>
-		    	</li>
-		    	<li role="presentation">
-		    		<a role="menuitem" tabindex="-1" href="sponlist.do?tag=<%=URLEncoder.encode("디자인", "UTF-8")%>">디자인</a>
-		    	</li>
-		    	<li role="presentation">
-		    		<a role="menuitem" tabindex="-1" href="sponlist.do?tag=<%=URLEncoder.encode("책", "UTF-8")%>">책</a>
-		    	</li>
-	 		 </ul>
-		</div>
-		
-		<div class="col-md-6 col-md-offset-2 col-sm-6 col-sm-offset-2 col-xs-6 col-xs-offset-2 d-flex justify-content-end filterline">
-			<input type="checkbox" id="finishcheck" name="finishcheck" value="true">
-			<label for="finishcheck"><strong>마감 제외</strong></label>
-		</div>
+			<div class="row header">
+				<div class="col-12 d-flex justify-content-center">
+					<c:choose>
+						<c:when test="${tag==null || tag=='' }">
+							<h3>모든 프로젝트</h1>
+						</c:when>
+						<c:otherwise>
+							<h3>${tag }</h1>
+						</c:otherwise>
+					</c:choose>
+				</div>
+			</div>
+			<div class="row">
+				<div class="dropdown col-md-4 col-sm-4 col-xs-4 d-flex justify-content-start filterline">
+					<c:choose>
+						<c:when test="${tag==null || tag=='' }">
+							<a class="btn btn-default" data-toggle="dropdown" href="#">태그</a>
+						</c:when>
+						<c:otherwise>
+							<a class="btn btn-default" data-toggle="dropdown" href="#">${tag }</a>
+						</c:otherwise>
+					</c:choose>
+			   		<ul class="dropdown-menu" role="menu">
+			   			<li role="presentation">
+				    		<a role="menuitem" tabindex="-1" href="sponlist.do">모두</a>
+				    	</li>
+				    	<li role="presentation">
+				    		<a role="menuitem" tabindex="-1" href="sponlist.do?tag=<%=URLEncoder.encode("게임", "UTF-8")%>">게임</a>
+				    	</li>
+				    	<li role="presentation">
+				    		<a role="menuitem" tabindex="-1" href="sponlist.do?tag=<%=URLEncoder.encode("디자인", "UTF-8")%>">디자인</a>
+				    	</li>
+				    	<li role="presentation">
+				    		<a role="menuitem" tabindex="-1" href="sponlist.do?tag=<%=URLEncoder.encode("책", "UTF-8")%>">책</a>
+				    	</li>
+			 		 </ul>
+				</div>
+				
+				<div class="col-md-8 col-sm-8 col-xs-8 d-flex justify-content-end filterline">
+					<input type="checkbox" id="finishcheck" name="finishcheck" value="true">
+					<label for="finishcheck"><strong>마감 제외</strong></label>
+				</div>
+			</div>
 		</div>
 	</div>
 	<hr>
@@ -226,6 +258,7 @@
 			</c:if>
 		</ul>
 	</div>
+	<div><a href="download.do?currpage=${i }&search=${search}&tag=${tag}&isFinish=${isFinish}">엑셀 파일 다운로드</a></div>
 	</div>
 	<hr>
 
