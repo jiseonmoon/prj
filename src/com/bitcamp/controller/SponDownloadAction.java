@@ -1,6 +1,11 @@
 package com.bitcamp.controller;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.URLEncoder;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -93,14 +98,24 @@ public class SponDownloadAction implements Action {
 		//excel 정보 작성
 		String realPath = request.getServletContext().getRealPath("/upload");
 		JexcelWriter jx = JexcelWriter.getInstance();
-		String exlname = jx.createExl(list, dto.getMno(), realPath);
+		String filename = jx.createExl(list, dto.getMno(), realPath);
 		
 		//다운로드 처리
-		
-		
+		File file = new File(realPath + "\\" + filename);
+		long length = file.length();
+		response.setContentType("application/octet-stream");
+		response.setContentLengthLong(length);
+		boolean isIe = request.getHeader("user-agent").toUpperCase().indexOf("MSIE") != -1 || request.getHeader("user-agent").indexOf("11.0") != -1;
+		if(isIe) {
+			filename = URLEncoder.encode(filename, "UTF-8");
+		}else {
+			filename = new String(filename.getBytes("UTF-8"),"8859_1");
+		}
+		response.setHeader("Content-Disposition", "attachment;filename" + filename);
+		BufferedInputStream bis = new BufferedInputStream(new FileInputStream(file));
+		PrintWriter out = 
 		//파일 삭제
-		int deleteok = jx.deleteExl(exlname);
-		
+		int deleteok = jx.deleteExl(realPath + "\\" + filename);
 		
 		request.setAttribute("list", list);
 		request.setAttribute("pageinfo", pageinfo);

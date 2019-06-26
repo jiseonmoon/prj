@@ -44,7 +44,7 @@ public class JexcelWriter {
 		} catch (WriteException e) {
 			System.out.println(e);
 		}
-		return filename;
+		return "temp"+i+".xls";
 	}
 	
 	private void writeDataSheet(WritableSheet s, List<SponDTO> list) throws WriteException{
