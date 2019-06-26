@@ -60,17 +60,27 @@ $(document).ready(function(){
 	<h1>결제 정보 확인</h1>
 	<h3>후원 정보</h3>
 	<c:out value="${spondto.boardno }"></c:out>
+	<br>
 	<c:out value="${spondto.boardtitle }"></c:out>
+	<br>
 	<c:out value="${spondto.boardcontent }"></c:out>
+	<br>
 	<c:out value="${spondto.boardtag }"></c:out>
+	<br>
 	<c:out value="${spondto.destmoney }"></c:out>
-	<c:out value="${spondto.minmoney }"></c:out>
+	<br>
 	<c:out value="${spondto.finaldate }"></c:out>
+	<br>
 	<c:out value="${spondto.nowmoney }"></c:out>
+	<br>
 	<h3>배송지 정보</h3>
 	<c:out value="${deliverydto.name }"></c:out>
+	<br>
 	<c:out value="${deliverydto.tel }"></c:out>
+	<br>
 	<c:out value="${deliverydto.addr }"></c:out>
+	<br>
 	<button type="button" id="payment">결제하기</button>
+	<br>
 </body>
 </html>
