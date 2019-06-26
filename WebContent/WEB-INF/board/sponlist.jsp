@@ -258,6 +258,7 @@
 			</c:if>
 		</ul>
 	</div>
+	<div><a href="download.do?currpage=${i }&search=${search}&tag=${tag}&isFinish=${isFinish}">엑셀 파일 다운로드</a></div>
 	</div>
 	<hr>
 
