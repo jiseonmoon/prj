@@ -20,13 +20,8 @@ public class SponDelAction implements Action {
 		int boardno = Integer.parseInt(request.getParameter("boardno"));
 		String imagepath = request.getParameter("imagepath");
 		
-		System.out.println(boardno);
-		
-		
 		// 이미지 파일 삭제
 		File file = new File("C:/bitcamp/prj/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/prj/upload/"+imagepath);
-        
-		System.out.println(file);
 		
         if( file.exists() ){
             if(file.delete()){
