@@ -20,12 +20,11 @@ public class PSuccessAction implements Action {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
-		// MemberDTO memberdto = (MemberDTO) session.getAttribute("memberdto");
+		MemberDTO memberdto = (MemberDTO) session.getAttribute("memberdto");
 		int boardno = Integer.parseInt(request.getParameter("boardno"));
 		int amount = Integer.parseInt(request.getParameter("amount"));
 		PaymentService service = PaymentService.getInstance();
-		service.plusNowmoney(boardno, amount);
-		// service.plusPmoney(memberdto.getMno(), amount);
+		service.plusMoney(boardno, memberdto.getMno(), amount);
 		ForwardAction forward = new ForwardAction();
 		forward.setRedirect(false);
 		forward.setPath("/WEB-INF/board/templete.jsp?page=psuccess.jsp");

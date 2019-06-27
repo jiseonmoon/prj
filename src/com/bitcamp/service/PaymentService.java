@@ -24,53 +24,17 @@ public class PaymentService {
 		int result = 0;
 		try {
 			conn = db.getConnection();
+			conn.setAutoCommit(false);
 			PaymentDAO dao = PaymentDAO.getInstance();
 			result = dao.plusNowmoney(conn, sno, money);
 			result = dao.plusPmoney(conn, mno, money);
+			conn.commit();
 		} catch (NamingException | SQLException e) {
 			System.out.println(e);
-		} finally {
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-				}
+			try {
+				conn.rollback();
+			} catch (SQLException ee) {
 			}
-		}
-		return result;
-	}
-
-	public int plusNowmoney(int sno, int money) {
-		DBConn db = DBConn.getDB();
-		Connection conn = null;
-		int result = 0;
-		try {
-			conn = db.getConnection();
-			PaymentDAO dao = PaymentDAO.getInstance();
-			result = dao.plusNowmoney(conn, sno, money);
-		} catch (NamingException | SQLException e) {
-			System.out.println(e);
-		} finally {
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-				}
-			}
-		}
-		return result;
-	}
-
-	public int plusPmoney(int mno, int money) {
-		DBConn db = DBConn.getDB();
-		Connection conn = null;
-		int result = 0;
-		try {
-			conn = db.getConnection();
-			PaymentDAO dao = PaymentDAO.getInstance();
-			result = dao.plusPmoney(conn, mno, money);
-		} catch (NamingException | SQLException e) {
-			System.out.println(e);
 		} finally {
 			if (conn != null) {
 				try {

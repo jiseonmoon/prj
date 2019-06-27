@@ -43,7 +43,8 @@ $(document).ready(function(){
 					msg += '결제 금액 : ' + rsp.paid_amount;
 					msg += '카드 승인번호 : ' + rsp.apply_num;
 					alert(msg);
-					location.href = "psuccess.do?boardno=<%=spondto.getBoardno()%>&amount=<%=amount%>";
+					location.href = "psuccess.do?boardno=<%=spondto.getBoardno()%>&amount=<%=amount%>
+	";
 																} else {
 																	var msg = '결제에 실패하였습니다.';
 																	msg += '에러내용 : '
@@ -55,32 +56,35 @@ $(document).ready(function(){
 										});
 					});
 </script>
+<link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>
-	<h1>결제 정보 확인</h1>
-	<h3>후원 정보</h3>
-	<c:out value="${spondto.boardno }"></c:out>
-	<br>
-	<c:out value="${spondto.boardtitle }"></c:out>
-	<br>
-	<c:out value="${spondto.boardcontent }"></c:out>
-	<br>
-	<c:out value="${spondto.boardtag }"></c:out>
-	<br>
-	<c:out value="${spondto.destmoney }"></c:out>
-	<br>
-	<c:out value="${spondto.finaldate }"></c:out>
-	<br>
-	<c:out value="${spondto.nowmoney }"></c:out>
-	<br>
-	<h3>배송지 정보</h3>
-	<c:out value="${deliverydto.name }"></c:out>
-	<br>
-	<c:out value="${deliverydto.tel }"></c:out>
-	<br>
-	<c:out value="${deliverydto.addr }"></c:out>
-	<br>
-	<button type="button" id="payment">결제하기</button>
-	<br>
+	<div>
+		<h1>결제 정보 확인</h1>
+		<h3>후원 정보</h3>
+		<c:out value="${spondto.boardno }"></c:out>
+		<br>
+		<c:out value="${spondto.boardtitle }"></c:out>
+		<br>
+		<c:out value="${spondto.boardcontent }"></c:out>
+		<br>
+		<c:out value="${spondto.boardtag }"></c:out>
+		<br>
+		<c:out value="${spondto.destmoney }"></c:out>
+		<br>
+		<c:out value="${spondto.finaldate }"></c:out>
+		<br>
+		<c:out value="${spondto.nowmoney }"></c:out>
+		<br>
+		<h3>배송지 정보</h3>
+		<c:out value="${deliverydto.name }"></c:out>
+		<br>
+		<c:out value="${deliverydto.tel }"></c:out>
+		<br>
+		<c:out value="${deliverydto.addr }"></c:out>
+		<br>
+		<button type="button" id="payment" class="btn btn-primary btn-lg">결제하기</button>
+		<br>
+	</div>
 </body>
 </html>
