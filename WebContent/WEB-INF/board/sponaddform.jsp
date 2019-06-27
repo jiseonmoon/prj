@@ -46,8 +46,8 @@
 		background-size: cover;
 		background-position: center;
 	}
-	.jumbotron h1, p{
-		color:white;
+	.jumbotron h1, .jumbotron p{
+		color:white !important;
 	}
 	#subbtn{
 		padding:5px 30px;
@@ -477,6 +477,5 @@
   			</div>
 		</form>
 	</div>
-	<hr>
 </body>
 </html>

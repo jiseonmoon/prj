@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,17 +15,30 @@
 	nav ul{
 		list-style: none;
 		background-color: rgba(243,242,240,0.7);
+		text-align: center;
 	}
 	nav ul li{
-		font-size:1.5em;
+		font-size:18px;
 		display: inline-block;
-		margin-right: 50px;
-		border: 1px solid silver;
-		border-radius: 10px;
+		margin-left: 50px;
 		padding: 10px;
 	}
 	nav ul li:hover{
+		color:black;
 		background-color: rgba(0, 0, 0, 0.2);
+	}
+	
+	nav ul li a:link{
+		color:black;
+		text-decoration: none;
+	}
+	nav ul li a:hover{
+		color:black;
+		text-decoration: none;
+	}
+	nav ul li a:visited, nav ul li a:focus, nav ul li a:active{
+		color:black;
+		text-decoration: none;
 	}
 	.header{
 		padding:0 !important;
@@ -33,12 +47,34 @@
 </head>
 
 <body>
+	<c:set var="member" value="${sessionScope.member }"/>
 	<div class="container-fluid header">
 		<nav>
 			<ul>
-				<li>비트펀딩</li>
-				<li>후원하기</li>
-				<li>공지사항</li>
+				<li><a href="#">비트펀딩</a></li>
+				<li><a href="sponlist.do">후원하기</a></li>
+				<li><a href="#">공지사항</a></li>
+				<c:choose>
+					<c:when test="${empty member }">
+						<li class="hlogin"><a href="#">로그인</a></li>
+					</c:when>
+					<c:otherwise>
+						<c:choose>
+							<c:when test="${member.mtier eq 3}">
+								<li class="hlogin"><a href="#">로그아웃</a></li>
+								<li class="hlogin"><a href="#">사용자 정보</a></li>
+								<li class="hpage"><a href="#">관리자 페이지</a></li>
+							</c:when>
+							<c:otherwise>
+								<li class="hlogin"><a href="#">로그아웃</a></li>
+								<li class="hlogin"><a href="#">사용자 정보</a></li>
+							</c:otherwise>
+						</c:choose>
+					</c:otherwise>
+				</c:choose>			
+			</ul>
+			<ul>
+			
 			</ul>
 		</nav>
 	</div>
