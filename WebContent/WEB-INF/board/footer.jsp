@@ -22,14 +22,14 @@
 	.footer{
 		background-color: rgba(242,244,253,0.5);
 	}
-	hr{
+	#fhr{
 		margin:0;
 	}
 </style>
 <title>Insert title here</title>
 </head>
 <body>
-	<hr>
+	<hr id="fhr">
 	<div class="container-fluid footer">
 	
 		<div class="row fcontent">

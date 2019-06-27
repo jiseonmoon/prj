@@ -78,7 +78,7 @@
 		border-radius: 5px;
 	}
 	
-	hr{
+	#lhr{
 		margin-top:10px;
 		margin-bottom:0;
 	}
@@ -207,7 +207,7 @@
 			</div>
 		</div>
 	</div>
-	<hr>
+	<hr id="lhr">
 	<div class="container site">
 			<div class="row" style="position: relative;">
 				<c:choose>

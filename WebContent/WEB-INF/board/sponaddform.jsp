@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -62,13 +62,28 @@
 			padding: 5px 20px;
 		}
 	}
-	
+	#check1, #check2, #check3, #chekc4, #chekc5, #check6, #check7{
+		padding: 5px 15px;
+		margin-top: 10px;
+	}
+	#pimg{
+		margin: 10px;
+		border: 1px double silver;
+		border-radius: 10px;
+	}
+	#first h4{
+		display: inline;
+		font-weight: bolder;
+	}
+	.glyphicon-leaf{
+		color: #81c147;
+	}
 </style>
 <script>
 	function submitcheck(event){
-		console.log("Ã¼Å©ÇÕ´Ï´Ù.");
+		console.log("ì²´í¬í•©ë‹ˆë‹¤.");
 		if(!$('.panel-heading:eq(0)').hasClass('check') || !$('.panel-heading:eq(1)').hasClass('check') || !$('.panel-heading:eq(2)').hasClass('check')){
-			console.log("1¹ø");
+			console.log("1ë²ˆ");
 		
 			$('.nav-tabs').children('li').removeClass('active');
 			$('#first').removeClass('active');
@@ -81,7 +96,7 @@
 			$('.nav-tabs').children().eq(0).addClass('active');
 		}
 		else{
-			console.log("µÎ¹øÂ°");
+			console.log("ë‘ë²ˆì§¸");
 			if(!$('.panel-heading:eq(3)').hasClass('check') || !$('.panel-heading:eq(4)').hasClass('check') || !$('.panel-heading:eq(5)').hasClass('check')){
 			
 				$('.nav-tabs').children('li').removeClass('active');
@@ -114,7 +129,7 @@
 
 	$(function(){
 		$('#check1').on('click', function(){
-			console.log("Å¬¸¯");
+			console.log("í´ë¦­");
 			if($('#stitle').val() != null && $('#stitle').val()!=""){
 				$('.panel-heading:eq(0)').css('background-image', 'none').css('background-color', 'lightblue');
 				$('.panel-heading:eq(0)').html('<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"  aria-expanded="false" class="collapsed"><span class="glyphicon glyphicon-ok"> </span> '+$('#stitle').val() + "</a>");
@@ -125,7 +140,7 @@
 				$('.panel-heading:eq(1) ~ div').collapse('show');
 			}else{
 				if($('.panel-heading:eq(0)').hasClass('check')){
-					$('.panel-heading:eq(0)').html('<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true">'+'<span>Á¦¸ñÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.</span>'+'</a>');
+					$('.panel-heading:eq(0)').html('<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true">'+'<span>ì œëª©ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.</span>'+'</a>');
 					$('.panel-heading:eq(0)').removeClass('check');
 					$('.panel-heading:eq(0)').children('span').remove();
 					$('.panel-heading:eq(0) ~ div').removeClass('show');
@@ -136,10 +151,10 @@
 					
 		})
 		$('#check2').on('click', function(){
-			console.log("Å¬¸¯");
+			console.log("í´ë¦­");
 			if($('#scontent').val() != null && $('#scontent').val()!=""){
 				$('.panel-heading:eq(1)').css('background-image', 'none').css('background-color', 'lightblue');
-				$('.panel-heading:eq(1)').html('<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-ok"> </span> '+ ' ³»¿ëÀÌ ÀÔ·ÂµÇ¾ú½À´Ï´Ù.'+"</a>");
+				$('.panel-heading:eq(1)').html('<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-ok"> </span> '+ ' ë‚´ìš©ì´ ì…ë ¥ë˜ì—ˆìŠµë‹ˆë‹¤.'+"</a>");
 				$('.panel-heading:eq(1)').addClass('check');
 				$('.panel-heading:eq(1) ~ div').collapse('hide');
 				$('.panel-heading:eq(1) ~ div').removeClass('show');
@@ -147,7 +162,7 @@
 				$('.panel-heading:eq(2) ~ div').collapse('show');
 			}else{
 				if($('.panel-heading:eq(1)').hasClass('check')){
-					$('.panel-heading:eq(1)').html('<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">'+"³»¿ëÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä."+'</a>');
+					$('.panel-heading:eq(1)').html('<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">'+"ë‚´ìš©ì„ ì…ë ¥í•´ì£¼ì„¸ìš”."+'</a>');
 					$('.panel-heading:eq(1)').removeClass('check');
 					$('.panel-heading:eq(1)').children('span').remove();
 					$('.panel-heading:eq(1) ~ div').removeClass('show');
@@ -158,7 +173,7 @@
 			
 		})
 		$('#check3').on('click', function(){
-			console.log("Å¬¸¯");
+			console.log("í´ë¦­");
 			if($('#tag').val() != null && $('#tag').val()!=""){
 				$('.panel-heading:eq(2)').css('background-image', 'none').css('background-color', 'lightblue');
 				$('.panel-heading:eq(2)').html('<a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span class="glyphicon glyphicon-ok"> </span> '+ $('#tag').val()+'</a>');
@@ -166,7 +181,7 @@
 				$('.panel-heading:eq(2) ~ div').collapse('hide');
 			}else{
 				if($('.panel-heading:eq(2)').hasClass('check')){
-					$('.panel-heading:eq(2)').html('<a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">'+'ÅÂ±×°¡ ¼±ÅÃµÇÁö ¾Ê¾Ò½À´Ï´Ù.'+"</a>");
+					$('.panel-heading:eq(2)').html('<a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">'+'íƒœê·¸ê°€ ì„ íƒë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.'+"</a>");
 					$('.panel-heading:eq(2)').removeClass('check');
 					$('.panel-heading:eq(2)').children('span').remove();
 					$('.panel-heading:eq(2) ~ div').removeClass('show');
@@ -176,10 +191,10 @@
 			}
 		})
 		$('#check4').on('click', function(){
-			console.log("Å¬¸¯");
+			console.log("í´ë¦­");
 			if($('#imgpath').val() != null && $('#imgpath').val()!=""){
 				$('.panel-heading:eq(3)').css('background-image', 'none').css('background-color', 'lightblue');
-				$('.panel-heading:eq(3)').html('<a data-toggle="collapse" data-parent="#accordion2" href="#collapseOne2"><span class="glyphicon glyphicon-ok"> </span> '+" ÀÌ¹ÌÁö¸¦ ¾÷·Îµå Çß½À´Ï´Ù." + "</a>");
+				$('.panel-heading:eq(3)').html('<a data-toggle="collapse" data-parent="#accordion2" href="#collapseOne2"><span class="glyphicon glyphicon-ok"> </span> '+" ì´ë¯¸ì§€ë¥¼ ì—…ë¡œë“œ í–ˆìŠµë‹ˆë‹¤." + "</a>");
 				$('.panel-heading:eq(3)').addClass('check');
 				$('.panel-heading:eq(3) ~ div').collapse('hide');
 				$('.panel-heading:eq(3) ~ div').removeClass('show');
@@ -187,7 +202,7 @@
 				$('.panel-heading:eq(4) ~ div').collapse('show');
 			}else{
 				if($('.panel-heading:eq(3)').hasClass('check')){
-					$('.panel-heading:eq(3)').html('<a data-toggle="collapse" data-parent="#accordion2" href="#collapseOne2">'+' ÀÌ¹ÌÁö¸¦ ¿Ã·ÁÁÖ¼¼¿ä.'+'</a>');
+					$('.panel-heading:eq(3)').html('<a data-toggle="collapse" data-parent="#accordion2" href="#collapseOne2">'+' ì´ë¯¸ì§€ë¥¼ ì˜¬ë ¤ì£¼ì„¸ìš”.'+'</a>');
 					$('.panel-heading:eq(3)').removeClass('check');
 					$('.panel-heading:eq(3)').children('span').remove();
 					$('.panel-heading:eq(3) ~ div').removeClass('show');
@@ -198,10 +213,10 @@
 			
 		})
 		$('#check5').on('click', function(){
-			console.log("Å¬¸¯");
+			console.log("í´ë¦­");
 			if($('#destmoney').val() != null && $('#destmoney').val()!="" && $('#destmoney').val()!=0){
 				$('.panel-heading:eq(4)').css('background-image', 'none').css('background-color', 'lightblue');
-				$('.panel-heading:eq(4)').html('<a data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo2"><span class="glyphicon glyphicon-ok"> </span> '+'¸ñÇ¥ ±İ¾× : ' + $('#destmoney').val()+"¸¸¿ø" + "</a>");
+				$('.panel-heading:eq(4)').html('<a data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo2"><span class="glyphicon glyphicon-ok"> </span> '+'ëª©í‘œ ê¸ˆì•¡ : ' + $('#destmoney').val()+"ë§Œì›" + "</a>");
 				$('.panel-heading:eq(4)').addClass('check');
 				$('.panel-heading:eq(4) ~ div').collapse('hide');
 				$('.panel-heading:eq(4) ~ div').removeClass('show');
@@ -209,7 +224,7 @@
 				$('.panel-heading:eq(5) ~ div').collapse('show');
 			}else{
 				if($('.panel-heading:eq(4)').hasClass('check')){
-					$('.panel-heading:eq(4)').html('<a data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo2">'+' ¸ñÇ¥ ±İ¾×À» ¼³Á¤ÇØÁÖ¼¼¿ä.'+'</a>');
+					$('.panel-heading:eq(4)').html('<a data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo2">'+' ëª©í‘œ ê¸ˆì•¡ì„ ì„¤ì •í•´ì£¼ì„¸ìš”.'+'</a>');
 					$('.panel-heading:eq(4)').removeClass('check');
 					$('.panel-heading:eq(4)').children('span').remove();
 					$('.panel-heading:eq(4) ~ div').removeClass('show');
@@ -220,10 +235,10 @@
 			
 		})
 		$('#check6').on('click', function(){
-			console.log("Å¬¸¯");
+			console.log("í´ë¦­");
 			if($('#minmoney').val() != null && $('#minmoney').val()!="" && $('#minmoney').val()!=0){
 				$('.panel-heading:eq(5)').css('background-image', 'none').css('background-color', 'lightblue');
-				$('.panel-heading:eq(5)').html('<a data-toggle="collapse" data-parent="#accordion2" href="#collapseThree2"><span class="glyphicon glyphicon-ok"> </span> '+'ÃÖ¼Ò ÈÄ¿ø ±İ¾× : ' + $('#minmoney').val()+"¸¸¿ø" + "</a>");
+				$('.panel-heading:eq(5)').html('<a data-toggle="collapse" data-parent="#accordion2" href="#collapseThree2"><span class="glyphicon glyphicon-ok"> </span> '+'ìµœì†Œ í›„ì› ê¸ˆì•¡ : ' + $('#minmoney').val()+"ë§Œì›" + "</a>");
 				$('.panel-heading:eq(5)').addClass('check');
 				$('.panel-heading:eq(5) ~ div').collapse('hide');
 				$('.panel-heading:eq(5) ~ div').removeClass('show');
@@ -231,7 +246,7 @@
 				$('.panel-heading:eq(6) ~ div').collapse('show');
 			}else{
 				if($('.panel-heading:eq(5)').hasClass('check')){
-					$('.panel-heading:eq(5)').html('<a data-toggle="collapse" data-parent="#accordion2" href="#collapseThree2">'+' ÃÖ¼Ò ÈÄ¿ø ±İ¾×À» ¼³Á¤ÇØÁÖ¼¼¿ä.'+'</a>');
+					$('.panel-heading:eq(5)').html('<a data-toggle="collapse" data-parent="#accordion2" href="#collapseThree2">'+' ìµœì†Œ í›„ì› ê¸ˆì•¡ì„ ì„¤ì •í•´ì£¼ì„¸ìš”.'+'</a>');
 					$('.panel-heading:eq(5)').removeClass('check');
 					$('.panel-heading:eq(5)').children('span').remove();
 					$('.panel-heading:eq(5) ~ div').removeClass('show');
@@ -242,10 +257,10 @@
 			
 		})
 		$('#check7').on('click', function(){
-			console.log("Å¬¸¯");
+			console.log("í´ë¦­");
 			if($('#finaldate').val() != null && $('#finaldate').val()!=""){
 				$('.panel-heading:eq(6)').css('background-image', 'none').css('background-color', 'lightblue');
-				$('.panel-heading:eq(6)').html('<a data-toggle="collapse" data-parent="#accordion3" href="#collapseOne3"><span class="glyphicon glyphicon-ok"> </span> '+'¸¶°¨ÀÏ : ' + $('#finaldate').val()+ "</a>");
+				$('.panel-heading:eq(6)').html('<a data-toggle="collapse" data-parent="#accordion3" href="#collapseOne3"><span class="glyphicon glyphicon-ok"> </span> '+'ë§ˆê°ì¼ : ' + $('#finaldate').val()+ "</a>");
 				$('.panel-heading:eq(6)').addClass('check');
 				$('.panel-heading:eq(6) ~ div').collapse('hide');
 				$('.panel-heading:eq(6) ~ div').removeClass('show');
@@ -253,7 +268,7 @@
 				$('.panel-heading:eq(7) ~ div').collapse('show');
 			}else{
 				if($('.panel-heading:eq(6)').hasClass('check')){
-					$('.panel-heading:eq(6)').html('<a data-toggle="collapse" data-parent="#accordion3" href="#collapseOne3">'+' ¸¶°¨ÀÏÀ» ¼±ÅÃÇØÁÖ¼¼¿ä.'+'</a>');
+					$('.panel-heading:eq(6)').html('<a data-toggle="collapse" data-parent="#accordion3" href="#collapseOne3">'+' ë§ˆê°ì¼ì„ ì„ íƒí•´ì£¼ì„¸ìš”.'+'</a>');
 					$('.panel-heading:eq(6)').removeClass('check');
 					$('.panel-heading:eq(6)').children('span').remove();
 					$('.panel-heading:eq(6) ~ div').removeClass('show');
@@ -264,10 +279,10 @@
 			
 		})
 		$('#check8').on('click', function(){
-			console.log("Å¬¸¯");
+			console.log("í´ë¦­");
 			if($('#bankno').val() != null && $('#bankno').val()!=""){
 				$('.panel-heading:eq(7)').css('background-image', 'none').css('background-color', 'lightblue');
-				$('.panel-heading:eq(7)').html('<a data-toggle="collapse" data-parent="#accordion3" href="#collapseTwo3"><span class="glyphicon glyphicon-ok"> </span> '+'°èÁÂ ¹øÈ£ : ' + $('#bankno').val()+ "</a>");
+				$('.panel-heading:eq(7)').html('<a data-toggle="collapse" data-parent="#accordion3" href="#collapseTwo3"><span class="glyphicon glyphicon-ok"> </span> '+'ê³„ì¢Œ ë²ˆí˜¸ : ' + $('#bankno').val()+ "</a>");
 				$('.panel-heading:eq(7)').addClass('check');
 				$('.panel-heading:eq(7) ~ div').collapse('hide');
 				$('.panel-heading:eq(7) ~ div').removeClass('show');
@@ -275,7 +290,7 @@
 				$('.panel-heading:eq(8) ~ div').collapse('show');
 			}else{
 				if($('.panel-heading:eq(7)').hasClass('check')){
-					$('.panel-heading:eq(7)').html('<a data-toggle="collapse" data-parent="#accordion3" href="#collapseTwo3">'+' °èÁÂ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.'+'</a>');
+					$('.panel-heading:eq(7)').html('<a data-toggle="collapse" data-parent="#accordion3" href="#collapseTwo3">'+' ê³„ì¢Œë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.'+'</a>');
 					$('.panel-heading:eq(7)').removeClass('check');
 					$('.panel-heading:eq(7)').children('span').remove();
 					$('.panel-heading:eq(7) ~ div').removeClass('show');
@@ -285,49 +300,100 @@
 			}
 			
 		})
+		$('#atitle').on('mouseover', function(){
+			$('#atitle').popover('show');
+		})
+		$('#atitle').on('mouseout', function(){
+			$('#atitle').popover('hide');
+		})
+		$('#acontent').on('mouseover', function(){
+			$('#acontent').popover('show');
+		})
+		$('#acontent').on('mouseout', function(){
+			$('#acontent').popover('hide');
+		})
+		$('#atag').on('mouseover', function(){
+			$('#atag').popover('show');
+		})
+		$('#atag').on('mouseout', function(){
+			$('#atag').popover('hide');
+		})
+		$('#aimg').on('mouseover', function(){
+			$('#aimg').popover('show');
+		})
+		$('#aimg').on('mouseout', function(){
+			$('#aimg').popover('hide');
+		})
+		$('#adm').on('mouseover', function(){
+			$('#adm').popover('show');
+		})
+		$('#adm').on('mouseout', function(){
+			$('#adm').popover('hide');
+		})
+		$('#amm').on('mouseover', function(){
+			$('#amm').popover('show');
+		})
+		$('#amm').on('mouseout', function(){
+			$('#amm').popover('hide');
+		})
+		$('#afd').on('mouseover', function(){
+			$('#afd').popover('show');
+		})
+		$('#afd').on('mouseout', function(){
+			$('#afd').popover('hide');
+		})
+		$('#abn').on('mouseover', function(){
+			$('#abn').popover('show');
+		})
+		$('#abn').on('mouseout', function(){
+			$('#abn').popover('hide');
+		})
 		
 	})
-	
 </script>
 <title>Insert title here</title>
 </head>
-<body>
+<body style="background-color: rgba(250,239,220, 0.1);">
 
 	<div class="jumbotron">
  	 	<div class="container">
-    		<h1>ÈÄ¿ø ÇÁ·ÎÁ§Æ® »ı¼º</h1>
-    		<p> ´ç½ÅÀÇ µµÀüÀ» ÀÀ¿øÇÕ´Ï´Ù.</p>
-    		<p><a class="btn btn-success btn-lg" href="sponlist.do">¸ñ·ÏÀ¸·Î</a></p>
+    		<h1>í›„ì› í”„ë¡œì íŠ¸ ìƒì„±</h1>
+    		<p> ë‹¹ì‹ ì˜ ë„ì „ì„ ì‘ì›í•©ë‹ˆë‹¤.</p>
+    		<p><a class="btn btn-success btn-lg" href="sponlist.do">ëª©ë¡ìœ¼ë¡œ</a></p>
   		</div>
 	</div>
 	<hr>
 	<div class="container">	
 		<form action="sponaddresult.do" method="POST" enctype="multipart/form-data" role="form" name="frm">
 			<ul class="nav nav-tabs" role="tablist">
-	   			<li class="active" role="presentation col-md-1 col-sm-1 col-xs-1"><a href="#first" aria-controls="first" role="tab" data-toggle="tab">1´Ü°è</a></li>
-	   			<li role="presentation col-md-1 col-sm-1 col-xs-1"><a href="#second" aria-controls="second" role="tab" data-toggle="tab">2´Ü°è</a></li>
-	   			<li role="presentation col-md-1 col-sm-1 col-xs-1"><a href="#third" aria-controls="third" role="tab" data-toggle="tab">3´Ü°è</a></li>
-	   			<li class="col-md-3 col-md-offset-6 col-sm-1 col-sm-offset-8 col-xs-8 col-xs-offset-1 d-flex justify-content-end"><input class="btn btn-info btn-md" id="subbtn" type="button" value="Á¦Ãâ" onclick="submitcheck()"></li>
+	   			<li class="active" role="presentation col-md-1 col-sm-1 col-xs-1"><a href="#first" aria-controls="first" role="tab" data-toggle="tab">1ë‹¨ê³„</a></li>
+	   			<li role="presentation col-md-1 col-sm-1 col-xs-1"><a href="#second" aria-controls="second" role="tab" data-toggle="tab">2ë‹¨ê³„</a></li>
+	   			<li role="presentation col-md-1 col-sm-1 col-xs-1"><a href="#third" aria-controls="third" role="tab" data-toggle="tab">3ë‹¨ê³„</a></li>
+	   			<li class="col-md-3 col-md-offset-6 col-sm-1 col-sm-offset-8 col-xs-8 col-xs-offset-1 d-flex justify-content-end"><input class="btn btn-info btn-md" id="subbtn" type="button" value="ì œì¶œ" onclick="submitcheck()"></li>
 	  		</ul>
 	  		
 	  		<div class="tab-content float-none">
-	  			<!-- ¾ÆÄÚµğ¾ğ ½ÃÀÛ -->
+	  			<!-- ì•„ì½”ë””ì–¸ ì‹œì‘ -->
 	   			<div role="tabpanel" class="tab-pane active" id="first">
 	   				<div class="panel-group" id="accordion">
 				        <div class="panel panel-default">
 				          <div class="panel-heading">
 				            <h4 class="panel-title">
-				              <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-								ÈÄ¿ø ÇÁ·ÎÁ§Æ® Á¦¸ñ ÀÛ¼º
+				              <a data-toggle="collapse" id="atitle" data-parent="#accordion" href="#collapseOne" 
+				              	title="í”„ë¡œì íŠ¸ ì œëª©" data-container="body" data-toggle="popover" data-placement="top" 
+				              	data-content="ë‹¹ì‹ ì˜ í”„ë¡œì íŠ¸ë¥¼ í•œ ëˆˆì— ì•Œì•„ë³¼ ìˆ˜ ìˆë„ë¡ ì•Œê¸° ì‰¬ìš´ ì œëª©ì„ ì…ë ¥í•´ì£¼ì„¸ìš”!">
+								í›„ì› í”„ë¡œì íŠ¸ ì œëª© ì‘ì„±
 				              </a>
 				            </h4>
 				          </div>
 				          <div id="collapseOne" class="panel-collaps show in">
 				            <div class="panel-body">
+				            <span class="glyphicon glyphicon-leaf"></span><h4> í”„ë¡œì íŠ¸ ì œëª©ì€ ì–´ë–»ê²Œ ë³´ì—¬ì§€ë‚˜ìš”?</h4>
+				            <img id="pimg" class="img-responsive" src="image/ì œëª©.jpg" alt="ì œëª© ì´ë¯¸ì§€">
 				              <div class="form-group">
-				              	<label for="stitle">ÇÁ·ÎÁ§Æ® Á¦¸ñ</label>
-				              	<input id="stitle" name="stitle" type="text" class="form-control" placeholder="ÇÁ·ÎÁ§Æ® ¸íÄªÀ» ÀÛ¼ºÇØÁÖ¼¼¿ä." required>
-				              	<input type="button" class="btn btn-default" name="check1" id="check1" value="È®ÀÎ">
+				              	<label for="stitle">í”„ë¡œì íŠ¸ ì œëª©</label>
+				              	<input id="stitle" name="stitle" type="text" class="form-control" placeholder="í”„ë¡œì íŠ¸ ëª…ì¹­ì„ ì‘ì„±í•´ì£¼ì„¸ìš”." required>
+				              	<input type="button" class="btn btn-default" name="check1" id="check1" value="í™•ì¸">
 				              </div>
 				            </div>
 				          </div>
@@ -335,17 +401,19 @@
 				        <div class="panel panel-default">
 				          <div class="panel-heading">
 				            <h4 class="panel-title">
-				              <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-				               	ÈÄ¿ø ÇÁ·ÎÁ§Æ® ½ºÅä¸® ÀÛ¼º
+				              <a data-toggle="collapse" id="acontent" data-parent="#accordion" href="#collapseTwo"
+				              	title="í”„ë¡œì íŠ¸ ìŠ¤í† ë¦¬" data-container="body" data-toggle="popover" data-placement="top"
+				              	data-content="ë‹¹ì‹ ì´ ì „ë‹¬í•˜ê³  ì‹¶ì€ ì´ì•¼ê¸°, ë‹¹ì‹ ì˜ ë„ì „, ë§ˆì¹¨ë‚´ ì´ë£¨ê³  ì‹¶ì€ ëª©í‘œë“¤ì„ êµ¬ì²´ì ì´ê³  ìƒì„¸í•˜ê²Œ ì ì–´ì£¼ì„¸ìš”!">
+				               	í›„ì› í”„ë¡œì íŠ¸ ìŠ¤í† ë¦¬ ì‘ì„±
 				              </a>
 				            </h4>
 				          </div>
 				          <div id="collapseTwo" class="panel-collapse collapse ">
 				            <div class="panel-body">
 				              <div class="form-group">
-				              	<label for="scontent">ÇÁ·ÎÁ§Æ® ½ºÅä¸®</label>
+				              	<label for="scontent">í”„ë¡œì íŠ¸ ìŠ¤í† ë¦¬</label>
 				              	<textarea id="scontent" class="form-control" name="scontent" rows="10" cols="100"></textarea>
-				              	<input type="button" class="btn btn-default" name="check2" id="check2" value="È®ÀÎ">
+				              	<input type="button" class="btn btn-default" name="check2" id="check2" value="í™•ì¸">
 				              </div>
 				            </div>
 				          </div>
@@ -353,8 +421,10 @@
 				        <div class="panel panel-default">
 				          <div class="panel-heading">
 				            <h4 class="panel-title">
-				              <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-				             	ÈÄ¿ø ÇÁ·ÎÁ§Æ®ÀÇ ÅÂ±×¸¦ ¼±ÅÃÇÏ¼¼¿ä.
+				              <a data-toggle="collapse" id="atag" data-parent="#accordion" href="#collapseThree"
+				              	title="í”„ë¡œì íŠ¸ íƒœê·¸" data-container="body" data-toggle="popover" data-placement="top"
+				              	data-content="ë‹¹ì‹ ì˜ í”„ë¡œì íŠ¸ëŠ” ì–´ë–¤ ë¶„ì•¼ì— ì†í•˜ë‚˜ìš”? ëŒ€í‘œì ì¸ í•˜ë‚˜ë¥¼ ê³¨ë¼ì£¼ì„¸ìš”!">
+				             	í›„ì› í”„ë¡œì íŠ¸ì˜ íƒœê·¸ë¥¼ ì„ íƒí•˜ì„¸ìš”.
 				              </a>
 				            </h4>
 				          </div>
@@ -362,12 +432,12 @@
 				            <div class="panel-body">
 				                <label for="tag"></label>
 				                <select id="tag" name="tag">
-				                	<option value="">ÅÂ±×¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä.</option>
-				                	<option value="°ÔÀÓ">°ÔÀÓ</option>
-				                	<option value="µğÀÚÀÎ">µğÀÚÀÎ</option>
-				                	<option value="Ã¥">Ã¥</option>
+				                	<option value="">íƒœê·¸ë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”.</option>
+				                	<option value="ê²Œì„">ê²Œì„</option>
+				                	<option value="ë””ìì¸">ë””ìì¸</option>
+				                	<option value="ì±…">ì±…</option>
 				                </select>
-				                <input type="button" class="btn btn-default" name="check3" id="check3" value="È®ÀÎ">
+				                <input type="button" class="btn btn-default" name="check3" id="check3" value="í™•ì¸">
 				            </div>
 				          </div>
 				        </div>
@@ -379,17 +449,19 @@
 				        <div class="panel panel-default">
 				          <div class="panel-heading">
 				            <h4 class="panel-title">
-				              <a data-toggle="collapse" data-parent="#accordion2" href="#collapseOne2">
-								ÇÁ·ÎÁ§Æ®¸¦ ¼Ò°³ÇÒ ÀÌ¹ÌÁö¸¦ ¾÷·Îµå ÇØÁÖ¼¼¿ä.
+				              <a data-toggle="collapse" id="aimg" data-parent="#accordion2" href="#collapseOne2"
+				              	title="ëŒ€í‘œ ì´ë¯¸ì§€" data-container="body" data-toggle="popover" data-placement="top"
+				              	data-content="ë‹¹ì‹ ì˜ í”„ë¡œì íŠ¸ë¥¼ ì†Œê°œí•  ëŒ€í‘œì ì¸ ì´ë¯¸ì§€ë¥¼ ê³¨ë¼ ì˜¬ë ¤ì£¼ì„¸ìš”!">
+								í”„ë¡œì íŠ¸ë¥¼ ì†Œê°œí•  ì´ë¯¸ì§€ë¥¼ ì—…ë¡œë“œ í•´ì£¼ì„¸ìš”.
 				              </a>
 				            </h4>
 				          </div>
 				          <div id="collapseOne2" class="panel-collapse collapse in">
 				            <div class="panel-body">
 				              <div class="form-group">
-				              	<label for="imgpath">ÀÌ¹ÌÁö ÆÄÀÏ ¾÷·Îµå : </label>
+				              	<label for="imgpath">ì´ë¯¸ì§€ íŒŒì¼ ì—…ë¡œë“œ : </label>
 				              	<input type="file" class="form-control" name="imgpath" id="imgpath">
-				              	<input type="button" class="btn btn-default" name="check4" id="check4" value="È®ÀÎ">
+				              	<input type="button" class="btn btn-default" name="check4" id="check4" value="í™•ì¸">
 				              </div>
 				            </div>
 				          </div>
@@ -397,17 +469,19 @@
 				        <div class="panel panel-default">
 				          <div class="panel-heading">
 				            <h4 class="panel-title">
-				              <a data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo2">
-				               	ÇÁ·ÎÁ§Æ®ÀÇ ´Ş¼º ±İ¾×À» ÀÔ·ÂÇØÁÖ¼¼¿ä.
+				              <a data-toggle="collapse" id="adm" data-parent="#accordion2" href="#collapseTwo2"
+				              	title="ëª©í‘œ ê¸ˆì•¡" data-container="body" data-toggle="popover" data-placement="top"
+				              	data-content="ë‹¹ì‹ ì˜ ëª©í‘ë¥¼ ë‹¬ì„±í•˜ê¸° ìœ„í•´ì„œëŠ” ì–¼ë§ˆë‚˜ ë˜ëŠ” ê¸ˆì•¡ì´ í•„ìš”í•œê°€ìš”? ê¸ˆì•¡ì„ ì…ë ¥í•´ì£¼ì„¸ìš”!">
+				               	í”„ë¡œì íŠ¸ì˜ ë‹¬ì„± ê¸ˆì•¡ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.
 				              </a>
 				            </h4>
 				          </div>
 				          <div id="collapseTwo2" class="panel-collapse collapse ">
 				            <div class="panel-body">
 				              <div class="form-group">
-				              	<label for="destmony">±İ¾×(¸¸ ¿ø)</label>
+				              	<label for="destmony">ê¸ˆì•¡(ë§Œ ì›)</label>
 				              	<input type="number" class="form-control" value="0" name="destmoney" id="destmoney" step="1" min="0" max="1000">
-				              	<input type="button" class="btn btn-default" name="check5" id="check5" value="È®ÀÎ">
+				              	<input type="button" class="btn btn-default" name="check5" id="check5" value="í™•ì¸">
 				              </div>
 				            </div>
 				          </div>
@@ -415,17 +489,19 @@
 				        <div class="panel panel-default">
 				          <div class="panel-heading">
 				            <h4 class="panel-title">
-				              <a data-toggle="collapse" data-parent="#accordion2" href="#collapseThree2">
-				             	ÇÁ·ÎÁ§Æ® ÈÄ¿ø ÃÖ¼Ò ±İ¾×À» ÀÔ·ÂÇØÁÖ¼¼¿ä.
+				              <a data-toggle="collapse" id="amm" data-parent="#accordion2" href="#collapseThree2"
+				              	title="ìµœì†Œ ê¸ˆì•¡" data-container="body" data-toggle="popover" data-placement="top"
+				              	data-content="í›„ì›ìë“¤ì´ ë‹¹ì‹ ì—ê²Œ ì „ë‹¬í•  ìˆ˜ ìˆëŠ” ê¸ˆì•¡ì˜ ìµœì†Œì¹˜ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤.">
+				             	í”„ë¡œì íŠ¸ í›„ì› ìµœì†Œ ê¸ˆì•¡ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.
 				              </a>
 				            </h4>
 				          </div>
 				          <div id="collapseThree2" class="panel-collapse collapse">
 				            <div class="panel-body">
 				            <div class="form-group">
-				              <label for="destmony">±İ¾×(¸¸ ¿ø)</label>
+				              <label for="destmony">ê¸ˆì•¡(ë§Œ ì›)</label>
 				              <input type="number" class="form-control" value="0" name="minmoney" id="minmoney" step="1" min="0" max="10">
-				              <input type="button" class="btn btn-default" name="check6" id="check6" value="È®ÀÎ">
+				              <input type="button" class="btn btn-default" name="check6" id="check6" value="í™•ì¸">
 				              </div>
 				            </div>
 				          </div>
@@ -438,17 +514,19 @@
 				        <div class="panel panel-default">
 				          <div class="panel-heading">
 				            <h4 class="panel-title">
-				              <a data-toggle="collapse" data-parent="#accordion3" href="#collapseOne3">
-								ÇÁ·ÎÁ§Æ® ¸¶°¨ ±â°£À» ÀÔ·ÂÇØÁÖ¼¼¿ä.
+				              <a data-toggle="collapse" id="afd" data-parent="#accordion3" href="#collapseOne3"
+				              	title="í”„ë¡œì íŠ¸ ë§ˆê° ì¼ì" data-container="body" data-toggle="popover" data-placement="top"
+				              	data-content="í”„ë¡œì íŠ¸ì˜ ë§ˆê° ê¸°í•œì„ ì„¤ì •í•©ë‹ˆë‹¤.">
+								í”„ë¡œì íŠ¸ ë§ˆê° ê¸°ê°„ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.
 				              </a>
 				            </h4>
 				          </div>
 				          <div id="collapseOne3" class="panel-collapse collapse in">
 				            <div class="panel-body">
 				              <div class="form-group">
-				              	<label for="finaldate">¸¶°¨ ±âÇÑ</label>
+				              	<label for="finaldate">ë§ˆê° ê¸°í•œ</label>
 				              	<input type="date" name="finaldate" id="finaldate" class="form-control">
-				              	<input type="button" class="btn btn-default" name="check7" id="check7" value="È®ÀÎ">
+				              	<input type="button" class="btn btn-default" name="check7" id="check7" value="í™•ì¸">
 				              </div>
 				            </div>
 				          </div>
@@ -456,17 +534,19 @@
 				        <div class="panel panel-default">
 				          <div class="panel-heading">
 				            <h4 class="panel-title">
-				              <a data-toggle="collapse" data-parent="#accordion3" href="#collapseTwo3">
-				               	ÀÔ±İ °èÁÂ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.
+				              <a data-toggle="collapse" id="abn" data-parent="#accordion3" href="#collapseTwo3"
+				              	title="ì…ê¸ˆ ê³„ì¢Œ ë²ˆí˜¸" data-container="body" data-toggle="popover" data-placement="top"
+				              	data-content="í›„ì›ìë“¤ì´ ê¸ˆì•¡ì„ ì „ë‹¬í•  ìˆ˜ ìˆëŠ” ê³„ì¢Œ ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”. '-'ë¥¼ ì œì™¸í•œ ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.">
+				               	ì…ê¸ˆ ê³„ì¢Œë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.
 				              </a>
 				            </h4>
 				          </div>
 				          <div id="collapseTwo3" class="panel-collapse collapse ">
 				            <div class="panel-body">
 				              <div class="form-group">
-				              	<label for="bankno">'-'¸¦ »©°í ÀÔ·ÂÇØÁÖ¼¼¿ä.</label>
-				              	<input type="text" class="form-control" id="bankno" name="bankno" placeholder="ÀºÇà °èÁÂ ¹øÈ£ ÀÔ·Â ex)94102399350">
-				              	<input type="button" class="btn btn-default" name="check8" id="check8" value="È®ÀÎ">
+				              	<label for="bankno">'-'ë¥¼ ë¹¼ê³  ì…ë ¥í•´ì£¼ì„¸ìš”.</label>
+				              	<input type="text" class="form-control" id="bankno" name="bankno" placeholder="ì€í–‰ ê³„ì¢Œ ë²ˆí˜¸ ì…ë ¥ ex)94102399350">
+				              	<input type="button" class="btn btn-default" name="check8" id="check8" value="í™•ì¸">
 				              </div>
 				            </div>
 				          </div>

@@ -12,31 +12,32 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <style>
-	nav ul{
+	.header nav ul{
 		list-style: none;
 		background-color: rgba(243,242,240,0.7);
 		text-align: center;
+		margin-bottom:0;
 	}
-	nav ul li{
+	.header nav ul li{
 		font-size:18px;
 		display: inline-block;
 		margin-left: 50px;
 		padding: 10px;
 	}
-	nav ul li:hover{
+	.header nav ul li:hover{
 		color:black;
 		background-color: rgba(0, 0, 0, 0.2);
 	}
 	
-	nav ul li a:link{
+	.header nav ul li a:link{
 		color:black;
 		text-decoration: none;
 	}
-	nav ul li a:hover{
+	.header nav ul li a:hover{
 		color:black;
 		text-decoration: none;
 	}
-	nav ul li a:visited, nav ul li a:focus, nav ul li a:active{
+	.header nav ul li a:visited, .header nav ul li a:focus, .header nav ul li a:active{
 		color:black;
 		text-decoration: none;
 	}
