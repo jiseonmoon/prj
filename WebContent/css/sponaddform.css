@@ -1,0 +1,70 @@
+@charset "UTF-8";
+.check{
+		background-image :none;
+		background-color: lightblue;
+	}
+	a:link{
+		text-decoration: none;
+		color: black;
+	}
+	@media (max-width: 992px){
+		ul li:nth-of-type(4){
+			margin: 0;
+			position: absolute;
+			right:15%;
+		}
+	}
+	@media (max-width: 768px){
+		ul li:nth-of-type(4){
+			margin: 0;
+			position: absolute;
+			right:20%;
+		}
+	}
+	@media(max-width: 576px){
+		ul li:nth-of-type(4){
+			margin: 0;
+			position: absolute;
+			right:5%;
+		}
+	}
+	.jumbotron{
+		background-image: url("../image/back.jpg");
+		background-size: cover;
+		background-position: center;
+	}
+	.jumbotron h1, .jumbotron p{
+		color:white !important;
+	}
+	#subbtn{
+		padding:5px 30px;
+	}
+	@media (max-width:992px){
+		#subbtn{
+			margin-top:10px;
+		}
+	}
+	@media(max-width: 576px){
+		#subbtn{
+			padding: 5px 20px;
+		}
+	}
+	#check1, #check2, #check3, #check4, #check5, #check6, #check7{
+		padding: 5px 15px;
+		margin-top: 10px;
+	}
+	.pimg{
+		margin: 10px;
+		border: 1px double silver;
+		border-radius: 10px;
+	}
+	#first h4, #second h4, #third h4{
+		display: inline;
+		font-weight: bolder;
+	}
+	.glyphicon-leaf{
+		color: #81c147;
+	}
+	.glyphicon-asterisk{
+		color: red;
+	}

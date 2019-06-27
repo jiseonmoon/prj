@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="css/jquery.fancybox.css">
+<link rel="stylesheet" href="css/sponlist.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="js/jquery.fancybox.js"></script>
@@ -37,121 +38,7 @@
 		})
 	})
 </script>
-<style>
-	*{
-		margin:0;
-		padding:0;
-	}
-	.thum{
-		height:320px; width:200px;
-		margin-top:20px;
-		padding:0;
-		border: 0px transparent;
-		background-color: #f8f9fa !important;
-		box-shadow: 5px 5px 10px buttonhighlight !important;
-	}
-	.thum:hover{
-		box-shadow: 3px 3px 10px black !important;
-	}
-	.thum > div{
-		background-color: white;
-	}
-	
-	.sponfilter{
-		margin:10px 0px;
-		height:100px;
-	}
-	.filterline{
-		margin-top:10px;
-	}
-	
-	.thuml a{
-		border:box;
-		height:180px;
-		width:100%;
-	}
-	
-	.thum img{
-		height:180px !important;
-		width:200px;
-		border:0px transparent !important;
-		border-radius: 5px;
-	}
-	
-	#lhr{
-		margin-top:10px;
-		margin-bottom:0;
-	}
-	
-	.thum .caption{
-		margin-top: 9px;
-		box-shadow: 1px 0px 1px silver !important;
-		border-radius: 5px;
-	}
-	.thum .caption h5{
-		margin:0;
-		margin-bottom: 5px;
-	}
-	.thum .caption h5 a:link, .thum .caption a:visited{
-		color: black;
-		font-weight: bolder;
-		text-decoration: none;
-	}
-	.thum .caption > p{
-		font-size: 0.8em;
-	}
-	.thum .progress{
-		height : 6px !important;
-		margin-bottom:8px !important;
-	}
-	.glyphicon-gift{
-		color:red;
-	}
-	.glyphicon-usd{
-		color:green;
-	}
-	.glyphicon-floppy-save{
-		color:grey;
-	}
-	.header h3{
-		font-weight: bolder;
-	}
-	@media (max-width:992px){
-		#boardwrite{
-			height: 35px;
-			margin-left:200px;
-		}
-	}
-	@media (max-width:767px){
-		.sponfilter h3{
-			font-size: 1.4em;
-		}
-		#downloadfile p{
-			display:none !important;
-		}
-		#boardwrite{
-			height: 35px;
-			margin-left:0px;
-		}
-	}
-	@media (max-width:576px){
-		#downloadfile{
-			display:none !important;
-		}
-	}
-	@media (max-width:445px){
-		.sponfilter h3{
-			font-size: 1.3em;
-		}
-	}
-	@media (max-width:384px){
-		.sponfilter h3{
-			font-size: 1.2em;
-		}
-		
-	}
-	
-</style>
+
 </head>
 <body style="background-color: rgba(250,239,220, 0.1);">
 	<c:set var="pageinfo" value="${requestScope.pageinfo }"></c:set>
