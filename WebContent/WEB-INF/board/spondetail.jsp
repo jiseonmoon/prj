@@ -168,24 +168,19 @@
 	  			
 	  			<!-- 멤버 세션이 없으면 후원버튼 비활성화 -->
 	  			<c:if test="${ member == null }">
-					<c:if test="${ dateResult == false }">
 				  		<button type="submit" class="btn btn-primary" id="pay" disabled="disabled">후원하기</button>
-			  		</c:if>
-			  		<c:if test="${ dateResult == true }">
-				  		<button type="submit" class="btn btn-primary" id="pay" disabled="disabled">후원하기</button>
-			  		</c:if>
 			  	</c:if>
 				
 				<!-- 멤버 세션이 있으면 후원버튼 활성화 -->
 				<c:if test="${ member != null }">
-					<c:if test="${ dateResult == true }">
+					<c:if test="${ dateResult >= 0 }">
 			  			<!-- 글번호 넘겨주기 -->
 			  			<form action="payment1.do" method="post">
 			  				<input type="hidden" name="boardno" value="${ result.boardno }">
 			  				<button type="submit" class="btn btn-primary" id="pay">후원하기</button>
 			  			</form>
 		  			</c:if>
-		  			<c:if test="${ dateResult == false }">
+		  			<c:if test="${ dateResult < 0 }">
 			  			<button type="submit" class="btn btn-primary" id="pay" disabled="disabled">후원하기</button>
 		  			</c:if>
 				</c:if>

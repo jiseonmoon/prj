@@ -32,21 +32,28 @@ public class SponDetailAction implements Action {
 		SimpleDateFormat df= new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
 		String today = df.format(date);
-	
-		String date1 = result.getFinaldate();
-		String date2 = today;
 		
-		boolean dateResult = false;
-		
-		try{ 
-			SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
-			       
-			Date FirstDate = format.parse(date1);
-			Date SecondDate = format.parse(date2);
-			dateResult = FirstDate.getTime() >= SecondDate.getTime();	        
-		} catch(ParseException e) {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		Date day1 = null;
+		Date day2 = null;
+		try {
+			day1 = format.parse(result.getFinaldate());
+			day2 = format.parse(today);
+			System.out.println(day1);
+			System.out.println(day2);
+		} catch (ParseException e) {
 			System.out.println(e);
 		}
+		
+		int dateResult = day1.compareTo(day2);
+		if(dateResult > 0) {
+			System.out.println("day1 > day2");
+		} else if(dateResult < 0) {
+			System.out.println("day < day2");
+		} else {
+			System.out.println("day1 = day2");
+		}
+		
 		
 		request.setAttribute("result", result);
 		request.setAttribute("writer", writer);
