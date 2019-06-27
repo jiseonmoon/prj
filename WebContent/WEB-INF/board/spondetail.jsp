@@ -159,12 +159,15 @@
 	  			<form action="spondel.do" method="post">
 	  				<input type="hidden" name="boardno" value="${ result.boardno }"> <!-- 글번호 -->
 	  				<input type="hidden" name="imagepath" value="${ result.imagepath }"> <!-- 이미지이름 -->
+	  				<c:if test="${ member.mtier == 2 || member.mtier == 3 }">
 	  				<button type="submit" class="btn btn-danger" id="del">삭제하기</button>
+	  				</c:if>
 	  			</form>
 	  			
 	  			<br>
 	  			
-	  			<c:if test="${ member != null }">
+	  			<!-- 멤버 세션이 없으면 후원버튼 비활성화 -->
+	  			<c:if test="${ member == null }">
 					<c:if test="${ dateResult == false }">
 				  		<button type="submit" class="btn btn-primary" id="pay" disabled="disabled">후원하기</button>
 			  		</c:if>
@@ -173,6 +176,7 @@
 			  		</c:if>
 			  	</c:if>
 				
+				<!-- 멤버 세션이 있으면 후원버튼 활성화 -->
 				<c:if test="${ member != null }">
 					<c:if test="${ dateResult == true }">
 			  			<!-- 글번호 넘겨주기 -->
