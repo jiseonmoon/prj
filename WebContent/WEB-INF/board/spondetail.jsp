@@ -159,7 +159,7 @@
 	  			<form action="spondel.do" method="post">
 	  				<input type="hidden" name="boardno" value="${ result.boardno }"> <!-- 글번호 -->
 	  				<input type="hidden" name="imagepath" value="${ result.imagepath }"> <!-- 이미지이름 -->
-	  				<c:if test="${ member.mtier == 2 || member.mtier == 3 }">
+	  				<c:if test="${ member.mtier == 3 || member.mid == writer.mid }">
 	  				<button type="submit" class="btn btn-danger" id="del">삭제하기</button>
 	  				</c:if>
 	  			</form>
