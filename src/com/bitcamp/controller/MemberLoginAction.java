@@ -16,7 +16,7 @@ public class MemberLoginAction implements Action {
 			throws ServletException, IOException {
 		ForwardAction act=new ForwardAction();
 		act.setRedirect(false);
-		act.setPath("/WEB-INF/board/memberLogin.jsp");
+		act.setPath("/WEB-INF/board/templete.jsp?page=memberLogin.jsp");
 		
 		return act;
 	}

@@ -58,6 +58,7 @@
 				<c:choose>
 					<c:when test="${empty member }">
 						<li class="hlogin"><a href="login.do">로그인</a></li>
+						<li class="hlogin"><a href="add.do">회원가입</a></li>
 					</c:when>
 					<c:otherwise>
 						<c:choose>
