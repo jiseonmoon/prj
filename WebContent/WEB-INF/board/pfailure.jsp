@@ -5,16 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-div {
-	width: 50%;
-	height: 150%;
-}
-
-img {
-	width: 50%;
-}
-</style>
 </head>
 <body>
 	<div class="card border-danger mb-3">

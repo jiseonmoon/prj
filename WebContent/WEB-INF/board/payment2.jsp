@@ -10,7 +10,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%
-	MemberDTO memberdto = (MemberDTO) session.getAttribute("memberdto");
+	MemberDTO memberdto = (MemberDTO) session.getAttribute("member");
 	SponDTO spondto = (SponDTO) request.getAttribute("spondto");
 	DeliveryDTO deliverydto = (DeliveryDTO) request.getAttribute("deliverydto");
 	int amount = Integer.parseInt(request.getAttribute("amount").toString());

@@ -20,7 +20,7 @@ public class PSuccessAction implements Action {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
-		MemberDTO memberdto = (MemberDTO) session.getAttribute("memberdto");
+		MemberDTO memberdto = (MemberDTO) session.getAttribute("member");
 		int boardno = Integer.parseInt(request.getParameter("boardno"));
 		int amount = Integer.parseInt(request.getParameter("amount"));
 		PaymentService service = PaymentService.getInstance();

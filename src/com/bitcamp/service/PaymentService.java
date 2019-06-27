@@ -28,8 +28,6 @@ public class PaymentService {
 			PaymentDAO dao = PaymentDAO.getInstance();
 			result = dao.plusNowmoney(conn, sno, money);
 			result = dao.insertPaymentInfo(conn, sno, mno, money);
-			// 프로젝트 번호 insert
-			// 결제일
 			conn.commit();
 		} catch (NamingException | SQLException e) {
 			System.out.println(e);

@@ -8,8 +8,8 @@
 </head>
 <body>
 	<div class="card border-success mb-3">
-	<img alt="failure" src="image/success.png">
-		success <a href="sponlist.do">목록으로</a>
+		<img alt="success" src="image/checked.png"> success <a
+			href="sponlist.do">목록으로</a>
 	</div>
 </body>
 </html>

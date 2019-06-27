@@ -27,7 +27,7 @@ form .card-body {
 </style>
 </head>
 <body>
-	<c:set var="memberdto" value="${sessionScope.memberdto }"></c:set>
+	<c:set var="memberdto" value="${sessionScope.member }"></c:set>
 	<c:set var="spondto" value="${requestScope.spondto }"></c:set>
 	<div id="wrapper">
 		<form method="post" action="payment2.do">
