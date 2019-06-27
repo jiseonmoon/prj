@@ -62,7 +62,7 @@
 			padding: 5px 20px;
 		}
 	}
-	#check1, #check2, #check3, #chekc4, #chekc5, #check6, #check7{
+	#check1, #check2, #check3, #check4, #check5, #check6, #check7{
 		padding: 5px 15px;
 		margin-top: 10px;
 	}
@@ -71,7 +71,7 @@
 		border: 1px double silver;
 		border-radius: 10px;
 	}
-	#first h4{
+	#first h4, #second h4, #third h4{
 		display: inline;
 		font-weight: bolder;
 	}
@@ -368,11 +368,11 @@
 	<hr>
 	<div class="container">	
 		<form action="sponaddresult.do" method="POST" enctype="multipart/form-data" role="form" name="frm">
-			<ul class="nav nav-tabs" role="tablist">
+			<ul class="nav nav-tabs" role="tablist" style="z-index: 1">
 	   			<li class="active" role="presentation col-md-1 col-sm-1 col-xs-1"><a href="#first" aria-controls="first" role="tab" data-toggle="tab">1단계</a></li>
 	   			<li role="presentation col-md-1 col-sm-1 col-xs-1"><a href="#second" aria-controls="second" role="tab" data-toggle="tab">2단계</a></li>
 	   			<li role="presentation col-md-1 col-sm-1 col-xs-1"><a href="#third" aria-controls="third" role="tab" data-toggle="tab">3단계</a></li>
-	   			<li class="col-md-3 col-md-offset-6 col-sm-1 col-sm-offset-8 col-xs-8 col-xs-offset-1 d-flex justify-content-end"><input class="btn btn-info btn-md" id="subbtn" type="button" value="제출" onclick="submitcheck()"></li>
+	   			<li class="col-md-3 col-md-offset-6 col-sm-1 col-sm-offset-8 col-xs-8 col-xs-offset-1 d-flex justify-content-end" style="z-index: 1"><input class="btn btn-info btn-md" id="subbtn" type="button" value="제출" onclick="submitcheck()"></li>
 	  		</ul>
 	  		
 	  		<div class="tab-content float-none">
@@ -467,6 +467,9 @@
 				          <div id="collapseOne2" class="panel-collapse collapse in">
 				            <div class="panel-body">
 				              <div class="form-group">
+				              	<span class="glyphicon glyphicon-leaf"></span><h4> 이미지는 어떻게 사용되나요?</h4>
+				          		<img class="pimg img-responsive" src="image/이미지.jpg" alt="내용 이미지">
+				          		<span class="glyphicon glyphicon-asterisk"></span><h4> 선택한 이미지는 게시글의 소개에 사용됩니다!</h4><br><br>
 				              	<label for="imgpath">이미지 파일 업로드 : </label>
 				              	<input type="file" class="form-control" name="imgpath" id="imgpath">
 				              	<input type="button" class="btn btn-default" name="check4" id="check4" value="확인">
@@ -487,6 +490,9 @@
 				          <div id="collapseTwo2" class="panel-collapse collapse ">
 				            <div class="panel-body">
 				              <div class="form-group">
+				             	<span class="glyphicon glyphicon-leaf"></span><h4> 목표 액수는 어떻게 보여지나요?</h4>
+				          		<img class="pimg img-responsive" src="image/도달액.jpg" alt="도달 이미지">
+				          		<span class="glyphicon glyphicon-asterisk"></span><h4> 당신이 목표하는 금액을 확실히 명시해주세요!</h4><br><br>
 				              	<label for="destmony">금액(만 원)</label>
 				              	<input type="number" class="form-control" value="0" name="destmoney" id="destmoney" step="1" min="0" max="1000">
 				              	<input type="button" class="btn btn-default" name="check5" id="check5" value="확인">
@@ -507,6 +513,7 @@
 				          <div id="collapseThree2" class="panel-collapse collapse">
 				            <div class="panel-body">
 				            <div class="form-group">
+				              <span class="glyphicon glyphicon-asterisk"></span><h4> 후원자들에게 바라는 최소 금액을 명시해주세요!</h4><br><br>
 				              <label for="destmony">금액(만 원)</label>
 				              <input type="number" class="form-control" value="0" name="minmoney" id="minmoney" step="1" min="0" max="10">
 				              <input type="button" class="btn btn-default" name="check6" id="check6" value="확인">
@@ -532,6 +539,9 @@
 				          <div id="collapseOne3" class="panel-collapse collapse in">
 				            <div class="panel-body">
 				              <div class="form-group">
+				                <span class="glyphicon glyphicon-leaf"></span><h4> 마감 일자가 지나면 후원하기 버튼이 비활성화 됩니다!</h4><br>
+				                <img class="pimg img-responsive" src="image/비활성화.jpg" alt="버튼 이미지">
+				                <span class="glyphicon glyphicon-asterisk"></span><h4> 목표하는 마감 일자를 명시해주세요!</h4><br><br>
 				              	<label for="finaldate">마감 기한</label>
 				              	<input type="date" name="finaldate" id="finaldate" class="form-control">
 				              	<input type="button" class="btn btn-default" name="check7" id="check7" value="확인">
@@ -552,6 +562,8 @@
 				          <div id="collapseTwo3" class="panel-collapse collapse ">
 				            <div class="panel-body">
 				              <div class="form-group">
+				                <span class="glyphicon glyphicon-asterisk"></span><h4> 입력하신 계좌로 현금이 입금됩니다!</h4><br><br>
+				                <span class="glyphicon glyphicon-asterisk"></span><h4> 정확한 계좌번호를 입력해주세요!</h4><br><br>
 				              	<label for="bankno">'-'를 빼고 입력해주세요.</label>
 				              	<input type="text" class="form-control" id="bankno" name="bankno" placeholder="은행 계좌 번호 입력 ex)94102399350">
 				              	<input type="button" class="btn btn-default" name="check8" id="check8" value="확인">
