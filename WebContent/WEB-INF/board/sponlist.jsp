@@ -11,7 +11,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="css/jquery.fancybox.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -43,18 +42,18 @@
 		margin:0;
 		padding:0;
 	}
-	.thumbnail{
+	.thum{
 		height:320px; width:200px;
 		margin-top:20px;
 		padding:0;
 		border: 0px transparent;
-		background-color: #f8f9fa;
-		box-shadow: 5px 5px 10px buttonhighlight;
+		background-color: #f8f9fa !important;
+		box-shadow: 5px 5px 10px buttonhighlight !important;
 	}
-	.thumbnail:hover{
-		box-shadow: 3px 3px 10px black;
+	.thum:hover{
+		box-shadow: 3px 3px 10px black !important;
 	}
-	.thumbnail > div{
+	.thum > div{
 		background-color: white;
 	}
 	
@@ -66,16 +65,16 @@
 		margin-top:10px;
 	}
 	
-	.thumbnail a{
+	.thuml a{
 		border:box;
 		height:180px;
 		width:100%;
 	}
 	
-	.thumbnail img{
+	.thum img{
 		height:180px !important;
 		width:200px;
-		border:0px transparent;
+		border:0px transparent !important;
 		border-radius: 5px;
 	}
 	
@@ -84,26 +83,26 @@
 		margin-bottom:0;
 	}
 	
-	.caption{
+	.thum .caption{
 		margin-top: 9px;
-		box-shadow: 1px 0px 1px silver;
+		box-shadow: 1px 0px 1px silver !important;
 		border-radius: 5px;
 	}
-	.caption h5{
+	.thum .caption h5{
 		margin:0;
 		margin-bottom: 5px;
 	}
-	.caption h5 a:link, a:visited{
+	.thum .caption h5 a:link, .thum .caption a:visited{
 		color: black;
 		font-weight: bolder;
 		text-decoration: none;
 	}
-	.caption > p{
+	.thum .caption > p{
 		font-size: 0.8em;
 	}
-	.progress{
-		height : 6px;
-		margin-bottom:8px;
+	.thum .progress{
+		height : 6px !important;
+		margin-bottom:8px !important;
 	}
 	.glyphicon-gift{
 		color:red;
@@ -113,9 +112,6 @@
 	}
 	.glyphicon-floppy-save{
 		color:grey;
-	}
-	body{
-		background-color: rgba(250,239,220, 0.1);
 	}
 	.header h3{
 		font-weight: bolder;
@@ -157,7 +153,7 @@
 	
 </style>
 </head>
-<body>
+<body style="background-color: rgba(250,239,220, 0.1);">
 	<c:set var="pageinfo" value="${requestScope.pageinfo }"></c:set>
 	<c:set var="list" value="${requestScope.list }"></c:set>
 	<c:set var="tag" value="${requestScope.tag }"></c:set>
@@ -223,7 +219,7 @@
 							<c:set var="date" value="${board.finaldate }"/>
 							<fmt:parseDate var="parsedate" value="${date }" pattern="yyyy-MM-dd"></fmt:parseDate>
 							<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 d-flex justify-content-center">
-								<div class="thumbnail">
+								<div class="thumbnail thum">
 									<a class="fancybox" rel="img" href="upload/${board.imagepath }"><img class="img-responsive" src="upload/${board.imagepath }" alt="img"></a>
          							<div class="caption">
             							<h5><a href="spondetail.do?no=${board.boardno }">${board.boardtitle }</a> </h5>
@@ -238,8 +234,8 @@
             								<fmt:parseNumber value="${parsedate.time/(1000*60*60*24) }" integerOnly="true" var="oldDays"/>
             								<c:set value="${oldDays - nowDays }" var="dateDiff"/>
             								<div class="row">
-            									<p class="col-7"><span class="glyphicon glyphicon-gift"></span><span>${dateDiff }일</span></p>
-            									<p class="col-5 d-flex justify-content-center"><span class="glyphicon glyphicon-usd"></span><span>${board.nowmoney }만원</span></p>
+            									<p class="col-6"><span class="glyphicon glyphicon-gift"></span><span>${dateDiff }일</span></p>
+            									<p class="col-6 d-flex justify-content-center"><span class="glyphicon glyphicon-usd"></span><span>${board.nowmoney }만원</span></p>
             								</div>
             								
             							

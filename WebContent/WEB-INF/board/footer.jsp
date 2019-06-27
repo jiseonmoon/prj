@@ -4,16 +4,26 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="css/jquery.fancybox.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="js/jquery.fancybox.js"></script>
 <style>
 	.fcontent{
 		margin-top: 20px;
 	}
-	address, p{
+	.fcontent address, .fcontent p{
 		display: inline;
 		font-size: 0.9em;
 	}
 	.footer{
 		background-color: rgba(242,244,253,0.5);
+	}
+	hr{
+		margin:0;
 	}
 </style>
 <title>Insert title here</title>

@@ -20,7 +20,7 @@
 		    } ,error:function(data) {
 			    console.log('error');
 		    }
-	   });
+	   });	
 	});
 	
 	function formSubmit() {
@@ -72,19 +72,41 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+	@media (max-width: 767px) {
+		#pay{
+			padding: 20px 100px;
+			width: 100%;
+		}
+		
+		#del{
+			padding: 10px 100px;
+			width: 100%;
+		}
+		
+		#sub{
+			margin-top: 0px;
+			width: 100%;
+		}
+	}
+	
+	@media (min-width: 768px) {
+		#del{
+			padding: 10px 100px;
+			width: 60%;
+		}
+	}
+	
 	#pay{
 		padding: 20px 100px;
 	}
-	
-	#del{
-		padding: 10px 100px;
-	}
-	
+
 	#sub{
 		margin-top: 0px;
+		width: 60%;
 	}
 	
 	#main{
+		padding-top: 20px;
 		padding-bottom: 60px;
 		background-color: #FBF6F6;
 	}
@@ -94,10 +116,13 @@
 	}
 	
 	#content1{
+		margin-left: 15px;
 		border: 1px solid;
 	}
 	
 	#content2{
+		margin-left: 15px;
+		padding-top: 10px;
 		border: 1px solid;
 	}
 </style>
@@ -106,12 +131,9 @@
 	<c:set var="path" value="${ requestScope.image }"></c:set> 
 	<c:set var="result" value="${ requestScope.result }"></c:set>
 	<c:set var="member" value="${ requestScope.member }"></c:set>
-	
+	<c:set var="dateResult" value="${ requestScope.dateResult }"></c:set>
 	<div class="center-block" style='width:100%;' id="main"> <!-- background:pink' -->
-		<p class="text-center">${ result.boardtag }</p><br> <!-- 글 태그 -->
-		<h1 class="text-center">${ result.boardtitle }</h1><br> <!-- 글제목 -->
-		<p class="text-center"><strong>${ result.boardwriter }</strong></p><br> <!-- 글작성자 -->
-		
+		<h1 class="text-center"><small><${ result.boardtag }> </small>${ result.boardtitle }</h1><br> <!-- 태그, 글제목 -->
 		<div class="row">
 			<div class="col-md-2">
 	  		</div>
@@ -119,8 +141,9 @@
 	  			<img class="img-responsive" src="upload/${ result.imagepath }" alt="img"> <!-- 이미지 -->
 	  		</div>
 	  		<div class="col-md-5">
+	  			<br>
 	  			<p>현재모금역</p>
-	  			<h2>${ result.nowmoney }원</h2><br><br> <!-- 현재모금액 -->
+	  			<h2>${ result.nowmoney }만원</h2><br><br> <!-- 현재모금액 -->
 	  			
 	  			<p>마감일</p>
 	  			<h2>${ result.finaldate }</h2><br><br> <!-- 마감일 -->
@@ -139,16 +162,27 @@
 	  			
 	  			<br>
 	  			
-	  			<!-- 글번호 넘겨주기 -->
-	  			<form action="payment1.do" method="post">
-	  				<input type="hidden" name="boardno" value="${ result.boardno }">
-	  				<button type="submit" class="btn btn-primary" id="pay">후원하기</button>
-	  			</form>
+	  			<c:if test="${ dateResult == true }">
+		  			<!-- 글번호 넘겨주기 -->
+		  			<form action="payment1.do" method="post">
+		  				<input type="hidden" name="boardno" value="${ result.boardno }">
+		  				<button type="submit" class="btn btn-primary" id="pay">후원하기</button>
+		  			</form>
+	  			</c:if>
+	  			
+				<c:if test="${ dateResult == false }">
+		  			<!-- 글번호 넘겨주기 -->
+		  			<form action="payment1.do" method="post">
+		  				<input type="hidden" name="boardno" value="${ result.boardno }">
+		  				<button type="submit" class="btn btn-primary" id="pay" disabled="disabled">후원하기</button>
+		  			</form>
+	  			</c:if>
+	  			
 	  		</div>
 		</div>
 	</div>
 	
-	<div class="center-block" style='width:60%;' id="sub">
+	<div class="center-block" id="sub">
   		<!-- Nav tabs -->
   		<ul class="nav nav-tabs" role="tablist">
 		    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">상세내용</a></li>
@@ -160,21 +194,21 @@
 		    <div role="tabpanel" class="tab-pane active" id="home">
 		    	<!-- 글내용 -->
 		    	<div class="row">
-			    	<div class="col-md-8" id="content1">
-			    		${ result.boardcontent }
+			    	<div class="col-md-7" id="content1">
+			    		<p class="text-left">${ result.boardcontent }</p>
 		  			</div>
 		  			<div class="col-md-1"></div>
 			    	<div class="col-md-3" id="content2">
-			    		창작자: ${ member.mid }<br>
-			    		이메일: ${ member.memail }<br>
-			    		전화번호: ${ member.mtel }<br>
+			    		<p class="text-center">창작자: ${ member.mid }</p><br>
+			    		<p class="text-center">이메일: ${ member.memail }</p><br>
+			    		<p class="text-center">전화번호: ${ member.mtel }</p><br>
 			    	</div>
 		    	</div>
 		    </div>
 		    <div role="tabpanel" class="tab-pane" id="profile">
 		    	<form action="sponsubadd.do" method="post" id="frm"> <!-- 글번호랑 같이 넘겨줌 -->
 		    		<input type="hidden" name="boardno" value="${ result.boardno }">
-					<textarea name="content" class="form-control" rows="3" maxlength="100" style='width:90%;'></textarea> <!-- 댓글내용 -->
+					<textarea name="content" class="form-control" rows="3" maxlength="100"></textarea> <!-- 댓글내용 -->
 					<!-- 회원 번호를 세션에서 받아 넘겨주게 바꿔야됨 -->
 					<input id="disabledInput" type="text" placeholder="아이디" name="memberNo" disabled>
 					<input type="button" class="btn btn-info" value="댓글작성" onclick="formSubmit()"/>
@@ -184,7 +218,9 @@
 		    </div>
   		</div>
 	</div>
+	<%-- 
 	회원번호: ${ result.writerno }<br>
 	후원최소액: ${ result.minmoney }<br>
+	 --%>
 </body>
 </html>

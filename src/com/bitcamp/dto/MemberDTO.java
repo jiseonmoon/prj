@@ -5,6 +5,7 @@ public class MemberDTO {
 	private String mid;
 	private String memail;
 	private String mtel;
+	private int mtier;
 
 	public String getMid() {
 		return mid;
@@ -37,6 +38,16 @@ public class MemberDTO {
 	public void setMtel(String mtel) {
 		this.mtel = mtel;
 	}
+
+	public int getMtier() {
+		return mtier;
+	}
+
+	public void setMtier(int mtier) {
+		this.mtier = mtier;
+	}
+	
+	
 	
 	
 }
