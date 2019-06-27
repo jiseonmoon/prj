@@ -57,18 +57,18 @@
 				<li><a href="#">공지사항</a></li>
 				<c:choose>
 					<c:when test="${empty member }">
-						<li class="hlogin"><a href="#">로그인</a></li>
+						<li class="hlogin"><a href="login.do">로그인</a></li>
 					</c:when>
 					<c:otherwise>
 						<c:choose>
 							<c:when test="${member.mtier eq 3}">
-								<li class="hlogin"><a href="#">로그아웃</a></li>
-								<li class="hlogin"><a href="#">사용자 정보</a></li>
-								<li class="hpage"><a href="#">관리자 페이지</a></li>
+								<li class="hlogin"><a href="logout.do">로그아웃</a></li>
+								<li class="hlogin"><a href="memberinfo.do">사용자 정보</a></li>
+								<li class="hpage"><a href="memberlist.do">관리자 페이지</a></li>
 							</c:when>
 							<c:otherwise>
-								<li class="hlogin"><a href="#">로그아웃</a></li>
-								<li class="hlogin"><a href="#">사용자 정보</a></li>
+								<li class="hlogin"><a href="logout.do">로그아웃</a></li>
+								<li class="hlogin"><a href="memberinfo.do">사용자 정보</a></li>
 							</c:otherwise>
 						</c:choose>
 					</c:otherwise>

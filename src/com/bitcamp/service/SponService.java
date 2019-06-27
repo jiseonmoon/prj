@@ -2,11 +2,13 @@ package com.bitcamp.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.naming.NamingException;
 
 import com.bitcamp.comm.DBConn;
+import com.bitcamp.dao.MemberDAO;
 import com.bitcamp.dao.SponDAO;
 import com.bitcamp.dto.MemberDTO;
 import com.bitcamp.dto.PageDTO;
@@ -154,5 +156,239 @@ public class SponService {
 		}
 		return member;
 	}
+	
+	public void memberAddService(String Mid, String Mpwd, String email1, String email2, String tel, String addr, String bank, String card) {
+		Connection conn=null;
+		try {
+			conn=DBConn.getDB().getConnection();
+			conn.setAutoCommit(false);
+			MemberDAO dao=new MemberDAO();
+			dao.memberAdd(conn, Mid, Mpwd, email1, email2, tel, addr, bank, card);
+			conn.commit();
+		}catch(SQLException e)
+		{
+			System.out.println(e);
+			try{conn.rollback();} catch(SQLException e1){}
+		}catch(NamingException e)
+		{
+			System.out.println(e);
+		   try{ conn.rollback();} catch(SQLException e1){}
+		}catch(RuntimeException e)
+		{
+			System.out.println(e);
+			try{ conn.rollback();} catch(SQLException e1){}
+		}
+		finally{
+			if(conn!=null)  try{ conn.close();} catch(SQLException e){}
+			
+		}
+	}
+  
+public int memberLoginService(String Mid, String Mpwd) {
+	Connection conn=null;
+	int result=0;
+	try {
+		conn=DBConn.getDB().getConnection();
+		conn.setAutoCommit(false);
+		MemberDAO dao=new MemberDAO();
+		result=dao.memberLogin(conn, Mid, Mpwd);
+		conn.commit();
+	}catch(SQLException e)
+	{
+		System.out.println(e);
+		try{conn.rollback();} catch(SQLException e1){}
+	}catch(NamingException e)
+	{
+		System.out.println(e);
+	   try{ conn.rollback();} catch(SQLException e1){}
+	}catch(RuntimeException e)
+	{
+		System.out.println(e);
+		try{ conn.rollback();} catch(SQLException e1){}
+	}
+	finally{
+		if(conn!=null)  try{ conn.close();} catch(SQLException e){}
+		
+	}
+	return result;
+}
+
+public MemberDTO memberInfoService(String Mid) {
+	Connection conn=null;
+	MemberDTO dto= null;
+	try {
+		conn=DBConn.getDB().getConnection();
+		conn.setAutoCommit(false);
+		MemberDAO dao=new MemberDAO();
+		dto=dao.memberInfo(conn, Mid);
+		System.out.println("infodto: " + dto);
+		conn.commit();
+	}catch(SQLException e)
+	{
+		System.out.println(e);
+		try{conn.rollback();} catch(SQLException e1){}
+	}catch(NamingException e)
+	{
+		System.out.println(e);
+	   try{ conn.rollback();} catch(SQLException e1){}
+	}catch(RuntimeException e)
+	{
+		System.out.println(e);
+		try{ conn.rollback();} catch(SQLException e1){}
+	}
+	finally{
+		if(conn!=null)  try{ conn.close();} catch(SQLException e){}
+		
+	}
+	
+	return dto;
+}
+
+public void memberModifyService(MemberDTO dto) {
+	Connection conn=null;
+	try {
+		conn=DBConn.getDB().getConnection();
+		conn.setAutoCommit(false);
+		MemberDAO dao=new MemberDAO();
+		dao.memberModify(conn, dto);
+		conn.commit();
+	}catch(SQLException|NamingException e)
+	{
+		System.out.println(e);
+	   try{ conn.rollback();} catch(SQLException e1){}
+	}catch(RuntimeException e)
+	{
+		System.out.println(e);
+		try{ conn.rollback();} catch(SQLException e1){}
+	}
+	finally{
+		if(conn!=null)  try{ conn.close();} catch(SQLException e){}
+		
+	}
+	
+}
+
+public int memberDeleteService(String Mid, String Mpwd) {
+	Connection conn=null;
+	int result=0;
+	try {
+		conn=DBConn.getDB().getConnection();
+		conn.setAutoCommit(false);
+		MemberDAO dao=new MemberDAO();
+		result=dao.memberDelete(conn, Mid, Mpwd);
+	}catch(SQLException|NamingException e)
+	{
+		System.out.println(e);
+	   try{ conn.rollback();} catch(SQLException e1){}
+	}catch(RuntimeException e)
+	{
+		System.out.println(e);
+		try{ conn.rollback();} catch(SQLException e1){}
+	}
+	finally{
+		if(conn!=null)  try{ conn.close();} catch(SQLException e){}
+		
+	}
+	
+	return result;
+}
+
+public boolean memberIdCheckService(String Mid) {
+	Connection conn=null;
+	boolean result=false;
+	try {
+		conn=DBConn.getDB().getConnection();
+		conn.setAutoCommit(false);
+		MemberDAO dao=new MemberDAO();
+		result=dao.memberIdCheck(conn, Mid);
+	}catch(SQLException|NamingException e)
+	{
+		System.out.println(e);
+	   try{ conn.rollback();} catch(SQLException e1){}
+	}catch(RuntimeException e)
+	{
+		System.out.println(e);
+		try{ conn.rollback();} catch(SQLException e1){}
+	}
+	finally{
+		if(conn!=null)  try{ conn.close();} catch(SQLException e){}
+		
+	}
+	
+	return result;
+}
+
+public ArrayList<MemberDTO> memberListService() {
+	Connection conn=null;
+	ArrayList<MemberDTO> arr=null;
+	try {
+		conn=DBConn.getDB().getConnection();
+		conn.setAutoCommit(false);
+		MemberDAO dao=new MemberDAO();
+		arr=dao.memberList(conn);
+	}catch(SQLException|NamingException e)
+	{
+		System.out.println(e);
+	   try{ conn.rollback();} catch(SQLException e1){}
+	}catch(RuntimeException e)
+	{
+		System.out.println(e);
+		try{ conn.rollback();} catch(SQLException e1){}
+	}
+	finally{
+		if(conn!=null)  try{ conn.close();} catch(SQLException e){}
+		
+	}
+	
+	return arr;
+}
+
+public int adminDeleteService(String Mid) {
+	Connection conn=null;
+	int result=0;
+	try {
+		conn=DBConn.getDB().getConnection();
+		conn.setAutoCommit(false);
+		MemberDAO dao=new MemberDAO();
+		result=dao.adminDelete(conn, Mid);
+	}catch(SQLException|NamingException e)
+	{
+		System.out.println(e);
+	   try{ conn.rollback();} catch(SQLException e1){}
+	}catch(RuntimeException e)
+	{
+		System.out.println(e);
+		try{ conn.rollback();} catch(SQLException e1){}
+	}
+	finally{
+		if(conn!=null)  try{ conn.close();} catch(SQLException e){}
+		
+	}
+	
+	return result;
+}
+
+public void adminModifyService(String Mid, int Mtier) {
+	Connection conn=null;
+	try {
+		conn=DBConn.getDB().getConnection();
+		conn.setAutoCommit(false);
+		MemberDAO dao=new MemberDAO();
+		dao.adminModify(conn, Mid, Mtier);
+		conn.commit();
+	}catch(SQLException|NamingException e)
+	{
+		System.out.println(e);
+	   try{ conn.rollback();} catch(SQLException e1){}
+	}catch(RuntimeException e)
+	{
+		System.out.println(e);
+		try{ conn.rollback();} catch(SQLException e1){}
+	}
+	finally{
+		if(conn!=null)  try{ conn.close();} catch(SQLException e){}
+		
+	}	
+}
 	
 }

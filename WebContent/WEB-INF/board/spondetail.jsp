@@ -133,7 +133,7 @@
 	<c:set var="writer" value="${ requestScope.writer }"></c:set>
 	<c:set var="dateResult" value="${ requestScope.dateResult }"></c:set>
 	<c:set var="member" value="${ sessionScope.member }"></c:set> <!-- 세션 스코프 -->
-	
+
 	<div class="center-block" style='width:100%;' id="main">
 		<h1 class="text-center"><small><${ result.boardtag }> </small>${ result.boardtitle }</h1><br> <!-- 태그, 글제목 -->
 		<div class="row">
@@ -210,9 +210,11 @@
 		  			</div>
 		  			<div class="col-md-1"></div>
 			    	<div class="col-md-3" id="content2">
+
 			    		<p class="text-center">창작자: ${ writer.mid }</p><br>
-			    		<p class="text-center">이메일: ${ writer.memail }</p><br>
-			    		<p class="text-center">전화번호: ${ writer.mtel }</p><br>
+			    		<p class="text-center">이메일: ${ writer.email1 }@${member.email2 }</p><br>
+			    		<p class="text-center">전화번호: ${ writer.tel }</p><br>
+			    		
 			    	</div>
 		    	</div>
 		    </div>
@@ -221,7 +223,13 @@
 		    		<input type="hidden" name="boardno" value="${ result.boardno }">
 					<textarea name="content" class="form-control" rows="3" maxlength="100"></textarea> <!-- 댓글내용 -->
 					<!-- 회원 번호를 세션에서 받아 넘겨주게 바꿔야됨 -->
-					<input id="disabledInput" type="text" placeholder="아이디" name="memberNo" disabled>
+					<c:if test="${ member == null }">
+						<input id="disabledInput" type="text" placeholder="로그인 해주세요" disabled>
+					</c:if>
+					<c:if test="${ member != null }">
+						<input id="disabledInput" type="text" placeholder="${ member.mid }" disabled>
+					</c:if>
+					<input type="hidden" name="mno" value="${ member.mno }">
 					<input type="button" class="btn btn-info" value="댓글작성" onclick="formSubmit()"/>
 					<input type="button" class="btn btn-info" value="새로고침" onclick="Submit()"/>
 				</form>

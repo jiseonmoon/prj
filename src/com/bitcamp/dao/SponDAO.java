@@ -307,8 +307,11 @@ public class SponDAO {
 			
 			while(rs.next()) {
 				member.setMid(rs.getString("mid"));
-				member.setMemail(rs.getString("memail"));
-				member.setMtel(rs.getString("mtel"));
+				String email = rs.getString("memail");
+				int idx = email.indexOf("@");
+				member.setEmail1(email.substring(0, idx));
+				member.setEmail2(email.substring(idx+1, email.length()));
+				member.setTel(rs.getString("mtel"));
 			}
 			
 		} catch(SQLException e) {
