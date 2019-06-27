@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bitcamp.comm.Action;
 import com.bitcamp.comm.ForwardAction;
+import com.bitcamp.dto.MemberDTO;
 import com.bitcamp.dto.SponDTO;
 import com.bitcamp.service.SponService;
 
@@ -21,7 +22,11 @@ public class SponDetailAction implements Action {
 		SponService service = SponService.getService();
 		SponDTO result = service.getDetail(boardno);
 		
+		int memNo = result.getWriterno();
+		MemberDTO member = service.getMemberDetail(memNo);
+		
 		request.setAttribute("result", result);
+		request.setAttribute("member", member);
 		ForwardAction forward = new ForwardAction();
 		forward.setRedirect(false);
 		forward.setPath("/WEB-INF/board/templete.jsp?page=spondetail.jsp");

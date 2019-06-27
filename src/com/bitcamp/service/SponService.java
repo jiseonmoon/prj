@@ -8,6 +8,7 @@ import javax.naming.NamingException;
 
 import com.bitcamp.comm.DBConn;
 import com.bitcamp.dao.SponDAO;
+import com.bitcamp.dto.MemberDTO;
 import com.bitcamp.dto.PageDTO;
 import com.bitcamp.dto.SponDTO;
 import com.bitcamp.dto.SponSubDTO;
@@ -132,13 +133,26 @@ public class SponService {
 		DBConn db = DBConn.getDB();
 		int result = 0;
 		
-		try(Connection conn =db.getConnection();) {
+		try(Connection conn = db.getConnection();) {
 			SponDAO dao = SponDAO.getSponDAO();
 			result = dao.subDelete(conn, subNo);
 		} catch (SQLException | NamingException e) {
 			System.out.println(e);
 		}
 		return result;
+	}
+	
+	// 펀딩글 작성자 정보 가져오기
+	public MemberDTO getMemberDetail(int memNo) {
+		DBConn db = DBConn.getDB();
+		MemberDTO member = null;
+		try(Connection conn = db.getConnection();) {
+			SponDAO dao = SponDAO.getSponDAO();
+			member = dao.getMemberDetail(conn, memNo);
+		} catch (SQLException | NamingException e) {
+			System.out.println(e);
+		}
+		return member;
 	}
 	
 }

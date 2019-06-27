@@ -3,6 +3,8 @@ package com.bitcamp.dto;
 public class MemberDTO {
 	private int mno;
 	private String mid;
+	private String memail;
+	private String mtel;
 
 	public String getMid() {
 		return mid;
@@ -19,4 +21,22 @@ public class MemberDTO {
 	public void setMno(int mno) {
 		this.mno = mno;
 	}
+
+	public String getMemail() {
+		return memail;
+	}
+
+	public void setMemail(String memail) {
+		this.memail = memail;
+	}
+
+	public String getMtel() {
+		return mtel;
+	}
+
+	public void setMtel(String mtel) {
+		this.mtel = mtel;
+	}
+	
+	
 }

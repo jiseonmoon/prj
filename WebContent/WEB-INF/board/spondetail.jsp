@@ -92,11 +92,20 @@
 	#disabledInput{
 		width: 110px;
 	}
+	
+	#content1{
+		border: 1px solid;
+	}
+	
+	#content2{
+		border: 1px solid;
+	}
 </style>
 </head>
 <body>
 	<c:set var="path" value="${ requestScope.image }"></c:set> 
 	<c:set var="result" value="${ requestScope.result }"></c:set>
+	<c:set var="member" value="${ requestScope.member }"></c:set>
 	
 	<div class="center-block" style='width:100%;' id="main"> <!-- background:pink' -->
 		<p class="text-center">${ result.boardtag }</p><br> <!-- 글 태그 -->
@@ -149,7 +158,18 @@
   		<!-- Tab panes -->
 	  	<div class="tab-content">
 		    <div role="tabpanel" class="tab-pane active" id="home">
-		    	${ result.boardcontent } <!-- 글내용 -->
+		    	<!-- 글내용 -->
+		    	<div class="row">
+			    	<div class="col-md-8" id="content1">
+			    		${ result.boardcontent }
+		  			</div>
+		  			<div class="col-md-1"></div>
+			    	<div class="col-md-3" id="content2">
+			    		창작자: ${ member.mid }<br>
+			    		이메일: ${ member.memail }<br>
+			    		전화번호: ${ member.mtel }<br>
+			    	</div>
+		    	</div>
 		    </div>
 		    <div role="tabpanel" class="tab-pane" id="profile">
 		    	<form action="sponsubadd.do" method="post" id="frm"> <!-- 글번호랑 같이 넘겨줌 -->
