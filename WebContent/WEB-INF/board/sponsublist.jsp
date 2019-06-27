@@ -19,6 +19,9 @@
 </script>
 <body>
 	<c:set var="list" value="${ requestScope.list }"></c:set>
+	<c:set var="member" value="${ sessionScope.member }"></c:set>
+	
+	
 	<table class="table table-hover">
 		<c:if test="${ list == null || list.size() == 0 }">
 			<tr><td>댓글이 없습니다</td></tr>
@@ -27,7 +30,10 @@
 			<c:forEach var="i" items="${ list }">
 				<tr>
 					<td>${ i.subContent }</td><td>${ i.memberId }</td>
-					<td><input class="btn btn-default" type="button" value="삭제" onclick="del(${ i.subNo },${ i.sponNo })"></td>
+					<!-- 자신이 작성한 댓글만 삭제할 수 있게 -->
+					<c:if test="${ member.mid == i.memberId }">
+						<td><input class="btn btn-default" type="button" value="삭제" onclick="del(${ i.subNo },${ i.sponNo })"></td>
+					</c:if>
 				</tr>
 			</c:forEach>
 		</c:if>
