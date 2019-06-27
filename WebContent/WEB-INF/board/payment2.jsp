@@ -43,7 +43,8 @@ $(document).ready(function(){
 					msg += '결제 금액 : ' + rsp.paid_amount;
 					msg += '카드 승인번호 : ' + rsp.apply_num;
 					alert(msg);
-					location.href = "psuccess.do?boardno=<%=spondto.getBoardno()%>&amount=<%=amount%>";
+					location.href = "psuccess.do?boardno=<%=spondto.getBoardno()%>&amount=<%=amount%>
+	";
 																} else {
 																	var msg = '결제에 실패하였습니다.';
 																	msg += '에러내용 : '
@@ -55,34 +56,93 @@ $(document).ready(function(){
 										});
 					});
 </script>
+<style>
+#wrapper {
+	padding: 3%;
+	width: 50%;
+	margin: 0 auto;
+}
+
+.card.border-primary.mb-3 {
+	margin: 5%;
+}
+
+.card-body {
+	padding: 10%;
+}
+
+.amount, .btn.btn-primary.btn-lg {
+	display: inline-block;
+	margin: 0 auto;
+}
+
+.button {
+	padding: 5%; position : relative;
+	left: 70%;
+	position: relative;
+}
+</style>
 </head>
 <body>
-	<div>
+	<div id="wrapper">
 		<h1>결제 정보 확인</h1>
-		<h3>후원 정보</h3>
-		<c:out value="${spondto.boardno }"></c:out>
-		<br>
-		<c:out value="${spondto.boardtitle }"></c:out>
-		<br>
-		<c:out value="${spondto.boardcontent }"></c:out>
-		<br>
-		<c:out value="${spondto.boardtag }"></c:out>
-		<br>
-		<c:out value="${spondto.destmoney }"></c:out>
-		<br>
-		<c:out value="${spondto.finaldate }"></c:out>
-		<br>
-		<c:out value="${spondto.nowmoney }"></c:out>
-		<br>
-		<h3>배송지 정보</h3>
-		<c:out value="${deliverydto.name }"></c:out>
-		<br>
-		<c:out value="${deliverydto.tel }"></c:out>
-		<br>
-		<c:out value="${deliverydto.addr }"></c:out>
-		<br>
-		<button type="button" id="payment">결제하기</button>
-		<br>
+		<div class="card border-primary mb-3">
+			<div class="card-header">
+				<h3>후원 정보</h3>
+			</div>
+			<div class="card-body">
+				<table class="table table-hover">
+					<tbody>
+						<tr class="table-default">
+							<th scope="row">후원 이름</th>
+							<td><c:out value="${spondto.boardtitle }"></c:out></td>
+						</tr>
+						<tr class="table-primary">
+							<th scope="row">현재 모금액</th>
+							<td><c:out value="${spondto.nowmoney }"></c:out></td>
+						</tr>
+						<tr class="table-default">
+							<th scope="row">목표 금액</th>
+							<td><c:out value="${spondto.destmoney }"></c:out></td>
+						</tr>
+						<tr class="table-primary">
+							<th scope="row">마감일</th>
+							<td><c:out value="${spondto.finaldate }"></c:out></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="card border-primary mb-3">
+			<div class="card-header">
+				<h3>배송지 정보</h3>
+			</div>
+			<div class="card-body">
+				<table class="table table-hover">
+					<tbody>
+						<tr class="table-default">
+							<th scope="row">이름</th>
+							<td><c:out value="${deliverydto.name }"></c:out></td>
+						</tr>
+						<tr class="table-primary">
+							<th scope="row">연락처</th>
+							<td><c:out value="${deliverydto.tel }"></c:out></td>
+						</tr>
+						<tr class="table-default">
+							<th scope="row">배송 주소</th>
+							<td><c:out value="${deliverydto.addr }"></c:out></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="button">
+			<h3 class="amount">
+				<c:out value="${amount }"></c:out>
+				원
+			</h3>
+			<button type="button" id="payment" class="btn btn-primary btn-lg">결제하기</button>
+		</div>
 	</div>
 </body>
 </html>
