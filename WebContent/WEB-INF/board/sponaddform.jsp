@@ -411,6 +411,8 @@
 				          <div id="collapseTwo" class="panel-collapse collapse ">
 				            <div class="panel-body">
 				              <div class="form-group">
+				               	<span class="glyphicon glyphicon-leaf"></span><h4> 프로젝트 내용은 어떻게 보여지나요?</h4>
+				          		<img id="pimg" class="img-responsive" src="image/내용.jpg" alt="내용 이미지">
 				              	<label for="scontent">프로젝트 스토리</label>
 				              	<textarea id="scontent" class="form-control" name="scontent" rows="10" cols="100"></textarea>
 				              	<input type="button" class="btn btn-default" name="check2" id="check2" value="확인">
