@@ -66,7 +66,7 @@
 		padding: 5px 15px;
 		margin-top: 10px;
 	}
-	#pimg{
+	.pimg{
 		margin: 10px;
 		border: 1px double silver;
 		border-radius: 10px;
@@ -77,6 +77,9 @@
 	}
 	.glyphicon-leaf{
 		color: #81c147;
+	}
+	.glyphicon-asterisk{
+		color: red;
 	}
 </style>
 <script>
@@ -389,7 +392,7 @@
 				          <div id="collapseOne" class="panel-collaps show in">
 				            <div class="panel-body">
 				            <span class="glyphicon glyphicon-leaf"></span><h4> 프로젝트 제목은 어떻게 보여지나요?</h4>
-				            <img id="pimg" class="img-responsive" src="image/제목.jpg" alt="제목 이미지">
+				            <img class="pimg img-responsive" src="image/제목.jpg" alt="제목 이미지">
 				              <div class="form-group">
 				              	<label for="stitle">프로젝트 제목</label>
 				              	<input id="stitle" name="stitle" type="text" class="form-control" placeholder="프로젝트 명칭을 작성해주세요." required>
@@ -412,7 +415,7 @@
 				            <div class="panel-body">
 				              <div class="form-group">
 				               	<span class="glyphicon glyphicon-leaf"></span><h4> 프로젝트 내용은 어떻게 보여지나요?</h4>
-				          		<img id="pimg" class="img-responsive" src="image/내용.jpg" alt="내용 이미지">
+				          		<img class="pimg img-responsive" src="image/내용.jpg" alt="내용 이미지">
 				              	<label for="scontent">프로젝트 스토리</label>
 				              	<textarea id="scontent" class="form-control" name="scontent" rows="10" cols="100"></textarea>
 				              	<input type="button" class="btn btn-default" name="check2" id="check2" value="확인">
@@ -432,7 +435,10 @@
 				          </div>
 				          <div id="collapseThree" class="panel-collapse collapse">
 				            <div class="panel-body">
-				                <label for="tag"></label>
+				           		<span class="glyphicon glyphicon-leaf"></span><h4> 태그는 어떻게 사용되나요?</h4>
+				          		<img class="pimg img-responsive" src="image/태그.jpg" alt="내용 이미지">
+				          		<span class="glyphicon glyphicon-asterisk"></span><h4> 선택한 태그는 게시글의 검색에 사용됩니다!</h4>
+				                <label for="tag"></label><br><br>
 				                <select id="tag" name="tag">
 				                	<option value="">태그를 선택해주세요.</option>
 				                	<option value="게임">게임</option>

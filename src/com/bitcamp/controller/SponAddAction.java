@@ -26,20 +26,20 @@ public class SponAddAction implements Action {
 		//
 		ForwardAction act=new ForwardAction();
 		//멤버 처리
-		if(member != null && member.getMtier()!=1) {
+		
+		if(member == null) {
+			System.out.println("로그인 안됌");
+			act.setRedirect(false);
+			act.setPath("/WEB-INF/board/templete.jsp?page=memberLogin.jsp");
+		}else if(member.getMtier()!=1) {
+			System.out.println("후원가능자");
 			act.setRedirect(false);
 			act.setPath("/WEB-INF/board/templete.jsp?page=sponaddform.jsp");
 		}else if(member.getMtier()==1){
+			System.out.println("일반회원");
 			act.setRedirect(false);
 			act.setPath("/WEB-INF/board/sponwritecheck.jsp");
 		}
-		else {
-			//멤버가 널일 경우 로그인 폼으로 이동
-			act.setRedirect(false);
-			act.setPath("/WEB-INF/board/templete.jsp?page=memberLogin.jsp");
-		}
-		//
-		
 		
 		return act;
 	}
