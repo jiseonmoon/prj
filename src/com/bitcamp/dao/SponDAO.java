@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.bitcamp.dto.MemberDTO;
 import com.bitcamp.dto.PageDTO;
 import com.bitcamp.dto.SponDTO;
 import com.bitcamp.dto.SponSubDTO;
@@ -286,6 +287,37 @@ public class SponDAO {
 			if ( pstmt != null) try { pstmt.close(); } catch(SQLException e) {}
 		}
 		return result;
+	}
+	
+	// 펀딩글 작성한 멤버 정보 가져오기
+	public MemberDTO getMemberDetail(Connection conn, int memNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		MemberDTO member = new MemberDTO();
+		StringBuilder sql = new StringBuilder();
+		
+		sql.append(" select mid, memail, mtel ");
+		sql.append(" from Member ");
+		sql.append(" where mno = ? ");
+		
+		try {
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, memNo);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				member.setMid(rs.getString("mid"));
+				member.setMemail(rs.getString("memail"));
+				member.setMtel(rs.getString("mtel"));
+			}
+			
+		} catch(SQLException e) {
+			System.out.println(e);
+		} finally {
+			if ( rs != null) try { rs.close(); } catch(SQLException e) {}
+			if ( pstmt != null) try { pstmt.close(); } catch(SQLException e) {}
+		}
+		return member;
 	}
 	
 }

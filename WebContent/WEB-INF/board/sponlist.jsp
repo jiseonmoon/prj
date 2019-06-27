@@ -11,6 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="css/jquery.fancybox.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -43,12 +44,15 @@
 		padding:0;
 	}
 	.thumbnail{
-		height:300px; width:200px;
+		height:320px; width:200px;
 		margin-top:20px;
 		padding:0;
 		border: 0px transparent;
 		background-color: #f8f9fa;
-		box-shadow: 3px 3px 5px silver;
+		box-shadow: 5px 5px 10px buttonhighlight;
+	}
+	.thumbnail:hover{
+		box-shadow: 3px 3px 10px black;
 	}
 	.thumbnail > div{
 		background-color: white;
@@ -107,15 +111,36 @@
 	.glyphicon-usd{
 		color:green;
 	}
+	.glyphicon-floppy-save{
+		color:grey;
+	}
 	body{
 		background-color: rgba(250,239,220, 0.1);
 	}
 	.header h3{
 		font-weight: bolder;
 	}
+	@media (max-width:992px){
+		#boardwrite{
+			height: 35px;
+			margin-left:200px;
+		}
+	}
 	@media (max-width:767px){
 		.sponfilter h3{
 			font-size: 1.4em;
+		}
+		#downloadfile p{
+			display:none !important;
+		}
+		#boardwrite{
+			height: 35px;
+			margin-left:0px;
+		}
+	}
+	@media (max-width:576px){
+		#downloadfile{
+			display:none !important;
 		}
 	}
 	@media (max-width:445px){
@@ -224,13 +249,17 @@
 						</c:forEach>
 					</c:otherwise>	
 				</c:choose>
+			</div>
+		
+	<div class="row searchfield">
+		<div class="col-md-4 col-sm-1">
+			<a id="downloadfile" href="download.do?currpage=${pageinfo.currpage }&search=${search}&tag=${tag}&isFinish=${isFinish}"><span class="glyphicon glyphicon-floppy-save"></span><p style="display: inline">파일 목록 다운로드</p></a>
 		</div>
 		
-	<div class="row d-flex">
-		<div class="col-md-8 d-flex justify-content-end">
+		<div class="col-md-5 col-sm-7 d-flex justify-content-center">
 			<form class="form-inline" role="form" action="sponlist.do?tag=${tag}&isFinish=${isFinish}" method="post" id="frm">
 				<div class="form-group">
-					<label for="search" class="sr-only">검색</label>
+					<label for="search" class="sr-only"></label>
 					<input type="text" class="form-control" id="search" name="search" value="${search }" placeholder="입력해주세요">
 				</div>
 				<div class="form-group">
@@ -238,7 +267,9 @@
 				</div>
 			</form>
 		</div>
-		<div class="col-md-2 col-md-offset-2 d-flex justify-content-end"><a class="btn btn-success" href="sponadd.do">게시글 작성</a></div>
+		<div class="col-md-1 col-md-offset-2 col-sm-4 d-flex justify-content-center">
+			<a class="btn btn-success" id="boardwrite" href="sponadd.do">게시글 작성</a>
+		</div>
 	</div>
 	<div class="row d-flex justify-content-center">
 		<ul class="pagination">
@@ -258,9 +289,6 @@
 			</c:if>
 		</ul>
 	</div>
-	<div><a href="download.do?currpage=${pageinfo.currpage }&search=${search}&tag=${tag}&isFinish=${isFinish}">엑셀 파일 다운로드</a></div>
-	</div>
-	<hr>
-
+</div>
 </body>
 </html>

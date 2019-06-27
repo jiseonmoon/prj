@@ -1,11 +1,8 @@
 package com.bitcamp.controller;
 
-import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.net.URLEncoder;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -141,6 +138,12 @@ public class SponDownloadAction implements Action {
 				
 				servletOutputStream.close();
 				fileInputStream.close();
+				File dfile = new File(filePath);
+				if(dfile.exists()) {
+					dfile.delete();
+				}else {
+					System.out.println("파일 삭제 실패");
+				}
 			}else {
 				ForwardAction forward = new ForwardAction();
 			    forward.setRedirect(false);

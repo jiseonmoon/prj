@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 	<jsp:include page="header.jsp"></jsp:include>
 	<c:set var="page" value="${param.page }"></c:set>
 	<c:if test="${page!=null }">
