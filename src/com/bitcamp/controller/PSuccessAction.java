@@ -28,7 +28,7 @@ public class PSuccessAction implements Action {
 		// service.plusPmoney(memberdto.getMno(), amount);
 		ForwardAction forward = new ForwardAction();
 		forward.setRedirect(false);
-		forward.setPath("/WEB-INF/board/psuccess.jsp");
+		forward.setPath("/WEB-INF/board/templete.jsp?page=psuccess.jsp");
 		return forward;
 	}
 
