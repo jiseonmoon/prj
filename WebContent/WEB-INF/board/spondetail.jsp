@@ -89,21 +89,24 @@
 		}
 	}
 	
+	
 	@media (min-width: 768px) {
-		#del{
-			padding: 10px 100px;
+		#sub{
+			margin-top: 0px;
 			width: 60%;
 		}
 	}
 	
+	
 	#pay{
 		padding: 20px 100px;
 	}
-
-	#sub{
-		margin-top: 0px;
-		width: 60%;
+	
+	#del{
+		padding: 20px 100px;
 	}
+
+	
 	
 	#main{
 		padding-top: 20px;
@@ -157,7 +160,7 @@
 	  			<form action="spondel.do" method="post">
 	  				<input type="hidden" name="boardno" value="${ result.boardno }"> <!-- 글번호 -->
 	  				<input type="hidden" name="imagepath" value="${ result.imagepath }"> <!-- 이미지이름 -->
-	  				<button type="submit" class="btn btn-default" id="del">삭제</button>
+	  				<button type="submit" class="btn btn-danger" id="del">삭제하기</button>
 	  			</form>
 	  			
 	  			<br>
