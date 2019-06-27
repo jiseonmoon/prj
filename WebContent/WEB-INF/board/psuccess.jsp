@@ -7,7 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	success
-	<a href="sponlist.do">목록으로</a>
+	<div class="alert alert-dismissible alert-warning">
+		success <a href="sponlist.do">목록으로</a>
+	</div>
 </body>
 </html>
