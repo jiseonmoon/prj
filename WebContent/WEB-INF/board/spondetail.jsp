@@ -212,7 +212,7 @@
 			    	<div class="col-md-3" id="content2">
 
 			    		<p class="text-center">창작자: ${ writer.mid }</p><br>
-			    		<p class="text-center">이메일: ${ writer.email1 }@${member.email2 }</p><br>
+			    		<p class="text-center">이메일: ${ writer.email1 }@${ writer.email2 }</p><br>
 			    		<p class="text-center">전화번호: ${ writer.tel }</p><br>
 			    		
 			    	</div>
@@ -221,8 +221,15 @@
 		    <div role="tabpanel" class="tab-pane" id="profile">
 		    	<form action="sponsubadd.do" method="post" id="frm"> <!-- 글번호랑 같이 넘겨줌 -->
 		    		<input type="hidden" name="boardno" value="${ result.boardno }">
-					<textarea name="content" class="form-control" rows="3" maxlength="100"></textarea> <!-- 댓글내용 -->
-					<!-- 회원 번호를 세션에서 받아 넘겨주게 바꿔야됨 -->
+		    		<!-- 멤버 세션에 따라 텍스트창 확성화/비활성화 -->
+		    		<c:if test="${ member == null }">
+						<textarea name="content" class="form-control" rows="3" maxlength="100" disabled></textarea>
+					</c:if>
+					<c:if test="${ member != null }">
+						<textarea name="content" class="form-control" rows="3" maxlength="100"></textarea> <!-- 댓글내용 -->
+					</c:if>
+					
+					<!-- 회원 번호를 세션에서 받아 넘겨줌-->
 					<c:if test="${ member == null }">
 						<input id="disabledInput" type="text" placeholder="로그인 해주세요" disabled>
 					</c:if>
@@ -230,7 +237,15 @@
 						<input id="disabledInput" type="text" placeholder="${ member.mid }" disabled>
 					</c:if>
 					<input type="hidden" name="mno" value="${ member.mno }">
-					<input type="button" class="btn btn-info" value="댓글작성" onclick="formSubmit()"/>
+					
+					<!-- 멤버 세션에 따라 댓글작성 버튼 활성화/비활성화 -->
+					<c:if test="${ member == null }">
+						<input type="button" class="btn btn-info" value="댓글작성" onclick="formSubmit()" disabled/>
+					</c:if>
+					<c:if test="${ member != null }">
+						<input type="button" class="btn btn-info" value="댓글작성" onclick="formSubmit()"/>
+					</c:if>
+					
 					<input type="button" class="btn btn-info" value="새로고침" onclick="Submit()"/>
 				</form>
 				<div id="result"></div>
