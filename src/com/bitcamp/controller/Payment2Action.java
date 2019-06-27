@@ -34,7 +34,7 @@ public class Payment2Action implements Action {
 		request.setAttribute("spondto", spondto);
 		ForwardAction forward = new ForwardAction();
 		forward.setRedirect(false);
-		forward.setPath("/WEB-INF/board/payment2.jsp");
+		forward.setPath("/WEB-INF/board/templete.jsp?page=payment2.jsp");
 		return forward;
 	}
 

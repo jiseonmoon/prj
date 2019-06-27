@@ -17,7 +17,7 @@ public class PFailureAction implements Action {
 		// TODO Auto-generated method stub
 		ForwardAction forward = new ForwardAction();
 		forward.setRedirect(false);
-		forward.setPath("/WEB-INF/board/pfailure.jsp");
+		forward.setPath("/WEB-INF/board/templete.jsp?page=pfailure.jsp");
 		return forward;
 	}
 

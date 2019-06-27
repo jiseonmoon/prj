@@ -23,7 +23,7 @@ public class Payment1Action implements Action {
 		request.setAttribute("spondto", spondto);
 		ForwardAction forward = new ForwardAction();
 		forward.setRedirect(false);
-		forward.setPath("/WEB-INF/board/payment1.jsp");
+		forward.setPath("/WEB-INF/board/templete.jsp?page=payment1.jsp");
 		return forward;
 	}
 
