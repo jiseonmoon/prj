@@ -26,10 +26,14 @@ public class SponAddAction implements Action {
 		//
 		ForwardAction act=new ForwardAction();
 		//멤버 처리
-		if(member != null) {
+		if(member != null && member.getMtier()!=1) {
 			act.setRedirect(false);
 			act.setPath("/WEB-INF/board/templete.jsp?page=sponaddform.jsp");
-		}else {
+		}else if(member.getMtier()==1){
+			act.setRedirect(false);
+			act.setPath("/WEB-INF/board/sponwritecheck.jsp");
+		}
+		else {
 			//멤버가 널일 경우 로그인 폼으로 이동
 			act.setRedirect(false);
 			act.setPath("/WEB-INF/board/templete.jsp?page=memberLogin.jsp");
