@@ -203,8 +203,8 @@
 		  			<div class="col-md-1"></div>
 			    	<div class="col-md-3" id="content2">
 			    		<p class="text-center">창작자: ${ member.mid }</p><br>
-			    		<p class="text-center">이메일: ${ member.memail }</p><br>
-			    		<p class="text-center">전화번호: ${ member.mtel }</p><br>
+			    		<p class="text-center">이메일: ${ member.email1 }@${member.email2 }</p><br>
+			    		<p class="text-center">전화번호: ${ member.tel }</p><br>
 			    	</div>
 		    	</div>
 		    </div>

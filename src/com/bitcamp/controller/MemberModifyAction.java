@@ -10,32 +10,26 @@ import javax.servlet.http.HttpSession;
 import com.bitcamp.comm.Action;
 import com.bitcamp.comm.ForwardAction;
 import com.bitcamp.dto.MemberDTO;
+import com.bitcamp.service.SponService;
 
-public class SponAddAction implements Action {
+public class MemberModifyAction implements Action {
 
 	@Override
 	public ForwardAction execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.setCharacterEncoding("utf-8");
-		HttpSession session = request.getSession();
 		
-		//테스트 멤버 처리
-	
-		MemberDTO member = (MemberDTO)session.getAttribute("member");
-		//
 		ForwardAction act=new ForwardAction();
-		//멤버 처리
-		if(member != null) {
-			act.setRedirect(false);
-			act.setPath("/WEB-INF/board/templete.jsp?page=sponaddform.jsp");
-		}else {
-			//멤버가 널일 경우 로그인 폼으로 이동
-			act.setRedirect(false);
-			act.setPath("/WEB-INF/board/templete.jsp?page=memberLogin.jsp");
-		}
-		//
 		
+		HttpSession session=request.getSession();
+		String Mid=session.getAttribute("sessionID").toString();
+		
+		SponService service=SponService.getService();
+		MemberDTO dto=service.memberInfoService(Mid);
+		
+		request.setAttribute("memberInfo", dto);
+		
+		act.setRedirect(false);
+		act.setPath("/WEB-INF/board/memberModify.jsp");
 		
 		return act;
 	}
