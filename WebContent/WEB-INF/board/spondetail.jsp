@@ -65,7 +65,6 @@
 		    }
 	   });
 	};
-	
 </script>
 
 <head>
@@ -106,8 +105,6 @@
 		padding: 20px 100px;
 	}
 
-	
-	
 	#main{
 		padding-top: 20px;
 		padding-bottom: 60px;
@@ -125,7 +122,7 @@
 	
 	#content2{
 		margin-left: 15px;
-		padding-top: 10px;
+		padding-top: 20px;
 		border: 1px solid;
 	}
 </style>
@@ -133,9 +130,11 @@
 <body>
 	<c:set var="path" value="${ requestScope.image }"></c:set> 
 	<c:set var="result" value="${ requestScope.result }"></c:set>
-	<c:set var="member" value="${ requestScope.member }"></c:set>
+	<c:set var="writer" value="${ requestScope.writer }"></c:set>
 	<c:set var="dateResult" value="${ requestScope.dateResult }"></c:set>
-	<div class="center-block" style='width:100%;' id="main"> <!-- background:pink' -->
+	<c:set var="member" value="${ sessionScope.member }"></c:set> <!-- 세션 스코프 -->
+	
+	<div class="center-block" style='width:100%;' id="main">
 		<h1 class="text-center"><small><${ result.boardtag }> </small>${ result.boardtitle }</h1><br> <!-- 태그, 글제목 -->
 		<div class="row">
 			<div class="col-md-2">
@@ -165,22 +164,27 @@
 	  			
 	  			<br>
 	  			
-	  			<c:if test="${ dateResult == true }">
-		  			<!-- 글번호 넘겨주기 -->
-		  			<form action="payment1.do" method="post">
-		  				<input type="hidden" name="boardno" value="${ result.boardno }">
-		  				<button type="submit" class="btn btn-primary" id="pay">후원하기</button>
-		  			</form>
-	  			</c:if>
-	  			
-				<c:if test="${ dateResult == false }">
-		  			<!-- 글번호 넘겨주기 -->
-		  			<form action="payment1.do" method="post">
-		  				<input type="hidden" name="boardno" value="${ result.boardno }">
-		  				<button type="submit" class="btn btn-primary" id="pay" disabled="disabled">후원하기</button>
-		  			</form>
-	  			</c:if>
-	  			
+	  			<c:if test="${ member != null }">
+					<c:if test="${ dateResult == false }">
+				  		<button type="submit" class="btn btn-primary" id="pay" disabled="disabled">후원하기</button>
+			  		</c:if>
+			  		<c:if test="${ dateResult == true }">
+				  		<button type="submit" class="btn btn-primary" id="pay" disabled="disabled">후원하기</button>
+			  		</c:if>
+			  	</c:if>
+				
+				<c:if test="${ member != null }">
+					<c:if test="${ dateResult == true }">
+			  			<!-- 글번호 넘겨주기 -->
+			  			<form action="payment1.do" method="post">
+			  				<input type="hidden" name="boardno" value="${ result.boardno }">
+			  				<button type="submit" class="btn btn-primary" id="pay">후원하기</button>
+			  			</form>
+		  			</c:if>
+		  			<c:if test="${ dateResult == false }">
+			  			<button type="submit" class="btn btn-primary" id="pay" disabled="disabled">후원하기</button>
+		  			</c:if>
+				</c:if>
 	  		</div>
 		</div>
 	</div>
@@ -202,9 +206,9 @@
 		  			</div>
 		  			<div class="col-md-1"></div>
 			    	<div class="col-md-3" id="content2">
-			    		<p class="text-center">창작자: ${ member.mid }</p><br>
-			    		<p class="text-center">이메일: ${ member.memail }</p><br>
-			    		<p class="text-center">전화번호: ${ member.mtel }</p><br>
+			    		<p class="text-center">창작자: ${ writer.mid }</p><br>
+			    		<p class="text-center">이메일: ${ writer.memail }</p><br>
+			    		<p class="text-center">전화번호: ${ writer.mtel }</p><br>
 			    	</div>
 		    	</div>
 		    </div>

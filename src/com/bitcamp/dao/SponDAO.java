@@ -290,19 +290,19 @@ public class SponDAO {
 	}
 	
 	// 펀딩글 작성한 멤버 정보 가져오기
-	public MemberDTO getMemberDetail(Connection conn, int memNo) {
+	public MemberDTO getMemberDetail(Connection conn, int boardno) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		MemberDTO member = new MemberDTO();
 		StringBuilder sql = new StringBuilder();
 		
-		sql.append(" select mid, memail, mtel ");
-		sql.append(" from Member ");
-		sql.append(" where mno = ? ");
+		sql.append(" select m.mid, m.memail, m.mtel ");
+		sql.append(" from SponBoard s join Member m on s.mno = m.mno ");
+		sql.append(" where s.sno = ? ");
 		
 		try {
 			pstmt = conn.prepareStatement(sql.toString());
-			pstmt.setInt(1, memNo);
+			pstmt.setInt(1, boardno);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {

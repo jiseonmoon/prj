@@ -143,12 +143,12 @@ public class SponService {
 	}
 	
 	// 펀딩글 작성자 정보 가져오기
-	public MemberDTO getMemberDetail(int memNo) {
+	public MemberDTO getMemberDetail(int boardno) {
 		DBConn db = DBConn.getDB();
 		MemberDTO member = null;
 		try(Connection conn = db.getConnection();) {
 			SponDAO dao = SponDAO.getSponDAO();
-			member = dao.getMemberDetail(conn, memNo);
+			member = dao.getMemberDetail(conn, boardno);
 		} catch (SQLException | NamingException e) {
 			System.out.println(e);
 		}

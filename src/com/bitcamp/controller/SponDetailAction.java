@@ -26,9 +26,7 @@ public class SponDetailAction implements Action {
 		SponService service = SponService.getService();
 		SponDTO result = service.getDetail(boardno);
 		
-		int memNo = result.getWriterno();
-		MemberDTO member = service.getMemberDetail(memNo);
-		
+		MemberDTO writer = service.getMemberDetail(boardno);
 		
 		// true면 후원 활성, false이면 비활성되게
 		SimpleDateFormat df= new SimpleDateFormat("yyyy-MM-dd");
@@ -38,9 +36,6 @@ public class SponDetailAction implements Action {
 		String date1 = result.getFinaldate();
 		String date2 = today;
 		
-		System.out.println(date1);
-		System.out.println(date2);
-		
 		boolean dateResult = false;
 		
 		try{ 
@@ -48,16 +43,13 @@ public class SponDetailAction implements Action {
 			       
 			Date FirstDate = format.parse(date1);
 			Date SecondDate = format.parse(date2);
-			dateResult = FirstDate.getTime() >= SecondDate.getTime();
-			System.out.println(dateResult);
-			        
+			dateResult = FirstDate.getTime() >= SecondDate.getTime();	        
 		} catch(ParseException e) {
 			System.out.println(e);
 		}
 		
-		
 		request.setAttribute("result", result);
-		request.setAttribute("member", member);
+		request.setAttribute("writer", writer);
 		request.setAttribute("dateResult", dateResult);
 		ForwardAction forward = new ForwardAction();
 		forward.setRedirect(false);
