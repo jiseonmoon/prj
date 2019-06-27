@@ -24,6 +24,8 @@ public class SponAddResultAction implements Action {
 		request.setCharacterEncoding("utf-8");
 		
 		HttpSession session = request.getSession(false);
+		
+		//멤버 객체를 받아온다.
 		MemberDTO member = (MemberDTO)session.getAttribute("member");
 		
 		String realPath = request.getServletContext().getRealPath("/upload");
@@ -45,12 +47,18 @@ public class SponAddResultAction implements Action {
 		dto.setBoardcontent(scontent);
 		dto.setBoardtag(tag);
 		dto.setBoardtitle(stitle);
+		
+		//멤버 객체의 id를 가져온다.
 		dto.setBoardwriter(member.getMid());
+		
+		
 		dto.setDestmoney(destmoney);
 		dto.setFinaldate(finaldate);
 		dto.setImagepath(imgpath);
 		System.out.println(imgpath); 
 		dto.setMinmoney(minmoney);
+		
+		//멤버 객체의 번호를 가져온다.
 		dto.setWriterno(member.getMno());
 		
 		System.out.println("원 파일 이름: " + multi.getOriginalFileName("imgpath"));
