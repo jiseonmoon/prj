@@ -36,16 +36,17 @@ public class PaymentDAO {
 		return result;
 	}
 
-	public int plusPmoney(Connection conn, int mno, int money) throws SQLException {
+	public int insertPaymentInfo(Connection conn, int sno, int mno, int money) throws SQLException {
 		StringBuilder sql = new StringBuilder();
 		PreparedStatement pstmt = null;
 		int result = 0;
-		sql.append(" update PayInfo set Pmoney=Pmoney+? ");
-		sql.append(" where mno=? ");
+		sql.append(" insert into PayInfo values ( ");
+		sql.append(" ?,?,sysdate,?) ");
 		try {
 			pstmt = conn.prepareStatement(sql.toString());
-			pstmt.setInt(1, money);
+			pstmt.setInt(1, sno);
 			pstmt.setInt(2, mno);
+			pstmt.setInt(2, money);
 			result = pstmt.executeUpdate();
 		} finally {
 			if (pstmt != null) {
@@ -57,4 +58,5 @@ public class PaymentDAO {
 		}
 		return result;
 	}
+
 }
