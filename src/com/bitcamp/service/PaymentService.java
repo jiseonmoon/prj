@@ -18,6 +18,28 @@ public class PaymentService {
 		return instance;
 	}
 
+	public int plusMoney(int sno, int mno, int money) {
+		DBConn db = DBConn.getDB();
+		Connection conn = null;
+		int result = 0;
+		try {
+			conn = db.getConnection();
+			PaymentDAO dao = PaymentDAO.getInstance();
+			result = dao.plusNowmoney(conn, sno, money);
+			result = dao.plusPmoney(conn, mno, money);
+		} catch (NamingException | SQLException e) {
+			System.out.println(e);
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
+		return result;
+	}
+
 	public int plusNowmoney(int sno, int money) {
 		DBConn db = DBConn.getDB();
 		Connection conn = null;
@@ -46,7 +68,7 @@ public class PaymentService {
 		try {
 			conn = db.getConnection();
 			PaymentDAO dao = PaymentDAO.getInstance();
-			result = dao.plusNowmoney(conn, mno, money);
+			result = dao.plusPmoney(conn, mno, money);
 		} catch (NamingException | SQLException e) {
 			System.out.println(e);
 		} finally {

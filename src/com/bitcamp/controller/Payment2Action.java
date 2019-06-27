@@ -18,6 +18,7 @@ public class Payment2Action implements Action {
 	public ForwardAction execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		request.setCharacterEncoding("utf-8");
 		int amount = Integer.parseInt(request.getParameter("amount"));
 		String name = request.getParameter("name");
 		String tel = request.getParameter("tel");
