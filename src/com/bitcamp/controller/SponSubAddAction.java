@@ -20,7 +20,9 @@ public class SponSubAddAction implements Action {
 		request.setCharacterEncoding("utf-8");
 		String content = request.getParameter("content"); // 댓글내용
 		int boardno = Integer.parseInt(request.getParameter("boardno")); // 댓글을 작성할 글번호
-		int memberNo = 1; // 회원번호를 넘겨 받아야됨
+		int memberNo = Integer.parseInt(request.getParameter("mno")); // 댓글을 작성할 회원번호
+		
+		System.out.println(memberNo);
 		
 		SponSubDTO dto = new SponSubDTO();
 		dto.setSubContent(content);

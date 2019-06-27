@@ -65,7 +65,6 @@
 		    }
 	   });
 	};
-	
 </script>
 
 <head>
@@ -106,8 +105,6 @@
 		padding: 20px 100px;
 	}
 
-	
-	
 	#main{
 		padding-top: 20px;
 		padding-bottom: 60px;
@@ -125,7 +122,7 @@
 	
 	#content2{
 		margin-left: 15px;
-		padding-top: 10px;
+		padding-top: 20px;
 		border: 1px solid;
 	}
 </style>
@@ -133,9 +130,11 @@
 <body>
 	<c:set var="path" value="${ requestScope.image }"></c:set> 
 	<c:set var="result" value="${ requestScope.result }"></c:set>
-	<c:set var="member" value="${ requestScope.member }"></c:set>
+	<c:set var="writer" value="${ requestScope.writer }"></c:set>
 	<c:set var="dateResult" value="${ requestScope.dateResult }"></c:set>
-	<div class="center-block" style='width:100%;' id="main"> <!-- background:pink' -->
+	<c:set var="member" value="${ sessionScope.member }"></c:set> <!-- 세션 스코프 -->
+
+	<div class="center-block" style='width:100%;' id="main">
 		<h1 class="text-center"><small><${ result.boardtag }> </small>${ result.boardtitle }</h1><br> <!-- 태그, 글제목 -->
 		<div class="row">
 			<div class="col-md-2">
@@ -160,27 +159,36 @@
 	  			<form action="spondel.do" method="post">
 	  				<input type="hidden" name="boardno" value="${ result.boardno }"> <!-- 글번호 -->
 	  				<input type="hidden" name="imagepath" value="${ result.imagepath }"> <!-- 이미지이름 -->
+	  				<c:if test="${ member.mtier == 2 || member.mtier == 3 }">
 	  				<button type="submit" class="btn btn-danger" id="del">삭제하기</button>
+	  				</c:if>
 	  			</form>
 	  			
 	  			<br>
 	  			
-	  			<c:if test="${ dateResult == true }">
-		  			<!-- 글번호 넘겨주기 -->
-		  			<form action="payment1.do" method="post">
-		  				<input type="hidden" name="boardno" value="${ result.boardno }">
-		  				<button type="submit" class="btn btn-primary" id="pay">후원하기</button>
-		  			</form>
-	  			</c:if>
-	  			
-				<c:if test="${ dateResult == false }">
-		  			<!-- 글번호 넘겨주기 -->
-		  			<form action="payment1.do" method="post">
-		  				<input type="hidden" name="boardno" value="${ result.boardno }">
-		  				<button type="submit" class="btn btn-primary" id="pay" disabled="disabled">후원하기</button>
-		  			</form>
-	  			</c:if>
-	  			
+	  			<!-- 멤버 세션이 없으면 후원버튼 비활성화 -->
+	  			<c:if test="${ member == null }">
+					<c:if test="${ dateResult == false }">
+				  		<button type="submit" class="btn btn-primary" id="pay" disabled="disabled">후원하기</button>
+			  		</c:if>
+			  		<c:if test="${ dateResult == true }">
+				  		<button type="submit" class="btn btn-primary" id="pay" disabled="disabled">후원하기</button>
+			  		</c:if>
+			  	</c:if>
+				
+				<!-- 멤버 세션이 있으면 후원버튼 활성화 -->
+				<c:if test="${ member != null }">
+					<c:if test="${ dateResult == true }">
+			  			<!-- 글번호 넘겨주기 -->
+			  			<form action="payment1.do" method="post">
+			  				<input type="hidden" name="boardno" value="${ result.boardno }">
+			  				<button type="submit" class="btn btn-primary" id="pay">후원하기</button>
+			  			</form>
+		  			</c:if>
+		  			<c:if test="${ dateResult == false }">
+			  			<button type="submit" class="btn btn-primary" id="pay" disabled="disabled">후원하기</button>
+		  			</c:if>
+				</c:if>
 	  		</div>
 		</div>
 	</div>
@@ -202,9 +210,11 @@
 		  			</div>
 		  			<div class="col-md-1"></div>
 			    	<div class="col-md-3" id="content2">
-			    		<p class="text-center">창작자: ${ member.mid }</p><br>
-			    		<p class="text-center">이메일: ${ member.email1 }@${member.email2 }</p><br>
-			    		<p class="text-center">전화번호: ${ member.tel }</p><br>
+
+			    		<p class="text-center">창작자: ${ writer.mid }</p><br>
+			    		<p class="text-center">이메일: ${ writer.email1 }@${member.email2 }</p><br>
+			    		<p class="text-center">전화번호: ${ writer.tel }</p><br>
+			    		
 			    	</div>
 		    	</div>
 		    </div>
@@ -213,7 +223,13 @@
 		    		<input type="hidden" name="boardno" value="${ result.boardno }">
 					<textarea name="content" class="form-control" rows="3" maxlength="100"></textarea> <!-- 댓글내용 -->
 					<!-- 회원 번호를 세션에서 받아 넘겨주게 바꿔야됨 -->
-					<input id="disabledInput" type="text" placeholder="아이디" name="memberNo" disabled>
+					<c:if test="${ member == null }">
+						<input id="disabledInput" type="text" placeholder="로그인 해주세요" disabled>
+					</c:if>
+					<c:if test="${ member != null }">
+						<input id="disabledInput" type="text" placeholder="${ member.mid }" disabled>
+					</c:if>
+					<input type="hidden" name="mno" value="${ member.mno }">
 					<input type="button" class="btn btn-info" value="댓글작성" onclick="formSubmit()"/>
 					<input type="button" class="btn btn-info" value="새로고침" onclick="Submit()"/>
 				</form>
