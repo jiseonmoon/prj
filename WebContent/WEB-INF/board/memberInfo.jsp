@@ -43,7 +43,7 @@
 			}else if(val=="2"){
 				location.href="givefundlist.do";
 			}else if(val=="3"){
-				location.href="receivefundlist.do"";
+				location.href="receivefundlist.do";
 			}
 		}
 		
