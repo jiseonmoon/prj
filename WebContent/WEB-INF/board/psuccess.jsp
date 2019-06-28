@@ -24,12 +24,17 @@ h3, p {
 </head>
 <body>
 	<div id="wrapper">
+		<div class="progress">
+			<div class="progress-bar progress-bar-striped bg-success"
+				role="progressbar" style="width: 100%" aria-valuenow="100"
+				aria-valuemin="0" aria-valuemax="100"></div>
+		</div>
 		<div class="card border-success mb-3">
 			<img alt="success" src="image/checked.png">
 			<h3>후원이 완료되었습니다!</h3>
 			<p>
-				비트펀딩을 이용해 주셔서 감사합니다.<br>후원 내역은 사용자 정보 > 나의 후원 프로젝트에서 확인하실 수 있습니다.<br>
-				<a href="sponlist.do">목록으로</a>
+				비트펀딩을 이용해 주셔서 감사합니다.<br>후원 내역은 사용자 정보 > 나의 후원 프로젝트에서 확인하실 수
+				있습니다.<br> <a href="sponlist.do">목록으로</a>
 			</p>
 		</div>
 	</div>

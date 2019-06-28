@@ -85,6 +85,11 @@ $(document).ready(function(){
 </head>
 <body>
 	<div id="wrapper">
+		<div class="progress">
+			<div class="progress-bar progress-bar-striped progress-bar-animated"
+				role="progressbar" aria-valuenow="66.6" aria-valuemin="0"
+				aria-valuemax="100" style="width: 66.6%"></div>
+		</div>
 		<h1>결제 정보 확인</h1>
 		<div class="card border-primary mb-3">
 			<div class="card-header">
