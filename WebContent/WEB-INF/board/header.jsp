@@ -52,7 +52,7 @@
 	<div class="container-fluid header">
 		<nav>
 			<ul>
-				<li><a href="#">비트펀딩</a></li>
+				<li><a href="main.do">비트펀딩</a></li>
 				<li><a href="sponlist.do">후원하기</a></li>
 				<li><a href="#">공지사항</a></li>
 				<c:choose>

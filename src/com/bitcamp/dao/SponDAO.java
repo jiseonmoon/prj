@@ -322,5 +322,144 @@ public class SponDAO {
 		}
 		return member;
 	}
+	public List<SponDTO> getNewList(Connection conn, PageDTO pageinfo) throws SQLException{
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		StringBuilder sql = new StringBuilder();
+		ArrayList<SponDTO> list = new ArrayList<>();
+		sql.append(" select sno, e.mno, mid, Stitle, Scontent, imgpath, tag, destmoney, minmoney, finaldate, nowmoney, bankno ");
+		sql.append(" from SponBoard e inner join Member m on e.mno = m.mno ");
+		sql.append(" where finaldate > sysdate() ");
+		sql.append(" order by sno desc ");
+		sql.append(" limit ?, ? ");
+
+		try {
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, pageinfo.getStartrow()-1);
+			pstmt.setInt(2, pageinfo.getPagepercount());	
+			System.out.println(pageinfo.getPagepercount());
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				SponDTO dto = new SponDTO();
+				dto.setBoardno(rs.getInt("sno"));
+				dto.setWriterno(rs.getInt("mno"));
+				dto.setBoardwriter(rs.getString("mid"));
+				dto.setBoardtitle(rs.getString("Stitle"));
+				dto.setBoardcontent(rs.getString("Scontent"));
+				dto.setImagepath(rs.getString("imgpath"));
+				dto.setBoardtag(rs.getString("tag"));
+				dto.setDestmoney(rs.getInt("destmoney"));
+				dto.setMinmoney(rs.getInt("minmoney"));
+				dto.setFinaldate(rs.getDate("finaldate").toString());
+				dto.setNowmoney(rs.getInt("nowmoney"));
+				list.add(dto);
+			}
+		}finally {
+			if(pstmt!=null) {
+				try {
+					pstmt.close();
+				}catch(SQLException e) {}
+			}
+			if(rs!=null) {
+				try {
+					rs.close();
+				}catch(SQLException e) {}
+			}
+		}
+		return list;
+	}
+	public List<SponDTO> getNowList(Connection conn, PageDTO pageinfo) throws SQLException{
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		StringBuilder sql = new StringBuilder();
+		ArrayList<SponDTO> list = new ArrayList<>();
+		sql.append(" select sno, e.mno, mid, Stitle, Scontent, imgpath, tag, destmoney, minmoney, finaldate, nowmoney, bankno ");
+		sql.append(" from SponBoard e inner join Member m on e.mno = m.mno ");
+		sql.append(" where finaldate > sysdate() ");
+		sql.append(" order by nowmoney desc ");
+		sql.append(" limit ?, ? ");
+
+		try {
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, pageinfo.getStartrow()-1);
+			pstmt.setInt(2, pageinfo.getPagepercount());			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				SponDTO dto = new SponDTO();
+				dto.setBoardno(rs.getInt("sno"));
+				dto.setWriterno(rs.getInt("mno"));
+				dto.setBoardwriter(rs.getString("mid"));
+				dto.setBoardtitle(rs.getString("Stitle"));
+				dto.setBoardcontent(rs.getString("Scontent"));
+				dto.setImagepath(rs.getString("imgpath"));
+				dto.setBoardtag(rs.getString("tag"));
+				dto.setDestmoney(rs.getInt("destmoney"));
+				dto.setMinmoney(rs.getInt("minmoney"));
+				dto.setFinaldate(rs.getDate("finaldate").toString());
+				dto.setNowmoney(rs.getInt("nowmoney"));
+				list.add(dto);
+			}
+		}finally {
+			if(pstmt!=null) {
+				try {
+					pstmt.close();
+				}catch(SQLException e) {}
+			}
+			if(rs!=null) {
+				try {
+					rs.close();
+				}catch(SQLException e) {}
+			}
+		}
+		return list;
+	}
+	public List<SponDTO> getFinalList(Connection conn, PageDTO pageinfo) throws SQLException{
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		StringBuilder sql = new StringBuilder();
+		ArrayList<SponDTO> list = new ArrayList<>();
+		sql.append(" select sno, e.mno, mid, Stitle, Scontent, imgpath, tag, destmoney, minmoney, finaldate, nowmoney, bankno ");
+		sql.append(" from SponBoard e inner join Member m on e.mno = m.mno ");
+		sql.append(" where finaldate > sysdate() ");
+		sql.append(" order by finaldate ");
+		sql.append(" limit ?, ? ");
+
+		try {
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, pageinfo.getStartrow()-1);
+			pstmt.setInt(2, pageinfo.getPagepercount());			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				SponDTO dto = new SponDTO();
+				dto.setBoardno(rs.getInt("sno"));
+				dto.setWriterno(rs.getInt("mno"));
+				dto.setBoardwriter(rs.getString("mid"));
+				dto.setBoardtitle(rs.getString("Stitle"));
+				dto.setBoardcontent(rs.getString("Scontent"));
+				dto.setImagepath(rs.getString("imgpath"));
+				dto.setBoardtag(rs.getString("tag"));
+				dto.setDestmoney(rs.getInt("destmoney"));
+				dto.setMinmoney(rs.getInt("minmoney"));
+				dto.setFinaldate(rs.getDate("finaldate").toString());
+				dto.setNowmoney(rs.getInt("nowmoney"));
+				list.add(dto);
+			}
+		}finally {
+			if(pstmt!=null) {
+				try {
+					pstmt.close();
+				}catch(SQLException e) {}
+			}
+			if(rs!=null) {
+				try {
+					rs.close();
+				}catch(SQLException e) {}
+			}
+		}
+		return list;
+	}
 	
 }

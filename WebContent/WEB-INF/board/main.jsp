@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,8 +15,20 @@
 		$('.carousel').carousel();
 	})
 </script>
+<style>
+	.mainlist div div{
+		border-right: 1px dotted silver;
+		padding:20px;
+	}
+	.mainlist h5{
+		font-weight: bolder;
+	}
+</style>
 </head>
-<body>
+<body style="background-color: #f8f9fa;">
+	<c:set var="list1" value="${requestScope.list1}"></c:set>
+	<c:set var="list2" value="${requestScope.list2}"></c:set>
+	<c:set var="list3" value="${requestScope.list3}"></c:set>
 	<div id="carousel-generic" class="carousel slide">
        <ol class="carousel-indicators">
          <li data-target="#carousel-generic" data-slide-to="0" class="active"></li>
@@ -47,6 +60,38 @@
         <a class="right carousel-control" href="#carousel-generic" data-slide="next">
           <span class="icon-next"></span>
         </a>
+      </div>
+      
+      <div class="container mainlist">
+      	<div class="row">
+      		<div class="col-md-4 col-sm-6 col-xs-12">
+      			<h5> 최신 후원 게시글</h5>
+      			<hr>
+      			<ul class="datalist">
+      				<c:forEach var="board" items="${list1 }" >
+      					<li><a href="spondetail.do?no=${board.boardno }">${board.boardtitle }</a></li>
+      				</c:forEach>
+      			</ul>
+      		</div>
+      		<div class="col-md-4 col-sm-6 col-xs-12">
+      			<h5> 가장 후원액이 많은 게시글</h5>
+      			<hr>
+      			<ul class="datalist">
+      				<c:forEach var="board" items="${list2 }">
+      					<li><a href="spondetail.do?no=${board.boardno }">${board.boardtitle }</a></li>
+      				</c:forEach>
+      			</ul>
+      		</div>
+      		<div class="col-md-4 col-sm-6 col-xs-12">
+      			<h5> 마감 임박 게시글</h5>
+      			<hr>
+      			<ul class="datalist">
+      				<c:forEach var="board" items="${list3 }">
+      					<li><a href="spondetail.do?no=${board.boardno }">${board.boardtitle }</a></li>
+      				</c:forEach>
+      			</ul>
+      		</div>
+      	</div>
       </div>
 </body>
 </html>

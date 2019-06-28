@@ -390,5 +390,41 @@ public void adminModifyService(String Mid, int Mtier) {
 		
 	}	
 }
+public List<SponDTO> getListNewService(PageDTO pageinfo) {
+	// TODO Auto-generated method stub
+	DBConn db = DBConn.getDB();
+	List<SponDTO> result = null;
+	try(Connection conn = db.getConnection();){
+		SponDAO dao = SponDAO.getSponDAO();
+		result = dao.getNewList(conn, pageinfo);
+	}catch(SQLException | NamingException e) {
+		System.out.println(e);
+	}
+	return result;
+}
+public List<SponDTO> getListNowService(PageDTO pageinfo) {
+	// TODO Auto-generated method stub
+	DBConn db = DBConn.getDB();
+	List<SponDTO> result = null;
+	try(Connection conn = db.getConnection();){
+		SponDAO dao = SponDAO.getSponDAO();
+		result = dao.getNowList(conn, pageinfo);
+	}catch(SQLException | NamingException e) {
+		System.out.println(e);
+	}
+	return result;
+}
+public List<SponDTO> getListFinalService(PageDTO pageinfo) {
+	// TODO Auto-generated method stub
+	DBConn db = DBConn.getDB();
+	List<SponDTO> result = null;
+	try(Connection conn = db.getConnection();){
+		SponDAO dao = SponDAO.getSponDAO();
+		result = dao.getFinalList(conn, pageinfo);
+	}catch(SQLException | NamingException e) {
+		System.out.println(e);
+	}
+	return result;
+}
 	
 }
