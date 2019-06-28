@@ -49,7 +49,7 @@ $(document).ready(function(){
 																	msg += '에러내용 : '
 																			+ rsp.error_msg;
 																	alert(msg);
-																	location.href = "pfailure.do"
+																	location.href = "pfailure.do?boardno=<%=spondto.getBoardno()%>"
 																}
 															});
 										});
