@@ -2,7 +2,7 @@ package com.bitcamp.dto;
 
 import java.util.Date;
 
-public class MySponDTO {
+public class GiveFundDTO {
 	private int Sno;
 	private String Stitle;
 	private String Scontent;

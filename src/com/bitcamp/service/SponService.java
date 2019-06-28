@@ -11,8 +11,9 @@ import com.bitcamp.comm.DBConn;
 import com.bitcamp.dao.MemberDAO;
 import com.bitcamp.dao.SponDAO;
 import com.bitcamp.dto.MemberDTO;
-import com.bitcamp.dto.MySponDTO;
+import com.bitcamp.dto.GiveFundDTO;
 import com.bitcamp.dto.PageDTO;
+import com.bitcamp.dto.ReceiveFundDTO;
 import com.bitcamp.dto.SponDTO;
 import com.bitcamp.dto.SponSubDTO;
 
@@ -394,9 +395,9 @@ public void adminModifyService(String Mid, int Mtier) {
 }
 
 
-public ArrayList<MySponDTO> giveFundListService(int Mno) {
+public ArrayList<GiveFundDTO> giveFundListService(int Mno) {
 	Connection conn=null;
-	ArrayList<MySponDTO> arr=null;
+	ArrayList<GiveFundDTO> arr=null;
 	try {
 		conn=DBConn.getDB().getConnection();
 		conn.setAutoCommit(false);
@@ -418,6 +419,33 @@ public ArrayList<MySponDTO> giveFundListService(int Mno) {
 	
 	return arr;
 }
+
+public ArrayList<ReceiveFundDTO> receiveFundListService(int Mno) {
+	Connection conn=null;
+	ArrayList<ReceiveFundDTO> arr=null;
+	try {
+		conn=DBConn.getDB().getConnection();
+		conn.setAutoCommit(false);
+		MemberDAO dao=new MemberDAO();
+		arr=dao.receiveFundList(conn, Mno);
+	}catch(SQLException|NamingException e)
+	{
+		System.out.println(e);
+	   try{ conn.rollback();} catch(SQLException e1){}
+	}catch(RuntimeException e)
+	{
+		System.out.println(e);
+		try{ conn.rollback();} catch(SQLException e1){}
+	}
+	finally{
+		if(conn!=null)  try{ conn.close();} catch(SQLException e){}
+		
+	}
+	
+	return arr;
+}
+
+
 public List<SponDTO> getListNewService(PageDTO pageinfo) {
 	// TODO Auto-generated method stub
 	DBConn db = DBConn.getDB();
@@ -455,5 +483,6 @@ public List<SponDTO> getListFinalService(PageDTO pageinfo) {
 	return result;
 
 }
+
 	
 }

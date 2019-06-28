@@ -41,7 +41,9 @@
 			}else if(val == "1"){
 				location.href="delete.do";
 			}else if(val=="2"){
-				location.href='givefundlist.do?Mno="+dto.getMno()+"';
+				location.href="givefundlist.do";
+			}else if(val=="3"){
+				location.href="receivefundlist.do";
 			}
 		}
 		
@@ -115,7 +117,8 @@
  		<input type="button" value="메인으로" onclick="changeForm(-1)">
  		<input type="button" value="회원정보 변경" onclick="changeForm(0)">
  		<input type="button" value="회원 탈퇴" onclick="changeForm(1)">
- 		<input type="button" value="후원 정보" onclick="changeForm(2)">
+ 		<br><br>
+ 		<input type="button" value="나의 후원 프로젝트" onclick="changeForm(2)"><input type="button" value="나의 게시 프로젝트" onclick="changeForm(3)">
  	</center>
 </body>
 </html>

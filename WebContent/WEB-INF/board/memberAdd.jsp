@@ -25,9 +25,9 @@
 			text-align: center;
 		}
 		
-		div{
+		#d{
 			margin-top: 5px;
-			margin-left: 210px;
+			margin-left: 720px;
 		}
 	</style>
 	
@@ -171,7 +171,7 @@
     			</td>
  			</tr>
  		</table>
- 		<div><b><font color="red" size="2">* 필수 입력 항목</font></b></div>
+ 		<div id="d"><b><font color="red" size="2">* 필수 입력 항목</font></b></div>
  		<br>
  		<center>
  			<input type="submit" value="가입">

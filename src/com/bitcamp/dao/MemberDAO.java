@@ -7,7 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.bitcamp.dto.MemberDTO;
-import com.bitcamp.dto.MySponDTO;
+import com.bitcamp.dto.ReceiveFundDTO;
+import com.bitcamp.dto.GiveFundDTO;
 
 public class MemberDAO {
 	private void  pstmtClose(PreparedStatement pstmt){
@@ -304,8 +305,8 @@ public class MemberDAO {
 		
 	}
 	
-	public ArrayList<MySponDTO> giveFundList(Connection conn, int Mno) {
-		ArrayList<MySponDTO> arr=new ArrayList<>();
+	public ArrayList<GiveFundDTO> giveFundList(Connection conn, int Mno) {
+		ArrayList<GiveFundDTO> arr=new ArrayList<>();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		
@@ -322,12 +323,51 @@ public class MemberDAO {
 			rs=pstmt.executeQuery();
 			
 			while(rs.next()) {
-				MySponDTO dto=new MySponDTO();
+				GiveFundDTO dto=new GiveFundDTO();
 				dto.setSno(rs.getInt("Sno"));
 				dto.setStitle(rs.getString("Stitle"));
 				dto.setScontent(rs.getString("Scontent"));
 				dto.setPdate(rs.getDate("Pdate"));
 				dto.setPmoney(rs.getInt("Pmoney"));
+				arr.add(dto);
+			}
+		}catch(SQLException e){
+	 		   System.out.println(e);
+	 		   throw new RuntimeException();
+			}finally{
+	 		   pstmtClose(pstmt);
+	 		   rsClose(rs);
+			}
+		
+		return arr;
+	}
+	
+	public ArrayList<ReceiveFundDTO> receiveFundList(Connection conn, int Mno) {
+		ArrayList<ReceiveFundDTO> arr=new ArrayList<>();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		StringBuilder sql = new StringBuilder();
+	
+		sql.append(" select Sno, Stitle, Scontent, destmoney, minmoney, finaldate, nowmoney ");
+		sql.append(" from SponBoard                                                         ");
+		sql.append(" where Mno=?                                                            ");
+		sql.append(" order by Sno                                         ");
+		
+		try {
+			pstmt=conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, Mno);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				ReceiveFundDTO dto=new ReceiveFundDTO();
+				dto.setSno(rs.getInt("Sno"));
+				dto.setStitle(rs.getString("Stitle"));
+				dto.setScontent(rs.getString("Scontent"));
+				dto.setDestmoney(rs.getInt("destmoney"));
+				dto.setMinmoney(rs.getInt("minmoney"));
+				dto.setFinaldate(rs.getDate("finaldate"));
+				dto.setNowmoney(rs.getInt("nowmoney"));
 				arr.add(dto);
 			}
 		}catch(SQLException e){

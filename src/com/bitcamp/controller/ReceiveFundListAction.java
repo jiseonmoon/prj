@@ -10,16 +10,16 @@ import javax.servlet.http.HttpSession;
 
 import com.bitcamp.comm.Action;
 import com.bitcamp.comm.ForwardAction;
-import com.bitcamp.dto.MemberDTO;
-import com.bitcamp.service.SponService;
 import com.bitcamp.dto.GiveFundDTO;
+import com.bitcamp.dto.MemberDTO;
+import com.bitcamp.dto.ReceiveFundDTO;
+import com.bitcamp.service.SponService;
 
-public class GiveFundListAction implements Action{
+public class ReceiveFundListAction implements Action{
 
 	@Override
 	public ForwardAction execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
 		ForwardAction act=new ForwardAction();
 		HttpSession session=request.getSession();
 		
@@ -28,15 +28,14 @@ public class GiveFundListAction implements Action{
 		
 		SponService service=SponService.getService();
 		
-		ArrayList<GiveFundDTO> givefundlist=service.giveFundListService(Mno);
+		ArrayList<ReceiveFundDTO> receivefundlist=service.receiveFundListService(Mno);
 		
-		request.setAttribute("givefundlist", givefundlist);
+		request.setAttribute("receivefundlist", receivefundlist);
 		
 		act.setRedirect(false);
-		act.setPath("/WEB-INF/board/givefundlist.jsp");
+		act.setPath("/WEB-INF/board/receivefundlist.jsp");
 		
 		return act;
-		
 	}
 
 }
