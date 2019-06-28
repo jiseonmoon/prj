@@ -1,12 +1,12 @@
-<%@page import="com.bitcamp.dto.GiveFundDTO"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="com.bitcamp.dto.ReceiveFundDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>    
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>후원 프로젝트 리스트</title>
+<title>게시 프로젝트 리스트</title>
 <style type="text/css">
 		table{
 			margin-left:auto; 
@@ -37,8 +37,8 @@
 	</script>
 </head>
 <body>
-	<br><br>
-	<p><b><font size="6" color="gray">나의 후원정보</font></b><p>
+<br><br>
+	<p><b><font size="6" color="gray">나의 게시 프로젝트</font></b><p>
 	<br><br>
 	
 	<table>
@@ -46,12 +46,14 @@
 			<td id=title>프로젝트 번호</td>
 			<td id=title>프로젝트명</td>
 			<td id=title>프로젝트 내용</td>
-			<td id=title>결제일</td>
-			<td id=title>결제금액</td>
+			<td id=title>목표금액</td>
+			<td id=title>최소후원금액</td>
+			<td id=title>마감일</td>
+			<td id=title>모금액</td>
 		</tr>
 		
 	<%
-				ArrayList<GiveFundDTO> arr=(ArrayList<GiveFundDTO>)request.getAttribute("givefundlist");
+				ArrayList<ReceiveFundDTO> arr=(ArrayList<ReceiveFundDTO>)request.getAttribute("givefundlist");
 					if(arr==null||arr.size()==0)
 					{
 			%>
@@ -59,7 +61,7 @@
 		<%
 			}else{
 			for(int i=0; i<arr.size(); i++){
-				GiveFundDTO dto=arr.get(i);
+				ReceiveFundDTO dto=arr.get(i);
 		%>
 				
 				
@@ -67,8 +69,10 @@
 					<td><%=dto.getSno() %></td>
 					<td><%=dto.getStitle() %></td>
 					<td><%=dto.getScontent() %></td>
-					<td><%=dto.getPdate() %></td>
-					<td><%=dto.getPmoney() %>
+					<td><%=dto.getDestmoney() %></td>
+					<td><%=dto.getMinmoney() %></td>
+					<td><%=dto.getFinaldate() %></td>
+					<td><%=dto.getNowmoney() %></td>
 				</tr>
 				<%
 			}
