@@ -87,10 +87,17 @@
 			width: 100%;
 		}
 		
+		#content1{
+			box-sizing: border-box;
+			padding: 35px 100px;
+			margin-top: -10px;
+			background-color: #FFFCFC;
+		}
+		
 		#content2{
-			margin-top: -20px;
-			padding-top: 30px;
-			padding-bottom: 30px;
+			margin-top: -40px;
+			padding-top: 20px;
+			padding-bottom: 20px;
 			background-color: #F6EAEA;
 		}
 		
@@ -103,14 +110,25 @@
 			width: 60%;
 		}
 		
-		#content2{
-			margin-top: 10px;
-			padding-top: 30px;
-			padding-bottom: 30px;
-			background-color: #F6EAEA;
-			
+		#content1{
+			box-sizing: border-box;
+			box-shadow: 5px 5px silver;
+			margin-top: -10px;
+			padding: 35px 100px;
+			background-color: #FFFCFC;
 		}
 		
+		#content2{
+			padding-top: 10px;
+			padding-bottom: 20px;
+			background-color: #FEB6B6;
+			box-shadow: 5px 5px silver;
+		}
+		
+	}
+	
+	#bg{
+		background-color: #EEEEEE;
 	}
 	
 	#pay{
@@ -131,9 +149,18 @@
 		width: 110px;
 	}
 	
+	#imagepath{
+		border: 1px double;
+		border-radius: 5px;
+	}
+	
+	.tr{
+		background-color: white;
+	}
+
 </style>
 </head>
-<body>
+<body id="bg">
 	<c:set var="path" value="${ requestScope.image }"></c:set> 
 	<c:set var="result" value="${ requestScope.result }"></c:set>
 	<c:set var="writer" value="${ requestScope.writer }"></c:set>
@@ -146,7 +173,7 @@
 			<div class="col-md-2">
 	  		</div>
 	  		<div class="col-md-5">
-	  			<img class="img-responsive" src="upload/${ result.imagepath }" alt="img"> <!-- 이미지 -->
+	  			<img class="img-responsive" id="imagepath" src="upload/${ result.imagepath }" alt="img"> <!-- 이미지 -->
 	  		</div>
 	  		<div class="col-md-5">
 	  			<br>
@@ -209,18 +236,19 @@
 		    <div role="tabpanel" class="tab-pane active" id="home">
 		    	
 		    	<div class="row">
-			    	<div class="col-md-9" id="content1">
+			    	<div class="col-md-9">
 			    		<p></p>
 						<!-- 글내용 -->
-			    		<div class="jumbotron">
-							<h2>${ result.boardtitle }</h2>
+			    		<div class="jumbotron" id="content1">
+							<h2><em>${ result.boardtitle }</em></h2>
   							<p>${ result.boardcontent }</p>
   							<p><a class="btn btn-primary btn-lg" href="#" role="button">상단으로</a></p>
 						</div>
 		  			</div>
 		  			<div class="col-md-3">
 		  				<div id="content2">
-		  					<h3 class="text-center"><ins>창작자정보</ins></h3><br>
+		  					<h3 class="text-center">창작자정보</h3><br>
+		  					<hr/>
 						    <p class="text-center"><span class="glyphicon glyphicon-user">${ writer.mid }</span></p> <!-- 창작자 -->
 						    <p class="text-center"><span class="glyphicon glyphicon-envelope">${ writer.email1 }@${ writer.email2 }</span></p> <!-- 이메일 -->
 						    <p class="text-center"><span class="glyphicon glyphicon-earphone">${ writer.tel }</span></p> <!-- 전화번호 -->
@@ -262,6 +290,7 @@
 				<div id="result"></div>
 		    </div>
   		</div>
+
 	</div>
 	<%-- 
 	회원번호: ${ result.writerno }<br>
