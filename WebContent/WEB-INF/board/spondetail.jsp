@@ -86,6 +86,14 @@
 			margin-top: 0px;
 			width: 100%;
 		}
+		
+		#content2{
+			margin-top: -20px;
+			padding-top: 30px;
+			padding-bottom: 30px;
+			background-color: #F6EAEA;
+		}
+		
 	}
 	
 	
@@ -94,8 +102,16 @@
 			margin-top: 0px;
 			width: 60%;
 		}
+		
+		#content2{
+			margin-top: 10px;
+			padding-top: 30px;
+			padding-bottom: 30px;
+			background-color: #F6EAEA;
+			
+		}
+		
 	}
-	
 	
 	#pay{
 		padding: 20px 100px;
@@ -115,16 +131,6 @@
 		width: 110px;
 	}
 	
-	#content1{
-		margin-left: 15px;
-		border: 1px solid;
-	}
-	
-	#content2{
-		margin-left: 15px;
-		padding-top: 20px;
-		border: 1px solid;
-	}
 </style>
 </head>
 <body>
@@ -133,7 +139,7 @@
 	<c:set var="writer" value="${ requestScope.writer }"></c:set>
 	<c:set var="dateResult" value="${ requestScope.dateResult }"></c:set>
 	<c:set var="member" value="${ sessionScope.member }"></c:set> <!-- 세션 스코프 -->
-
+	
 	<div class="center-block" style='width:100%;' id="main">
 		<h1 class="text-center"><small><${ result.boardtag }> </small>${ result.boardtitle }</h1><br> <!-- 태그, 글제목 -->
 		<div class="row">
@@ -144,7 +150,7 @@
 	  		</div>
 	  		<div class="col-md-5">
 	  			<br>
-	  			<p>현재모금역</p>
+	  			<p>현재모금액</p>
 	  			<h2>${ result.nowmoney }만원</h2><br><br> <!-- 현재모금액 -->
 	  			
 	  			<p>마감일</p>
@@ -168,7 +174,10 @@
 	  			
 	  			<!-- 멤버 세션이 없으면 후원버튼 비활성화 -->
 	  			<c:if test="${ member == null }">
-				  		<button type="submit" class="btn btn-primary" id="pay" disabled="disabled">후원하기</button>
+	  				<br>
+	  				<br>
+	  				<br>
+				  	<button type="submit" class="btn btn-primary" id="pay" disabled="disabled">후원하기</button>
 			  	</c:if>
 				
 				<!-- 멤버 세션이 있으면 후원버튼 활성화 -->
@@ -198,20 +207,27 @@
   		<!-- Tab panes -->
 	  	<div class="tab-content">
 		    <div role="tabpanel" class="tab-pane active" id="home">
-		    	<!-- 글내용 -->
+		    	
 		    	<div class="row">
-			    	<div class="col-md-7" id="content1">
-			    		<p class="text-left">${ result.boardcontent }</p>
+			    	<div class="col-md-9" id="content1">
+			    		<p></p>
+						<!-- 글내용 -->
+			    		<div class="jumbotron">
+							<h2>${ result.boardtitle }</h2>
+  							<p>${ result.boardcontent }</p>
+  							<p><a class="btn btn-primary btn-lg" href="#" role="button">상단으로</a></p>
+						</div>
 		  			</div>
-		  			<div class="col-md-1"></div>
-			    	<div class="col-md-3" id="content2">
-
-			    		<p class="text-center">창작자: ${ writer.mid }</p><br>
-			    		<p class="text-center">이메일: ${ writer.email1 }@${ writer.email2 }</p><br>
-			    		<p class="text-center">전화번호: ${ writer.tel }</p><br>
-			    		
+		  			<div class="col-md-3">
+		  				<div id="content2">
+		  					<h3 class="text-center"><ins>창작자정보</ins></h3><br>
+						    <p class="text-center"><span class="glyphicon glyphicon-user">${ writer.mid }</span></p> <!-- 창작자 -->
+						    <p class="text-center"><span class="glyphicon glyphicon-envelope">${ writer.email1 }@${ writer.email2 }</span></p> <!-- 이메일 -->
+						    <p class="text-center"><span class="glyphicon glyphicon-earphone">${ writer.tel }</span></p> <!-- 전화번호 -->
+					    </div>
 			    	</div>
 		    	</div>
+		    	
 		    </div>
 		    <div role="tabpanel" class="tab-pane" id="profile">
 		    	<form action="sponsubadd.do" method="post" id="frm"> <!-- 글번호랑 같이 넘겨줌 -->

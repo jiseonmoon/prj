@@ -21,7 +21,6 @@
 	<c:set var="list" value="${ requestScope.list }"></c:set>
 	<c:set var="member" value="${ sessionScope.member }"></c:set>
 	
-	
 	<table class="table table-hover">
 		<c:if test="${ list == null || list.size() == 0 }">
 			<tr><td>댓글이 없습니다</td></tr>

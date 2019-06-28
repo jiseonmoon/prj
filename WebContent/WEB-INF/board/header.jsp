@@ -5,6 +5,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Document</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -17,11 +18,13 @@
 		background-color: rgba(243,242,240,0.7);
 		text-align: center;
 		margin-bottom:0;
+		padding:0;
 	}
 	.header nav ul li{
 		font-size:18px;
+		margin-left:20px;
+		margin-right:20px;
 		display: inline-block;
-		margin-left: 50px;
 		padding: 10px;
 	}
 	.header nav ul li:hover{
@@ -44,6 +47,23 @@
 	.header{
 		padding:0 !important;
 	}
+	.mb{
+		display:none !important;
+	}
+	@media (max-width:759px){
+		.mb{
+			display: inline !important;
+		}
+		.pc{
+			display: none !important;
+		}
+	}
+	@media (max-width:407px){
+		.header nav ul li{
+			margin-left:10px;
+			margin-right:10px;
+		}
+	}
 </style>
 </head>
 
@@ -52,24 +72,34 @@
 	<div class="container-fluid header">
 		<nav>
 			<ul>
-				<li><a href="#">비트펀딩</a></li>
-				<li><a href="sponlist.do">후원하기</a></li>
-				<li><a href="#">공지사항</a></li>
+				<li class="mb"><a href="main.do"><span class="glyphicon glyphicon-home"></span></a></li>
+				<li class="mb"><a href="sponlist.do"><span class="glyphicon glyphicon-usd"></span></a></li>
+				<li class="mb"><a href="#"><span class="glyphicon glyphicon-bullhorn"></span></a></li>
+				<li class="pc"><a href="main.do">비트펀딩</a></li>
+				<li class="pc"><a href="sponlist.do">후원하기</a></li>
+				<li class="pc"><a href="#">공지사항</a></li>
 				<c:choose>
 					<c:when test="${empty member }">
-						<li class="hlogin"><a href="login.do">로그인</a></li>
-						<li class="hlogin"><a href="add.do">회원가입</a></li>
+						<li class="mb"><a href="login.do"><span class="glyphicon glyphicon-log-in"></span></a></li>
+						<li class="mb"><a href="add.do"><span class="glyphicon glyphicon-user"></span></a></li>
+						<li class="hlogin pc"><a href="login.do">로그인</a></li>
+						<li class="hlogin pc"><a href="add.do">회원가입</a></li>
 					</c:when>
 					<c:otherwise>
 						<c:choose>
 							<c:when test="${member.mtier eq 3}">
-								<li class="hlogin"><a href="logout.do">로그아웃</a></li>
-								<li class="hlogin"><a href="memberinfo.do">사용자 정보</a></li>
-								<li class="hpage"><a href="memberlist.do">관리자 페이지</a></li>
+								<li class="mb"><a href="logout.do"><span class="glyphicon glyphicon-log-out"></span></a></li>
+								<li class="mb"><a href="memberinfo.do"><span class="glyphicon glyphicon-info-sign"></span></a></li>
+								<li class="mb"><a href="memberlist.do"><span class="glyphicon glyphicon-book"></span></a></li>
+								<li class="hlogin pc"><a href="logout.do">로그아웃</a></li>
+								<li class="hlogin pc"><a href="memberinfo.do">사용자 정보</a></li>
+								<li class="hpage pc"><a href="memberlist.do">관리자 페이지</a></li>
 							</c:when>
 							<c:otherwise>
-								<li class="hlogin"><a href="logout.do">로그아웃</a></li>
-								<li class="hlogin"><a href="memberinfo.do">사용자 정보</a></li>
+								<li class="mb"><a href="logout.do"><span class="glyphicon glyphicon-log-out"></span></a></li>
+								<li class="mb"><a href="memberinfo.do"><span class="glyphicon glyphicon-info-sign"></span></a></li>
+								<li class="hlogin pc"><a href="logout.do">로그아웃</a></li>
+								<li class="hlogin pc"><a href="memberinfo.do">사용자 정보</a></li>
 							</c:otherwise>
 						</c:choose>
 					</c:otherwise>
