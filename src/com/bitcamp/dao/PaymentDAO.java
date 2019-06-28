@@ -40,13 +40,14 @@ public class PaymentDAO {
 		StringBuilder sql = new StringBuilder();
 		PreparedStatement pstmt = null;
 		int result = 0;
-		sql.append(" insert into PayInfo values ( ");
-		sql.append(" ?,?,sysdate,?) ");
+		sql.append(" insert into PayInfo ");
+		sql.append(" (sno, mno, pdate, pmoney) ");
+		sql.append(" values (?, ?, now(), ?) ");
 		try {
 			pstmt = conn.prepareStatement(sql.toString());
 			pstmt.setInt(1, sno);
 			pstmt.setInt(2, mno);
-			pstmt.setInt(2, money);
+			pstmt.setInt(3, money);
 			result = pstmt.executeUpdate();
 		} finally {
 			if (pstmt != null) {
