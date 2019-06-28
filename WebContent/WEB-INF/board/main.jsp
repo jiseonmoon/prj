@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<link href="https://fonts.googleapis.com/css?family=Oxygen&display=swap" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script>
@@ -45,6 +46,9 @@
 	}
 	.sidecontent{
 		padding:20px;
+	}
+	.sidecontent .g{
+		font-family: 'Oxygen', sans-serif;
 	}
 	.sidemenu .glyphicon-flash{
 		background-color: rgb(236,250,255, 0.9);
@@ -119,9 +123,7 @@
        <ol class="carousel-indicators">
          <li data-target="#carousel-generic" data-slide-to="0" class="active"></li>
          <li data-target="#carousel-generic" data-slide-to="1"></li>
-         <li data-target="#carousel-generic" data-slide-to="2"></li>
-         <li data-target="#carousel-generic" data-slide-to="3"></li>
-         <li data-target="#carousel-generic" data-slide-to="4"></li>              
+         <li data-target="#carousel-generic" data-slide-to="2"></li>                
        </ol>
        <div class="carousel-inner">
           <div class="item active">
@@ -132,13 +134,7 @@
           </div>
           <div class="item">
              <img class="cai img-responsive" src="image/3.jpg" alt="Third slide">               
-          </div>
-          <div class="item">
-             <img class="cai img-responsive" src="image/4.jpg" alt="Third slide">               
-          </div>
-          <div class="item">
-             <img class="cai img-responsive" src="image/5.jpg" alt="Third slide">               
-          </div>                                                         
+          </div>                                                       
        </div>
         <a class="left carousel-control" href="#carousel-generic" data-slide="prev">
           <span class="icon-prev"></span>
@@ -154,7 +150,7 @@
 	      		<div class="col-lg-3 col-md-3">
 	      			<span class="glyphicon glyphicon-flash"></span>
 	      		</div>
-	      		<div class="col-lg-9 col-md-9">
+	      		<div class="col-lg-9 col-md-9 g">
 	      			<h3>Fast & Easy</h3>
 	      			<p>쉽고 빠르게 당신의 후원을 성사시킬 수 있습니다.</p>
 	      		</div>
@@ -163,7 +159,7 @@
 	      		<div class="col-lg-3 col-md-3">
 	      			<span class="glyphicon glyphicon-leaf"></span>
 	      		</div>
-	      		<div class="col-lg-9 col-md-9">
+	      		<div class="col-lg-9 col-md-9 g">
 	      			<h3>Who & When</h3>
 	      			<p>누구나 언제든 도전할 수 있습니다.</p>
 	      		</div>
@@ -172,7 +168,7 @@
 	      		<div class="col-lg-3 col-md-3">
 	      			<span class="glyphicon glyphicon-usd"></span>
 	      		</div>
-	      		<div class="col-lg-9 col-md-9">
+	      		<div class="col-lg-9 col-md-9 g">
 	      			<h3>Small | Big</h3>
 	      			<p>적든 많든 당신이 원하는 만큼 투자할 수 있습니다.</p>
 	      		</div>
@@ -181,7 +177,7 @@
 	      		<div class="col-lg-3 col-md-3">
 	      			<span class="glyphicon glyphicon-thumbs-up"></span>
 	      		</div>
-	      		<div class="col-lg-9 col-md-9">
+	      		<div class="col-lg-9 col-md-9 g">
 	      			<h3>Best & New</h3>
 	      			<p>항상 신선하고 최고의 경험을 제공합니다.</p>
 	      		</div>
