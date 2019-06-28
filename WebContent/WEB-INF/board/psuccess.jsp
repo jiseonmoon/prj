@@ -12,13 +12,8 @@
 	padding: 5%;
 }
 
-.card.border-success.mb-3 {
-	padding: 5%;
-}
-
 img {
-	width: 100%;
-	margin: 0 auto;
+	margin: 5% auto;
 }
 
 h3, p {
