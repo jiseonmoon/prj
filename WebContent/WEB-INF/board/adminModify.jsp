@@ -38,9 +38,9 @@
 		<td>
 					<label for="Mtier">회원 등급</label>
 						<select name="Mtier" id="Mtier">
-							<option value="1">관리자</option>
+							<option value="1">일반 회원</option>
 							<option value="2">후원 회원</option>
-							<option value="3">일반 회원</option>
+							<option value="3">관리자</option>
 						</select>
 						<input type="hidden" name="id" value="${requestScope.id }">
 		</td>

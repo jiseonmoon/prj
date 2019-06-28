@@ -19,7 +19,7 @@ public class MemberLogoutAction implements Action {
 		request.getSession().invalidate();
 		
 		act.setRedirect(true);
-		act.setPath("sponlist.do");
+		act.setPath("main.do");
 		
 		return act;
 	}

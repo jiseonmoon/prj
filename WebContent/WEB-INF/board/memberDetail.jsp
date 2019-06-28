@@ -36,7 +36,7 @@
 			if(val == "0"){
 				location.href="memberlist.do";
 			}else if(val == "1"){
-				location.href="sponlist.do";
+				location.href="main.do";
 			}
 		}	
 	</script>

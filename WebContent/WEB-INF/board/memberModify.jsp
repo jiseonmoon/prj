@@ -75,11 +75,11 @@
 					<td id="title">회원 등급</td>
 						<% String grade="";
 						if(dto.getMtier()==1)
-							grade="관리자";
+							grade="일반 회원";
 						else if(dto.getMtier()==2)
 							grade="후원 회원";
 						else if(dto.getMtier()==3)
-							grade="일반 회원"; %>
+							grade="관리자"; %>
 					<td bgcolor="skyblue"><%=grade %></td>
 				</tr>
 			
@@ -141,7 +141,7 @@
 			</table>
 			<br>
 			<center>
-				<input type="button" value="취소" onclick="javascript:window.location='sponlist.do'">
+				<input type="button" value="취소" onclick="javascript:window.location='main.do'">
 				<input type="submit" value="수정">
 			</center>
 		</form>

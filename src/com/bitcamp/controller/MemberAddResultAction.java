@@ -28,7 +28,7 @@ public class MemberAddResultAction implements Action {
 		String email2=request.getParameterValues("email2")[0];
 		String tel=request.getParameter("phone");
 		String addr=request.getParameter("addr");
-		String bank=request.getParameter("addr");
+		String bank=request.getParameter("bank");
 		String card=request.getParameter("card");
 		
 		
@@ -38,8 +38,8 @@ public class MemberAddResultAction implements Action {
 		act.setRedirect(true);
 		act.setPath("result.do");
 		
-		HttpSession session=request.getSession();
-		session.setAttribute("sessionID", Mid);
+		/*HttpSession session=request.getSession();
+		session.setAttribute("sessionID", Mid);*/
 		
 		request.getSession().setAttribute("msg", "1");
 		

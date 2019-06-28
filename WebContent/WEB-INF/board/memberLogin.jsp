@@ -52,7 +52,7 @@
 		}
 	
 		function goFirstForm() {
-			location.href="sponlist.do";
+			location.href="main.do";
 		}
 	</script>
 </head>
