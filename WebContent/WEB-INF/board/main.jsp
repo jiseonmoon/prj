@@ -43,42 +43,70 @@
 	.sm{
 		font-size: 0.8em;
 	}
-	.sidemenu .glyphicon{
-		margin-top:20px;
-		right:20px;
+	.sidecontent{
+		padding:20px;
 	}
 	.sidemenu .glyphicon-flash{
-		background-color: rgb(236,250,255, 0.5);
+		background-color: rgb(236,250,255, 0.9);
 		color: yellow;
 		padding: 10px;
 		font-size:3em;
 		border-radius: 50%;
+		transition: all 0.3s;
+	}
+	.sidemenu .glyphicon-flash:hover{
+		background-color: orange;
 	}
 	.sidemenu .glyphicon-leaf{
-		background-color: rgb(236,250,255, 0.5);
+		background-color: rgb(236,250,255, 0.9);
 		color: green;
 		padding: 10px;
 		font-size:3em;
 		border-radius: 50%;
+		transition: all 0.3s;
+	}
+	.sidemenu .glyphicon-leaf:hover{
+		background-color: orange;
 	}
 	.sidemenu .glyphicon-usd{
-		background-color: rgb(236,250,255, 0.5);
+		background-color: rgb(236,250,255, 0.9);
 		color: black;
 		padding: 10px;
 		font-size:3em;
 		border-radius: 50%;
+		transition: all 0.3s;
+	}
+	.sidemenu .glyphicon-usd:hover{
+		background-color: orange;
 	}
 	.sidemenu .glyphicon-thumbs-up{
-		background-color: rgb(236,250,255, 0.5);
+		background-color: rgb(236,250,255, 0.9);
 		color: blue;
 		padding: 10px;
 		font-size:3em;
 		border-radius: 50%;
+		transition: all 0.3s;
+	}
+	.sidemenu .glyphicon-thumbs-up:hover{
+		background-color: orange;
+	}
+	.sidemenu .glyphicon{
+		right:20px;
+		margin-top:20px;
 	}
 	.sidemenu{
-		background-color: rgba(217,251,188,0.1);
+		background-color: rgba(248,230,255,0.2);
 		margin-bottom: 20px;
-		padding: 20px;
+	}
+	@media (max-width:768px){
+		.sidemenu{
+			display:none;
+		}
+	}
+	@media (max-width:991px){
+		.glyphicon{
+			display:none !important;
+		}
 	}
 </style>
 </head>
@@ -121,7 +149,8 @@
       </div>
       <div class="container-fluid sidemenu">
       <div class="container">
-      		<div class="col-lg-3">
+      	<div class="row">
+      		<div class="col-lg-3 col-md-6 sidecontent">
 	      		<div class="col-lg-3 col-md-3">
 	      			<span class="glyphicon glyphicon-flash"></span>
 	      		</div>
@@ -130,7 +159,7 @@
 	      			<p>쉽고 빠르게 당신의 후원을 성사시킬 수 있습니다.</p>
 	      		</div>
       		</div>
-      		<div class="col-lg-3">
+      		<div class="col-lg-3 col-md-6 sidecontent">
 	      		<div class="col-lg-3 col-md-3">
 	      			<span class="glyphicon glyphicon-leaf"></span>
 	      		</div>
@@ -139,7 +168,7 @@
 	      			<p>누구나 언제든 도전할 수 있습니다.</p>
 	      		</div>
       		</div>
-      		<div class="col-lg-3">
+      		<div class="col-lg-3 col-md-6 sidecontent">
 	      		<div class="col-lg-3 col-md-3">
 	      			<span class="glyphicon glyphicon-usd"></span>
 	      		</div>
@@ -148,7 +177,7 @@
 	      			<p>적든 많든 당신이 원하는 만큼 투자할 수 있습니다.</p>
 	      		</div>
       		</div>
-      		<div class="col-lg-3">
+      		<div class="col-lg-3 col-md-6 sidecontent">
 	      		<div class="col-lg-3 col-md-3">
 	      			<span class="glyphicon glyphicon-thumbs-up"></span>
 	      		</div>
@@ -156,6 +185,7 @@
 	      			<h3>Best & New</h3>
 	      			<p>항상 신선하고 최고의 경험을 제공합니다.</p>
 	      		</div>
+      		</div>
       		</div>
       </div>
       </div>
