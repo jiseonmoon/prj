@@ -86,6 +86,13 @@
 			margin-top: 0px;
 			width: 100%;
 		}
+		
+		#content2{
+			margin-top: -20px;
+			padding-top: 30px;
+			background-color: #F6EAEA;
+		}
+		
 	}
 	
 	
@@ -94,8 +101,16 @@
 			margin-top: 0px;
 			width: 60%;
 		}
+		
+		#content2{
+			padding-top: 30px;
+			background-color: #F6EAEA;
+			top: -400px;
+			left: 75%;
+		}
+		
 	}
-	
+
 	
 	#pay{
 		padding: 20px 100px;
@@ -116,15 +131,8 @@
 	}
 	
 	#content1{
-		margin-left: 15px;
-		border: 1px solid;
 	}
 	
-	#content2{
-		margin-left: 15px;
-		padding-top: 20px;
-		border: 1px solid;
-	}
 </style>
 </head>
 <body>
@@ -144,7 +152,7 @@
 	  		</div>
 	  		<div class="col-md-5">
 	  			<br>
-	  			<p>현재모금역</p>
+	  			<p>현재모금액</p>
 	  			<h2>${ result.nowmoney }만원</h2><br><br> <!-- 현재모금액 -->
 	  			
 	  			<p>마감일</p>
@@ -198,20 +206,24 @@
   		<!-- Tab panes -->
 	  	<div class="tab-content">
 		    <div role="tabpanel" class="tab-pane active" id="home">
-		    	<!-- 글내용 -->
+		    	
 		    	<div class="row">
-			    	<div class="col-md-7" id="content1">
-			    		<p class="text-left">${ result.boardcontent }</p>
+			    	<div class="col-md-8" id="content1">
+			    		<p></p>
+						<!-- 글내용 -->
+			    		<div class="jumbotron">
+							<h2>${ result.boardtitle }</h2>
+  							<p>${ result.boardcontent }</p>
+  							<p><a class="btn btn-primary btn-lg" href="#" role="button">상단으로</a></p>
+						</div>
 		  			</div>
-		  			<div class="col-md-1"></div>
-			    	<div class="col-md-3" id="content2">
-
-			    		<p class="text-center">창작자: ${ writer.mid }</p><br>
-			    		<p class="text-center">이메일: ${ writer.email1 }@${ writer.email2 }</p><br>
-			    		<p class="text-center">전화번호: ${ writer.tel }</p><br>
-			    		
-			    	</div>
+		  			
 		    	</div>
+		    	<div class="col-md-3" id="content2">
+				    <p class="text-center">창작자: ${ writer.mid }</p><br>
+				    <p class="text-center">이메일: ${ writer.email1 }@${ writer.email2 }</p><br>
+				    <p class="text-center">전화번호: ${ writer.tel }</p><br>
+			    </div>
 		    </div>
 		    <div role="tabpanel" class="tab-pane" id="profile">
 		    	<form action="sponsubadd.do" method="post" id="frm"> <!-- 글번호랑 같이 넘겨줌 -->
