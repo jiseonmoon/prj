@@ -8,12 +8,13 @@
 <title>Insert title here</title>
 <style>
 #wrapper {
-	width: 50%;
+	width: 60%;
 	margin: 0 auto;
 	padding: 5%;
 }
 
 img {
+	width: 50%;
 	margin: 5% auto;
 }
 
