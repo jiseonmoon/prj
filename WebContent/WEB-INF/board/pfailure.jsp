@@ -8,12 +8,13 @@
 <title>Insert title here</title>
 <style>
 #wrapper {
-	width: 50%;
+	width: 60%;
 	margin: 0 auto;
 	padding: 5%;
 }
 
 img {
+	width: 50%;
 	margin: 5% auto;
 }
 
@@ -24,6 +25,11 @@ h3, p {
 </head>
 <body>
 	<div id="wrapper">
+		<div class="progress">
+			<div class="progress-bar progress-bar-striped bg-danger"
+				role="progressbar" style="width: 100%" aria-valuenow="100"
+				aria-valuemin="0" aria-valuemax="100"></div>
+		</div>
 		<div class="card border-danger mb-3">
 			<img alt="failure" src="image/cancel.png">
 			<h3>결제승인에 실패했습니다.</h3>

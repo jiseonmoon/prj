@@ -212,6 +212,9 @@
 					<c:if test="${ dateResult >= 0 }">
 			  			<!-- 글번호 넘겨주기 -->
 			  			<form action="payment1.do" method="post">
+			  				<br>
+	  						<br>
+	  						<br>
 			  				<input type="hidden" name="boardno" value="${ result.boardno }">
 			  				<button type="submit" class="btn btn-primary" id="pay">후원하기</button>
 			  			</form>

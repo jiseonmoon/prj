@@ -43,7 +43,7 @@ $(document).ready(function(){
 					msg += '결제 금액 : ' + rsp.paid_amount;
 					msg += '카드 승인번호 : ' + rsp.apply_num;
 					alert(msg);
-					location.href = "psuccess.do?boardno=<%=spondto.getBoardno()%>&amount=<%=amount%>";
+					location.href = "psuccess1.do?boardno=<%=spondto.getBoardno()%>&amount=<%=amount%>";
 																} else {
 																	var msg = '결제에 실패하였습니다.';
 																	msg += '에러내용 : '
@@ -57,9 +57,9 @@ $(document).ready(function(){
 </script>
 <style>
 #wrapper {
-	padding: 3%;
 	width: 50%;
 	margin: 0 auto;
+	padding: 5%;
 }
 
 .card.border-primary.mb-3 {
@@ -85,6 +85,11 @@ $(document).ready(function(){
 </head>
 <body>
 	<div id="wrapper">
+		<div class="progress">
+			<div class="progress-bar progress-bar-striped progress-bar-animated"
+				role="progressbar" aria-valuenow="66.6" aria-valuemin="0"
+				aria-valuemax="100" style="width: 66.6%"></div>
+		</div>
 		<h1>결제 정보 확인</h1>
 		<div class="card border-primary mb-3">
 			<div class="card-header">

@@ -30,7 +30,7 @@
 				<tr>
 					<td>${ i.subContent }</td><td>${ i.memberId }</td>
 					<!-- 자신이 작성한 댓글만 삭제할 수 있게 -->
-					<c:if test="${ member.mid == i.memberId }">
+					<c:if test="${ member.mid == i.memberId || member.mtier == 3 }">
 						<td><input class="btn btn-default" type="button" value="삭제" onclick="del(${ i.subNo },${ i.sponNo })"></td>
 					</c:if>
 				</tr>

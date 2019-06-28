@@ -5,7 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/payment.css">
 <style>
 #wrapper {
 	width: 50%;
@@ -13,11 +15,11 @@
 	padding: 5%;
 }
 
-form .card-body {
+.card.border-primary.mb-3 {
 	margin: 5%;
 }
 
-.card.border-primary.mb-3 {
+.card-body {
 	margin: 5%;
 }
 
@@ -30,6 +32,11 @@ form .card-body {
 	<c:set var="memberdto" value="${sessionScope.member }"></c:set>
 	<c:set var="spondto" value="${requestScope.spondto }"></c:set>
 	<div id="wrapper">
+		<div class="progress">
+			<div class="progress-bar progress-bar-striped progress-bar-animated"
+				role="progressbar" aria-valuenow="33.3" aria-valuemin="0"
+				aria-valuemax="100" style="width: 33.3%"></div>
+		</div>
 		<form method="post" action="payment2.do">
 			<div class="card border-primary mb-3">
 				<div class="card-header">
