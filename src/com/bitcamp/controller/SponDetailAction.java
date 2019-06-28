@@ -39,21 +39,10 @@ public class SponDetailAction implements Action {
 		try {
 			day1 = format.parse(result.getFinaldate());
 			day2 = format.parse(today);
-			System.out.println(day1);
-			System.out.println(day2);
 		} catch (ParseException e) {
 			System.out.println(e);
 		}
-		
 		int dateResult = day1.compareTo(day2);
-		if(dateResult > 0) {
-			System.out.println("day1 > day2");
-		} else if(dateResult < 0) {
-			System.out.println("day < day2");
-		} else {
-			System.out.println("day1 = day2");
-		}
-		
 		
 		request.setAttribute("result", result);
 		request.setAttribute("writer", writer);
