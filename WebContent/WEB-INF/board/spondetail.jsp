@@ -103,14 +103,13 @@
 		}
 		
 		#content2{
+			margin-top: 10px;
 			padding-top: 30px;
 			background-color: #F6EAEA;
-			top: -400px;
-			left: 75%;
+			
 		}
 		
 	}
-
 	
 	#pay{
 		padding: 20px 100px;
@@ -128,9 +127,6 @@
 	
 	#disabledInput{
 		width: 110px;
-	}
-	
-	#content1{
 	}
 	
 </style>
@@ -208,7 +204,7 @@
 		    <div role="tabpanel" class="tab-pane active" id="home">
 		    	
 		    	<div class="row">
-			    	<div class="col-md-8" id="content1">
+			    	<div class="col-md-9" id="content1">
 			    		<p></p>
 						<!-- 글내용 -->
 			    		<div class="jumbotron">
@@ -217,13 +213,15 @@
   							<p><a class="btn btn-primary btn-lg" href="#" role="button">상단으로</a></p>
 						</div>
 		  			</div>
-		  			
+		  			<div class="col-md-3">
+		  				<div id="content2">
+						    <p class="text-center">창작자: ${ writer.mid }</p><br>
+						    <p class="text-center">이메일: ${ writer.email1 }@${ writer.email2 }</p><br>
+						    <p class="text-center">전화번호: ${ writer.tel }</p><br>
+					    </div>
+			    	</div>
 		    	</div>
-		    	<div class="col-md-3" id="content2">
-				    <p class="text-center">창작자: ${ writer.mid }</p><br>
-				    <p class="text-center">이메일: ${ writer.email1 }@${ writer.email2 }</p><br>
-				    <p class="text-center">전화번호: ${ writer.tel }</p><br>
-			    </div>
+		    	
 		    </div>
 		    <div role="tabpanel" class="tab-pane" id="profile">
 		    	<form action="sponsubadd.do" method="post" id="frm"> <!-- 글번호랑 같이 넘겨줌 -->
