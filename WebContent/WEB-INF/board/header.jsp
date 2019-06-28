@@ -50,18 +50,34 @@
 	.mb{
 		display:none !important;
 	}
-	@media (max-width:759px){
+	.header .pc a{
+		font-weight: bold;
+	}
+	@media (max-width:876px){
+		.pc{
+			font-size:0.9em !important;
+		}
+	}
+	@media (max-width:762px){
 		.mb{
 			display: inline !important;
+			padding:1.5px 10px !important;
 		}
 		.pc{
 			display: none !important;
+			
 		}
 	}
-	@media (max-width:407px){
+	@media (max-width:505px){
 		.header nav ul li{
-			margin-left:10px;
-			margin-right:10px;
+			margin-left:10px !important;
+			margin-right:10px !important;
+		}
+	}
+	@media (max-width:385px){
+		.header nav ul li{
+			margin-left:5px !important;
+			margin-right:5px !important;
 		}
 	}
 </style>

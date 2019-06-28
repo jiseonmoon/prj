@@ -20,6 +20,7 @@
 <style>
 	.mainlist div div{
 		border-right: 1px dotted silver;
+		border-left: 1px dotted silver;
 		padding:20px;
 	}
 	.datalist{
@@ -42,12 +43,14 @@
 	.sm{
 		font-size: 0.8em;
 	}
+
 </style>
 </head>
 <body style="background-color: #f8f9fa;">
 	<c:set var="list1" value="${requestScope.list1}"></c:set>
 	<c:set var="list2" value="${requestScope.list2}"></c:set>
 	<c:set var="list3" value="${requestScope.list3}"></c:set>
+	
 	<div id="carousel-generic" class="carousel slide">
        <ol class="carousel-indicators">
          <li data-target="#carousel-generic" data-slide-to="0" class="active"></li>
@@ -58,19 +61,19 @@
        </ol>
        <div class="carousel-inner">
           <div class="item active">
-             <img src="image/1.jpg" alt="First slide">
+             <img class="cai img-responsive" src="image/1.jpg" alt="First slide">
           </div>
           <div class="item">
-             <img src="image/2.jpg" alt="Second slide">              
+             <img class="cai img-responsive" src="image/2.jpg" alt="Second slide">              
           </div>
           <div class="item">
-             <img src="image/3.jpg" alt="Third slide">               
+             <img class="cai img-responsive" src="image/3.jpg" alt="Third slide">               
           </div>
           <div class="item">
-             <img src="image/4.jpg" alt="Third slide">               
+             <img class="cai img-responsive" src="image/4.jpg" alt="Third slide">               
           </div>
           <div class="item">
-             <img src="image/5.jpg" alt="Third slide">               
+             <img class="cai img-responsive" src="image/5.jpg" alt="Third slide">               
           </div>                                                         
        </div>
         <a class="left carousel-control" href="#carousel-generic" data-slide="prev">
