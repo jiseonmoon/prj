@@ -65,6 +65,9 @@
 		border-radius: 50%;
 		transition: all 0.3s;
 	}
+	.sidemenu .glyphicon-leaf:hover{
+		background-color: orange;
+	}
 	.sidemenu .glyphicon-usd{
 		background-color: rgb(236,250,255, 0.9);
 		color: black;
@@ -73,6 +76,9 @@
 		border-radius: 50%;
 		transition: all 0.3s;
 	}
+	.sidemenu .glyphicon-usd:hover{
+		background-color: orange;
+	}
 	.sidemenu .glyphicon-thumbs-up{
 		background-color: rgb(236,250,255, 0.9);
 		color: blue;
@@ -80,6 +86,9 @@
 		font-size:3em;
 		border-radius: 50%;
 		transition: all 0.3s;
+	}
+	.sidemenu .glyphicon-thumbs-up:hover{
+		background-color: orange;
 	}
 	.sidemenu .glyphicon{
 		right:20px;
