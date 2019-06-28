@@ -27,7 +27,9 @@ h3, p {
 		<div class="progress">
 			<div class="progress-bar progress-bar-striped bg-success"
 				role="progressbar" style="width: 100%" aria-valuenow="100"
-				aria-valuemin="0" aria-valuemax="100"></div>
+				aria-valuemin="0" aria-valuemax="100">
+				<span>3/3</span>
+			</div>
 		</div>
 		<div class="card border-success mb-3">
 			<img alt="success" src="image/checked.png">
