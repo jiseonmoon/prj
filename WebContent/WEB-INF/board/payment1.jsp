@@ -5,7 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/payment.css">
 <style>
 #wrapper {
 	width: 50%;
@@ -13,11 +15,11 @@
 	padding: 5%;
 }
 
-form .card-body {
+.card.border-primary.mb-3 {
 	margin: 5%;
 }
 
-.card.border-primary.mb-3 {
+.card-body {
 	margin: 5%;
 }
 

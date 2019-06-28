@@ -13,7 +13,7 @@ import com.bitcamp.dto.MemberDTO;
 import com.bitcamp.dto.SponDTO;
 import com.bitcamp.service.PaymentService;
 
-public class PSuccessAction implements Action {
+public class PSuccess1Action implements Action {
 
 	@Override
 	public ForwardAction execute(HttpServletRequest request, HttpServletResponse response)
@@ -26,8 +26,8 @@ public class PSuccessAction implements Action {
 		PaymentService service = PaymentService.getInstance();
 		service.plusMoney(boardno, memberdto.getMno(), amount);
 		ForwardAction forward = new ForwardAction();
-		forward.setRedirect(false);
-		forward.setPath("/WEB-INF/board/templete.jsp?page=psuccess.jsp");
+		forward.setRedirect(true);
+		forward.setPath("psuccess2.do");
 		return forward;
 	}
 
