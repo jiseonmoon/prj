@@ -11,6 +11,7 @@ import com.bitcamp.comm.DBConn;
 import com.bitcamp.dao.MemberDAO;
 import com.bitcamp.dao.SponDAO;
 import com.bitcamp.dto.MemberDTO;
+import com.bitcamp.dto.MySponDTO;
 import com.bitcamp.dto.PageDTO;
 import com.bitcamp.dto.SponDTO;
 import com.bitcamp.dto.SponSubDTO;
@@ -351,6 +352,7 @@ public int adminDeleteService(String Mid) {
 		conn.setAutoCommit(false);
 		MemberDAO dao=new MemberDAO();
 		result=dao.adminDelete(conn, Mid);
+		conn.commit();
 	}catch(SQLException|NamingException e)
 	{
 		System.out.println(e);
@@ -389,6 +391,31 @@ public void adminModifyService(String Mid, int Mtier) {
 		if(conn!=null)  try{ conn.close();} catch(SQLException e){}
 		
 	}	
+}
+
+public ArrayList<MySponDTO> giveFundListService(int Mno) {
+	Connection conn=null;
+	ArrayList<MySponDTO> arr=null;
+	try {
+		conn=DBConn.getDB().getConnection();
+		conn.setAutoCommit(false);
+		MemberDAO dao=new MemberDAO();
+		arr=dao.giveFundList(conn, Mno);
+	}catch(SQLException|NamingException e)
+	{
+		System.out.println(e);
+	   try{ conn.rollback();} catch(SQLException e1){}
+	}catch(RuntimeException e)
+	{
+		System.out.println(e);
+		try{ conn.rollback();} catch(SQLException e1){}
+	}
+	finally{
+		if(conn!=null)  try{ conn.close();} catch(SQLException e){}
+		
+	}
+	
+	return arr;
 }
 	
 }

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.bitcamp.dto.MemberDTO;
+import com.bitcamp.dto.MySponDTO;
 
 public class MemberDAO {
 	private void  pstmtClose(PreparedStatement pstmt){
@@ -21,8 +22,8 @@ public class MemberDAO {
 	   PreparedStatement pstmt=null;
  	   StringBuilder sql=new StringBuilder();
  	   sql.append("  insert   into   Member 							             ");
- 	   sql.append("  (Mtier, Mid, Mpwd, email, tel, addr, bank, card)  ");
- 	   sql.append("  values (3, ?, ?, ?, ?, ?, ?, ?)                              ");
+ 	   sql.append("  (mtier, mid, mpwd, memail, mtel, maddr, bank, card)  ");
+ 	   sql.append("  values (1, ?, ?, ?, ?, ?, ?, ?)                              ");
  	   int result=0;
  	   try{
  		   pstmt=conn.prepareStatement(sql.toString());
@@ -131,7 +132,7 @@ public class MemberDAO {
 	 	StringBuilder sql=new StringBuilder();
 	 	
 	 	sql.append(" update Member set ");
-	 	sql.append(" Mpwd=?, email=?, tel=?, addr=?, bank=?, card=? ");
+	 	sql.append(" mpwd=?, memail=?, mtel=?, maddr=?, bank=?, card=? ");
 	 	sql.append(" where Mid=? ");
 	 	
 	 	try {
@@ -143,6 +144,7 @@ public class MemberDAO {
 	 		pstmt.setString(4, dto.getAddr());
 	 		pstmt.setString(5, dto.getBank());
 	 		pstmt.setString(6, dto.getCard());
+	 		pstmt.setString(7, dto.getMid());
 	 		
 	 		pstmt.executeUpdate();
 	 	}catch(SQLException e){
@@ -255,16 +257,18 @@ public class MemberDAO {
 		return arr;
 	}
 	
-	public int adminDelete(Connection conn, String Mid) {
+	public int adminDelete(Connection conn, String mid) {
 		PreparedStatement pstmt=null;
-		int result=0;
 		StringBuilder sql=new StringBuilder();
+		
 		sql.append(" delete from Member ");
-		sql.append(" where Mid=?         ");
+		sql.append(" where mid=?         ");
+		
+		int result=0;
 		
 		try {
 			pstmt=conn.prepareStatement(sql.toString());
-			pstmt.setString(1, Mid);
+			pstmt.setString(1, mid);
 			result=pstmt.executeUpdate();
 		}catch(SQLException e){
 	 		   System.out.println(e);
@@ -298,6 +302,43 @@ public class MemberDAO {
 	 		   pstmtClose(pstmt);
 	 	}
 		
+	}
+	
+	public ArrayList<MySponDTO> giveFundList(Connection conn, int Mno) {
+		ArrayList<MySponDTO> arr=new ArrayList<>();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		StringBuilder sql = new StringBuilder();
+	
+		sql.append(" select p.Sno, Stitle, Scontent, Pdate, Pmoney                    ");
+		sql.append(" from SponBoard s inner join PayInfo p on s.Mno=p.Mno ");
+		sql.append(" where p.Mno=?                                          ");
+		sql.append(" order by p.Sno                                         ");
+		
+		try {
+			pstmt=conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, Mno);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				MySponDTO dto=new MySponDTO();
+				dto.setSno(rs.getInt("Sno"));
+				dto.setStitle(rs.getString("Stitle"));
+				dto.setScontent(rs.getString("Scontent"));
+				dto.setPdate(rs.getDate("Pdate"));
+				dto.setPmoney(rs.getInt("Pmoney"));
+				arr.add(dto);
+			}
+		}catch(SQLException e){
+	 		   System.out.println(e);
+	 		   throw new RuntimeException();
+			}finally{
+	 		   pstmtClose(pstmt);
+	 		   rsClose(rs);
+			}
+		
+		return arr;
 	}
 
 }

@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>내 정보</title>
+<title>회원 정보</title>
 <style type="text/css">
 		table{
 			margin-left:auto; 
@@ -35,13 +35,13 @@
 	
 		function changeForm(val){
 			if(val == "-1"){
-				location.href="sponlist.do";
+				location.href="main.do";
 			}else if(val == "0"){
 				location.href="modify.do";
 			}else if(val == "1"){
 				location.href="delete.do";
 			}else if(val=="2"){
-				location.href="";
+				location.href='givefundlist.do?Mno="+dto.getMno()+"';
 			}
 		}
 		
@@ -49,7 +49,7 @@
 </head>
 <body>
 	<br><br>
-	<p><b><font size="6" color="gray">나의 정보</font></b><p>
+	<p><b><font size="6" color="gray">회원 정보</font></b><p>
 	<br><br><br>
 
 	<table>
@@ -63,11 +63,11 @@
 			<td id="title">회원 등급</td>
 				<% String grade="";
 					if(dto.getMtier()==1)
-						grade="관리자";
+						grade="일반 회원";
 					else if(dto.getMtier()==2)
 						grade="후원 회원";
 					else if(dto.getMtier()==3)
-						grade="일반 회원"; %>
+						grade="관리자"; %>
 			<td><%=grade %></td>
 		</tr>
 	

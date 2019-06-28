@@ -27,8 +27,8 @@ public class MemberDeleteResultAction implements Action {
 		int check=service.memberDeleteService(Mid, Mpwd);
 		
 		if(check==1) {
-			//session.invalidate();
-			session.removeAttribute("sessionID");
+			session.invalidate();
+			//session.removeAttribute("sessionID");
 			act.setRedirect(true);
 			act.setPath("result.do");
 		}else {

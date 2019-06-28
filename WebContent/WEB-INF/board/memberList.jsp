@@ -31,7 +31,7 @@
 	
 		function changeForm(val){
 			if(val == "1"){
-				location.href="sponlist.do";
+				location.href="main.do";
 			}
 		}	
 	</script>
@@ -70,23 +70,22 @@
 				
 		<% String grade="";
 		if(dto.getMtier()==1)
-			grade="관리자";
+			grade="일반 회원";
 		else if(dto.getMtier()==2)
 			grade="후원 회원";
 		else if(dto.getMtier()==3)
-			grade="일반 회원"; %>
+			grade="관리자"; %>
 				
 				<tr>
 					<td><%=dto.getMno() %>
-					<td><%=dto.getMtier() %>
+					<td><%=grade %>
 					<td><a href="detail.do?id=<%=dto.getMid()%>"><%=dto.getMid() %></a></td>
 					<td><%=dto.getMpwd() %></td>
-					<td><%=dto.getEmail1() %>@<%=dto.getEmail2() %></td>
+					<td><%=dto.getEmail1() %></td>
 					<td><%=dto.getTel() %></td>
 					<td><%=dto.getAddr() %></td>
 					<td><%=dto.getBank() %></td>
 					<td><%=dto.getCard() %></td>
-					<td><%=grade %></td>
 					<td><a href="adminmodify.do?id=<%=dto.getMid() %>">수정</a></td>
 					<td><a href="admindelete.do?id=<%=dto.getMid() %>">삭제</a></td>
 				</tr>

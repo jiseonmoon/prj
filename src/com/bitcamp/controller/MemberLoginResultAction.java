@@ -50,7 +50,7 @@ public class MemberLoginResultAction implements Action {
 	   		System.out.println(session.getAttribute("sessionID"));
 	   		System.out.println(session.getAttribute("member"));
 	   		act.setRedirect(true);
-	   		act.setPath("sponlist.do");
+	   		act.setPath("main.do");
 		}
    		
 		return act;

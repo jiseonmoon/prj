@@ -55,10 +55,10 @@
 				return false;
 			}
 			
-			if(!form.name.value){
+			/* if(!form.name.value){
 				alert("이름을 입력하세요.");
 				return false;
-			}
+			} */
 			
 			if(!form.email1.value){
 				alert("메일 주소를 입력하세요.");
@@ -70,24 +70,24 @@
 				return false;
 			}
 			
-			if(isNaN(form.phone.value)){
+			/* if(isNaN(form.phone.value)){
 				alert("전화번호는 - 제외한 숫자만 입력해주세요.");
 				return false;
-			}
+			} */
 			
 			if(!form.addr.value){
 				alert("주소를 입력하세요.");
 				return false;
 			}
 			
-			if(!form.card.value){
+			/* if(!form.card.value){
 				alert("카드번호를 입력하세요.");
 				return false;
-			}
+			} */
 		}
 	
 		function goFirstForm() {
-			location.href="sponlist.do";
+			location.href="main.do";
 		}
 		
 		function openIdChk(){
@@ -132,7 +132,7 @@
  			</tr>
  			
  			<tr>
-    			<td id="title">이메일</td>
+    			<td id="title">이메일<b><font color=red>*</font></b></td>
     			<td>
     				<input type="text" name="email1" maxlength="50">@<select name="email2">
     					<option>naver.com</option>
@@ -144,14 +144,14 @@
  			</tr>
  			
 			<tr>
-    			<td id="title">전화번호</td>
+    			<td id="title">전화번호<b><font color=red>*</font></b></td>
     			<td>
     				<input type="text" name="phone">
     			</td>
  			</tr>
  			
  			<tr>
-    			<td id="title">주소</td>
+    			<td id="title">주소<b><font color=red>*</font></b></td>
     			<td>
     				<input type="text" size="50" name="addr">
     			</td>
