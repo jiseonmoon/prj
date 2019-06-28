@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,8 +21,25 @@
 		border-right: 1px dotted silver;
 		padding:20px;
 	}
+	.datalist{
+		padding:0;
+	}
 	.mainlist h5{
 		font-weight: bolder;
+		display: inline;
+	}
+	.mainlist hr{
+		margin:8px 0;
+	}
+	.datalist{
+		list-style:inside;
+	}
+	.datalist a{
+		text-decoration: none;
+		color:black;
+	}
+	.sm{
+		font-size: 0.8em;
 	}
 </style>
 </head>
@@ -65,29 +83,40 @@
       <div class="container mainlist">
       	<div class="row">
       		<div class="col-md-4 col-sm-6 col-xs-12">
-      			<h5> 최신 후원 게시글</h5>
+      			<span class="glyphicon glyphicon-list"></span><h5> 최신 후원 게시글</h5>
       			<hr>
       			<ul class="datalist">
-      				<c:forEach var="board" items="${list1 }" >
-      					<li><a href="spondetail.do?no=${board.boardno }">${board.boardtitle }</a></li>
+      				<c:forEach var="board1" items="${list1 }" >
+      					<li><a href="spondetail.do?no=${board1.boardno }">${board1.boardtitle } <span class="sm">[${board1.boardtag }]</span></a></li>
       				</c:forEach>
       			</ul>
       		</div>
       		<div class="col-md-4 col-sm-6 col-xs-12">
-      			<h5> 가장 후원액이 많은 게시글</h5>
+      			<span class="glyphicon glyphicon-list"></span><h5> 가장 후원액이 많은 게시글</h5>
       			<hr>
       			<ul class="datalist">
-      				<c:forEach var="board" items="${list2 }">
-      					<li><a href="spondetail.do?no=${board.boardno }">${board.boardtitle }</a></li>
+      				<c:forEach var="board2" items="${list2 }">
+      					<li></span><a href="spondetail.do?no=${board2.boardno }"> ${board2.boardtitle } <span class="sm">[${board2.boardtag }]</span><span class="sm"> [${board2.nowmoney }만원]</span></a></li>
       				</c:forEach>
       			</ul>
       		</div>
+      		
+      		
+            
       		<div class="col-md-4 col-sm-6 col-xs-12">
-      			<h5> 마감 임박 게시글</h5>
+      			<span class="glyphicon glyphicon-list"></span><h5> 마감 임박 게시글</h5>
       			<hr>
       			<ul class="datalist">
-      				<c:forEach var="board" items="${list3 }">
-      					<li><a href="spondetail.do?no=${board.boardno }">${board.boardtitle }</a></li>
+      				<c:forEach var="board3" items="${list3 }">
+      				
+      					<c:set var="date" value="${board3.finaldate }"/>
+      					<jsp:useBean id="now" class="java.util.Date"/>
+						<fmt:parseDate var="parsedate" value="${date }" pattern="yyyy-MM-dd"></fmt:parseDate>
+						<fmt:parseNumber value="${now.time/(1000*60*60*24) }" integerOnly="true" var="nowDays"/>
+          			 	<fmt:parseNumber value="${parsedate.time/(1000*60*60*24) }" integerOnly="true" var="oldDays"/>
+          			 	<c:set value="${oldDays - nowDays }" var="dateDiff"/>
+          			 	
+      					<li><a href="spondetail.do?no=${board3.boardno }">${board3.boardtitle } <span class="sm">[${board3.boardtag }]</span><span class="sm">[${dateDiff+1 }일 남았습니다.]</span></a></li>
       				</c:forEach>
       			</ul>
       		</div>

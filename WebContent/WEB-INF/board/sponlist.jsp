@@ -121,7 +121,7 @@
             								<fmt:parseNumber value="${parsedate.time/(1000*60*60*24) }" integerOnly="true" var="oldDays"/>
             								<c:set value="${oldDays - nowDays }" var="dateDiff"/>
             								<div class="row">
-            									<p class="col-6"><span class="glyphicon glyphicon-gift"></span><span>${dateDiff }일</span></p>
+            									<p class="col-6"><span class="glyphicon glyphicon-gift"></span><span>${dateDiff+1 }일</span></p>
             									<p class="col-6 d-flex justify-content-center"><span class="glyphicon glyphicon-usd"></span><span>${board.nowmoney }만원</span></p>
             								</div>
             								
