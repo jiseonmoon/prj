@@ -15,6 +15,17 @@
 	.fcontent{
 		margin-top: 20px;
 	}
+	.fcontent h5{
+		font-weight: bold;
+		
+	}
+	.fcontent ul{
+		padding-left:0;
+	}
+	.fcontent a{
+		color:black;
+		text-decoration: none;
+	}
 	.fcontent address, .fcontent p{
 		display: inline;
 		font-size: 0.9em;
@@ -25,6 +36,11 @@
 	#fhr{
 		margin:0;
 	}
+	@media (max-width:767px){
+		.footer{
+			display: none;
+		}
+	}
 </style>
 <title>Insert title here</title>
 </head>
@@ -33,10 +49,15 @@
 	<div class="container-fluid footer">
 	
 		<div class="row fcontent">
-			<div class="col-8">
-				<h3></h3>
+			<div class="col-md-3 col-sm-3 col-md-offset-3 col-sm-offset-3">
+				<h5>사이트맵</h5>
+				<ul>
+					<li><p><a href="https://tumblbug.com/">https://tumblbug.com/</a></p></li>
+					<li><p><a href="http://bootstrapk.com/getting-started">http://bootstrapk.com/getting-started/</a></p></li>
+					<li><p><a href="https://google.com">https://google.com</a></p></li>
+				</ul>
 			</div>
-			<div class="col-4">
+			<div class="col-md-3 col-sm-3">
 				<span class="glyphicon glyphicon-home"></span><address>서울 종로구 종로 69 YMCA빌딩 7층 열기</address><br><br>
 				<span class="glyphicon glyphicon-earphone"></span><p>010-3073-9611</p><br><br>
 				<span class="glyphicon glyphicon-send"></span><p>dbsrjsdlf@naver.com</p><br><br>

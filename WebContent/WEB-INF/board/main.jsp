@@ -108,7 +108,7 @@
 		}
 	}
 	@media (max-width:991px){
-		.glyphicon{
+		.sidemenu .glyphicon{
 			display:none !important;
 		}
 	}
@@ -127,13 +127,13 @@
        </ol>
        <div class="carousel-inner">
           <div class="item active">
-             <img class="cai img-responsive" src="image/1.jpg" alt="First slide">
+             <img class="cai img-responsive" src="image/11.jpg" alt="First slide">
           </div>
           <div class="item">
-             <img class="cai img-responsive" src="image/2.jpg" alt="Second slide">              
+             <img class="cai img-responsive" src="image/12.jpg" alt="Second slide">              
           </div>
           <div class="item">
-             <img class="cai img-responsive" src="image/3.jpg" alt="Third slide">               
+             <img class="cai img-responsive" src="image/13.jpg" alt="Third slide">               
           </div>                                                       
        </div>
         <a class="left carousel-control" href="#carousel-generic" data-slide="prev">
