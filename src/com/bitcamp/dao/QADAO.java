@@ -22,7 +22,8 @@ public class QADAO {
 		ResultSet rs=null;
 		StringBuilder sql=new StringBuilder();
 		sql.append(" select qano, m.mno, m.mid, title, content, date ");
-		sql.append(" from QAboard q join Member m on q.mno=m.mno    ");
+		sql.append(" from QAboard q join Member m on q.mno=m.mno     ");
+		sql.append(" order by qano desc                              ");
 		
 		List<QADTO> list=new ArrayList<>();
 		
@@ -76,6 +77,25 @@ public class QADAO {
 			if(pstmt!=null) try {pstmt.close();}catch(SQLException e) {}
 		}
 		return dto;
+	}
+	
+	public int QAdelete(Connection conn, int qano) {
+		PreparedStatement pstmt=null;
+		StringBuilder sql=new StringBuilder();
+		sql.append(" delete ");
+		sql.append(" from QAboard ");
+		sql.append(" where qano = ? ");
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, qano);
+			result=pstmt.executeUpdate();	
+		}catch(SQLException e) {
+			System.out.println(e);
+		}finally {
+			if(pstmt!=null) try {pstmt.close();}catch(SQLException e) {}
+		}
+		return result;
 	}
 
 	

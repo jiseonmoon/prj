@@ -26,6 +26,5 @@
 		<a href="qadelete.do?qano=${dto.qano }">삭제</a>
 		</li>
 	</ul>
-
 </body>
 </html>

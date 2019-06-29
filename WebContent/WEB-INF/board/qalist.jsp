@@ -26,7 +26,7 @@
 			</c:forEach>
 		</tbody>
 	</table>
-
+	<a href="qainsert.do">문의하기</a>
 
 </body>
 </html>
