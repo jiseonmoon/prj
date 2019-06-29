@@ -2,6 +2,7 @@ package com.bitcamp.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,7 @@ public class MemberListAction implements Action {
 	@Override
 	public ForwardAction execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		ForwardAction act=new ForwardAction();
 		
 		SponService service=SponService.getService();

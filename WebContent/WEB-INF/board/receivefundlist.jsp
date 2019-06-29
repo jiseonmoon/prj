@@ -41,11 +41,29 @@
 	<p><b><font size="6" color="gray">나의 게시 프로젝트</font></b><p>
 	<br><br>
 	
+	<%
+		int sum=0;
+		ArrayList<ReceiveFundDTO> arr=(ArrayList<ReceiveFundDTO>)request.getAttribute("receivefundlist");
+		if(arr==null||arr.size()==0)
+		{
+			sum=0;
+		}else{
+			for(int i=0; i<arr.size(); i++){
+				ReceiveFundDTO dto=arr.get(i);
+				sum+=dto.getNowmoney();
+			}
+		}
+		%>
+	<font size=5 color="darkblue"><%=session.getAttribute("sessionID") %></font>
+	<font size=5>님의 총 모금액은 </font>
+	<font size=5 color="red"><%=sum %></font>
+	<font size=5>원입니다.</font>
+	<br><br>
 	<table>
 		<tr align="center">
 			<td id=title>프로젝트 번호</td>
 			<td id=title>프로젝트명</td>
-			<td id=title>프로젝트 내용</td>
+			<!-- <td id=title>프로젝트 내용</td> -->
 			<td id=title>목표금액</td>
 			<td id=title>최소후원금액</td>
 			<td id=title>마감일</td>
@@ -53,22 +71,22 @@
 		</tr>
 		
 	<%
-				ArrayList<ReceiveFundDTO> arr=(ArrayList<ReceiveFundDTO>)request.getAttribute("givefundlist");
-					if(arr==null||arr.size()==0)
+				ArrayList<ReceiveFundDTO> arr1=(ArrayList<ReceiveFundDTO>)request.getAttribute("receivefundlist");
+					if(arr1==null||arr1.size()==0)
 					{
 			%>
 		<tr><td colspan="8">해당 자료가 없습니다</td></tr>
 		<%
 			}else{
-			for(int i=0; i<arr.size(); i++){
-				ReceiveFundDTO dto=arr.get(i);
+			for(int i=0; i<arr1.size(); i++){
+				ReceiveFundDTO dto=arr1.get(i);
 		%>
 				
 				
 				<tr>
 					<td><%=dto.getSno() %></td>
-					<td><%=dto.getStitle() %></td>
-					<td><%=dto.getScontent() %></td>
+					<td><a href="spondetail.do?no=<%=dto.getSno()%>"><%=dto.getStitle() %></a></td>
+					<%-- <td><%=dto.getScontent() %></td> --%>
 					<td><%=dto.getDestmoney() %></td>
 					<td><%=dto.getMinmoney() %></td>
 					<td><%=dto.getFinaldate() %></td>

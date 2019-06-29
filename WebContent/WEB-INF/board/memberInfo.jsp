@@ -118,7 +118,8 @@
  		<input type="button" value="회원정보 변경" onclick="changeForm(0)">
  		<input type="button" value="회원 탈퇴" onclick="changeForm(1)">
  		<br><br>
- 		<input type="button" value="나의 후원 프로젝트" onclick="changeForm(2)"><input type="button" value="나의 게시 프로젝트" onclick="changeForm(3)">
+ 		<input type="button" value="나의 후원 프로젝트" onclick="changeForm(2)">
+ 		<input type="button" value="나의 게시 프로젝트" onclick="changeForm(3)">
  	</center>
 </body>
 </html>

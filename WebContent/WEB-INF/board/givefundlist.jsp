@@ -15,11 +15,11 @@
 		}
 		
 		td{
-			border:1px solid skyblue
+			border:1px solid skyblue;
 		}
 		
 		#title{
-			background-color:skyblue
+			background-color:skyblue;
 		}
 		
 		p{
@@ -38,38 +38,62 @@
 </head>
 <body>
 	<br><br>
-	<p><b><font size="6" color="gray">나의 후원정보</font></b><p>
+	<p><b><font size="6" color="gray">나의 후원 프로젝트</font></b><p>
 	<br><br>
 	
+	<%
+		int sum=0;
+		ArrayList<GiveFundDTO> arr=(ArrayList<GiveFundDTO>)request.getAttribute("givefundlist");
+		if(arr==null||arr.size()==0)
+		{
+			sum=0;
+		}else{
+			for(int i=0; i<arr.size(); i++){
+				GiveFundDTO dto=arr.get(i);
+				sum+=dto.getPmoney();
+			}
+		}
+		%>
+	
+	<font size=5 color="darkblue"><%=session.getAttribute("sessionID") %></font>
+	<font size=5>님의 총 후원금액은 </font>
+	<font size=5 color="red"><%=sum %></font>
+	<font size=5>원입니다.</font>
+	<br><br>
 	<table>
 		<tr align="center">
 			<td id=title>프로젝트 번호</td>
 			<td id=title>프로젝트명</td>
-			<td id=title>프로젝트 내용</td>
+			<!-- <td id=title>프로젝트 내용</td> -->
 			<td id=title>결제일</td>
 			<td id=title>결제금액</td>
 		</tr>
 		
 	<%
-				ArrayList<GiveFundDTO> arr=(ArrayList<GiveFundDTO>)request.getAttribute("givefundlist");
-					if(arr==null||arr.size()==0)
+				ArrayList<GiveFundDTO> arr1=(ArrayList<GiveFundDTO>)request.getAttribute("givefundlist");
+					if(arr1==null||arr1.size()==0)
 					{
 			%>
 		<tr><td colspan="8">해당 자료가 없습니다</td></tr>
 		<%
 			}else{
-			for(int i=0; i<arr.size(); i++){
-				GiveFundDTO dto=arr.get(i);
+			for(int i=0; i<arr1.size(); i++){
+				GiveFundDTO dto=arr1.get(i);
 		%>
 				
 				
 				<tr>
 					<td><%=dto.getSno() %></td>
-					<td><%=dto.getStitle() %></td>
-					<td><%=dto.getScontent() %></td>
+					<td><a href="spondetail.do?no=<%=dto.getSno()%>"><%=dto.getStitle() %></a></td>
+					<%-- <td><%=dto.getScontent() %></td> --%>
 					<td><%=dto.getPdate() %></td>
 					<td><%=dto.getPmoney() %>
 				</tr>
+				
+			
+			
+			
+			
 				<%
 			}
 		}

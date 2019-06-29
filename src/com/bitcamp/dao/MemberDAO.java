@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.bitcamp.dto.MemberDTO;
 import com.bitcamp.dto.ReceiveFundDTO;
@@ -312,8 +313,9 @@ public class MemberDAO {
 		
 		StringBuilder sql = new StringBuilder();
 	
-		sql.append(" select p.Sno, Stitle, Scontent, Pdate, Pmoney                    ");
-		sql.append(" from SponBoard s inner join PayInfo p on s.Mno=p.Mno ");
+		sql.append(" select p.Sno, Stitle, Scontent, Pdate, Pmoney  ");
+		sql.append(" from SponBoard s inner join PayInfo p          ");
+		sql.append(" on s.Mno=p.Mno and s.Sno=p.Sno                 ");
 		sql.append(" where p.Mno=?                                          ");
 		sql.append(" order by p.Sno                                         ");
 		
