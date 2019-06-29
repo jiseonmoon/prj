@@ -141,7 +141,7 @@
 			</table>
 			<br>
 			<center>
-				<input type="button" value="취소" onclick="javascript:window.location='main.do'">
+				<input type="button" value="취소" onclick="javascript:window.location='memberinfo.do'">
 				<input type="submit" value="수정">
 			</center>
 		</form>

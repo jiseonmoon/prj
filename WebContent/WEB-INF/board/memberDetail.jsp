@@ -106,7 +106,7 @@
  	<br>
  	<center>
  		<input type="button" value="전체 회원정보" onclick="changeForm(0)">
- 		<input type="button" value="메인으로" onclick="changeForm(1)">
+ 		<input type="button" value="메인" onclick="changeForm(1)">
  	</center>
 </body>
 </html>

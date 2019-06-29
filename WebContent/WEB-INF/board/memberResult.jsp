@@ -32,6 +32,6 @@
 		}
 	%>
 	<br><br>
-	<center><input type="button" value="메인으로" onclick="javascript:window.location='main.do'"/></center>
+	<center><input type="button" value="메인" onclick="javascript:window.location='main.do'"/></center>
 </body>
 </html>

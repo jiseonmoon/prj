@@ -38,7 +38,7 @@
 </head>
 <body>
 	<br><br>
-	<p><b><font size="6" color="gray">전체 회원정보</font></b><p>
+	<p><b><font size="6" color="gray">관리자 페이지 - 전체 회원정보</font></b><p>
 	<br><br>
 	
 	<table>
@@ -98,6 +98,6 @@
 	</table>
 	
 	<br>
- 	<center><input type="button" value="메인으로" onclick="changeForm(1)"></center>
+ 	<center><input type="button" value="메인" onclick="changeForm(1)"></center>
 </body>
 </html>

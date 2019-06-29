@@ -26,6 +26,6 @@
 		} */
 	%> --%>
 	<!-- <br><br>
-	<input type="button" value="메인으로" onclick="javascript:window.location='mainForm.do'"/> -->
+	<input type="button" value="메인" onclick="javascript:window.location='mainForm.do'"/> -->
 </body>
 </html>

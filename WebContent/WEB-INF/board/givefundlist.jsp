@@ -30,7 +30,10 @@
 	<script type="text/javascript">
 	
 		function changeForm(val){
-			if(val == "1"){
+			if(val=="0"){
+				location.href="memberinfo.do";
+			}
+			else if(val == "1"){
 				location.href="main.do";
 			}
 		}	
@@ -102,6 +105,9 @@
 	</table>
 	
 	<br>
- 	<center><input type="button" value="메인으로" onclick="changeForm(1)"></center>
+ 	<center>
+ 		<input type="button" value="회원 정보" onclick="changeForm(0)">
+ 		<input type="button" value="메인" onclick="changeForm(1)">
+ 	</center>
 </body>
 </html>

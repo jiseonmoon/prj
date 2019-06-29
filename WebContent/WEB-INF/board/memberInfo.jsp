@@ -114,7 +114,7 @@
  		
  	<br>
  	<center>
- 		<input type="button" value="메인으로" onclick="changeForm(-1)">
+ 		<input type="button" value="메인" onclick="changeForm(-1)">
  		<input type="button" value="회원정보 변경" onclick="changeForm(0)">
  		<input type="button" value="회원 탈퇴" onclick="changeForm(1)">
  		<br><br>
