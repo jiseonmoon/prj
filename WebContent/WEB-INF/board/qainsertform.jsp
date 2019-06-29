@@ -8,9 +8,6 @@
 </head>
 <body>
 	<c:set var="member" value="${ sessionScope.member }"></c:set>
-	<c:if test="${member==null }">
-		null
-	</c:if>
 	<form method="post" action="qainsertform.do">
 	<input type="hidden" name="mno" value="${member.mno }" >
 		<ul>

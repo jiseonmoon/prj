@@ -22,7 +22,7 @@
 		</li>
 		<li>
 		<li>
-		<a href="">수정</a>
+		<a href="qamodify.do?qano=${dto.qano }"">수정</a>
 		<a href="qadelete.do?qano=${dto.qano }">삭제</a>
 		</li>
 	</ul>

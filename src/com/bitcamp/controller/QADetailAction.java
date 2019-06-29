@@ -21,7 +21,6 @@ public class QADetailAction implements Action {
 		
 		BoardService service=BoardService.getService();
 		QADTO dto=service.qaDetail(qano);
-		System.out.println(dto+"DTO");
 		
 		request.setAttribute("dto", dto);
 		ForwardAction forward=new ForwardAction();

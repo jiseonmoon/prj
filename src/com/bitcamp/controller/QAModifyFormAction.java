@@ -11,23 +11,23 @@ import com.bitcamp.comm.ForwardAction;
 import com.bitcamp.dto.QADTO;
 import com.bitcamp.service.BoardService;
 
-public class QAInsertFormAction implements Action {
+public class QAModifyFormAction implements Action {
 
 	@Override
 	public ForwardAction execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		int mno=Integer.parseInt(request.getParameter("mno"));
+
+		int qano=Integer.parseInt(request.getParameter("qano"));
 		String title=request.getParameter("title");
 		String content=request.getParameter("content");
 		
 		QADTO dto=new QADTO();
-		BoardService service=BoardService.getService();
-		dto.setMno(mno);
+		dto.setQano(qano);
 		dto.setTitle(title);
 		dto.setContent(content);
 		
-		service.QAinsert(dto);
+		BoardService service=BoardService.getService();
+		service.QAmodify(dto);
 		
 		ForwardAction forward=new ForwardAction();
 		forward.setRedirect(true);

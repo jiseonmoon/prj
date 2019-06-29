@@ -79,6 +79,22 @@ public class BoardService {
 			if(conn!=null) try {conn.close();} catch(SQLException e) {}
 		}
 		
+		return result;
+	}
+	
+	public int QAmodify(QADTO dto) {
+		int result=0;
+		Connection conn=null;
+		try {
+			conn=DBConn.getDB().getConnection();
+			QADAO dao=QADAO.getDAO();
+			result=dao.QAmodify(conn, dto);
+			
+		}catch(SQLException | NamingException e) {
+			System.out.println(e);
+		}finally {
+			if(conn!=null) try {conn.close();} catch(SQLException e) {}
+		}
 		
 		return result;
 	}

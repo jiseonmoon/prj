@@ -117,6 +117,28 @@ public class QADAO {
 		}
 		return result;
 	}
+	
+	public int QAmodify(Connection conn, QADTO dto) {
+		int result=0;
+		PreparedStatement pstmt=null;
+		StringBuilder sql=new StringBuilder();
+		sql.append(" update QAboard set ");
+		sql.append(" title = ?, content = ? ");
+		sql.append(" where qano = ? ");
+		try {
+			pstmt=conn.prepareStatement(sql.toString());
+			pstmt.setString(1, dto.getTitle());
+			pstmt.setString(2, dto.getContent());
+			pstmt.setInt(3, dto.getQano());
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			System.out.println(e);
+		}finally {
+			if(pstmt!=null) try {pstmt.close();}catch(SQLException e) {}
+		}
+		
+		return result;
+	}
 
 	
 	
