@@ -93,7 +93,7 @@
 				<li class="mb"><a href="#"><span class="glyphicon glyphicon-bullhorn"></span></a></li>
 				<li class="pc"><a href="main.do">비트펀딩</a></li>
 				<li class="pc"><a href="sponlist.do">후원하기</a></li>
-				<li class="pc"><a href="#">공지사항</a></li>
+				<li class="pc"><a href="qalist.do">공지사항</a></li>
 				<c:choose>
 					<c:when test="${empty member }">
 						<li class="mb"><a href="login.do"><span class="glyphicon glyphicon-log-in"></span></a></li>

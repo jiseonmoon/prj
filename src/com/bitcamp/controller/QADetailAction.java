@@ -1,7 +1,6 @@
 package com.bitcamp.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -12,18 +11,22 @@ import com.bitcamp.comm.ForwardAction;
 import com.bitcamp.dto.QADTO;
 import com.bitcamp.service.BoardService;
 
-public class QAListAction implements Action {
+public class QADetailAction implements Action {
 
 	@Override
 	public ForwardAction execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		int qano=Integer.parseInt(request.getParameter("qano"));
+		
 		BoardService service=BoardService.getService();
-		List<QADTO> list=service.getList();
-		request.setAttribute("list", list);
+		QADTO dto=service.qaDetail(qano);
+		System.out.println(dto+"DTO");
+		
+		request.setAttribute("dto", dto);
 		ForwardAction forward=new ForwardAction();
 		forward.setRedirect(false);
-		forward.setPath("/WEB-INF/board/templete.jsp?page=qalist.jsp");
+		forward.setPath("/WEB-INF/board/templete.jsp?page=qadetail.jsp");
 		
 		return forward;
 	}
