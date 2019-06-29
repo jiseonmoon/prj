@@ -48,6 +48,7 @@ public class BoardService {
 		}
 		return dto;
 	}
+	
 	public int deleteService(int qano) {
 		int result=0;
 		Connection conn=null;
@@ -61,6 +62,24 @@ public class BoardService {
 		}finally {
 			if(conn!=null) try {conn.close();} catch(SQLException e) {}
 		}
+		return result;
+	}
+	
+	public int QAinsert(QADTO dto) {
+		int result=0;
+		Connection conn=null;
+		try {
+			conn=DBConn.getDB().getConnection();
+			QADAO dao=QADAO.getDAO();
+			result=dao.QAinsert(conn, dto);
+			
+		}catch(SQLException | NamingException e) {
+			System.out.println(e);
+		}finally {
+			if(conn!=null) try {conn.close();} catch(SQLException e) {}
+		}
+		
+		
 		return result;
 	}
 }

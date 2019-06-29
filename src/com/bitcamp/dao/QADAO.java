@@ -97,6 +97,26 @@ public class QADAO {
 		}
 		return result;
 	}
+	
+	public int QAinsert(Connection conn, QADTO dto) {
+		int result=0;
+		PreparedStatement pstmt=null;
+		StringBuilder sql=new StringBuilder();
+		sql.append(" insert into QAboard ( mno, title, content, date ) ");
+		sql.append(" values ( ?, ?, ?, now() ) ");
+		try {
+			pstmt=conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, dto.getMno());
+			pstmt.setString(2, dto.getTitle());
+			pstmt.setString(3, dto.getContent());
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			System.out.println(e);
+		}finally {
+			if(pstmt!=null) try {pstmt.close();}catch(SQLException e) {}
+		}
+		return result;
+	}
 
 	
 	
