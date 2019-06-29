@@ -28,9 +28,9 @@
 	<div class="container">	
 		<form action="sponaddresult.do" method="POST" enctype="multipart/form-data" role="form" name="frm">
 			<ul class="nav nav-tabs" role="tablist" style="z-index: 1">
-	   			<li class="active" role="presentation col-md-1 col-sm-1 col-xs-1"><a href="#first" aria-controls="first" role="tab" data-toggle="tab">1단계</a></li>
-	   			<li role="presentation col-md-1 col-sm-1 col-xs-1"><a href="#second" aria-controls="second" role="tab" data-toggle="tab">2단계</a></li>
-	   			<li role="presentation col-md-1 col-sm-1 col-xs-1"><a href="#third" aria-controls="third" role="tab" data-toggle="tab">3단계</a></li>
+	   			<li class="active" role="presentation col-md-1 col-sm-1 col-xs-2" style="z-index: 1"><a href="#first" aria-controls="first" role="tab" data-toggle="tab">1단계</a></li>
+	   			<li role="presentation col-md-1 col-sm-1 col-xs-1" style="z-index: 3"><a href="#second" aria-controls="second" role="tab" data-toggle="tab">2단계</a></li>
+	   			<li role="presentation col-md-1 col-sm-1 col-xs-1" style="z-index: 4"><a href="#third" aria-controls="third" role="tab" data-toggle="tab">3단계</a></li>
 	   			<li class="col-md-3 col-md-offset-6 col-sm-1 col-sm-offset-8 col-xs-8 col-xs-offset-1 d-flex justify-content-end" style="z-index: 1"><input class="btn btn-info btn-md" id="subbtn" type="button" value="제출" onclick="submitcheck()"></li>
 	  		</ul>
 	  		
