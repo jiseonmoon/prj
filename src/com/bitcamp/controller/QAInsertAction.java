@@ -15,6 +15,7 @@ public class QAInsertAction implements Action {
 	public ForwardAction execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		request.setCharacterEncoding("utf-8");
 		ForwardAction forward=new ForwardAction();
 		forward.setRedirect(false);
 		forward.setPath("/WEB-INF/board/templete.jsp?page=qainsertform.jsp");

@@ -29,6 +29,8 @@ table.qa thead th {
 table.qa td {
 	padding: 10px;
 	vertical-align: top;
+}
+.listtd {
 	border-bottom: 1px solid #ccc;
 }
 .td1 {
@@ -47,6 +49,20 @@ td a, p a {
 	text-decoration: none;
 	color:inherit
 }
+.insert_btn {
+	text-align: right;
+	margin: 15px;
+}
+.insertbtn {
+	padding: 10px;
+	border: 1px solid #ccc;
+}
+.pagebox {
+	text-align: center;
+	height: 50px;
+	border-bottom: 0px;
+	margin: 20px;
+}
 </style>
 
 </head>
@@ -64,23 +80,27 @@ td a, p a {
 			</thead>
 			<tbody>
 				<c:if test="${list==null }">
-					<tr><td cols="4">게시글이 없습니다.</td></tr>
+					<tr><td colspan="4">게시글이 없습니다.</td></tr>
 				</c:if>
 				<c:forEach var="i" items="${ list }">
 				<tr>
-					<td class="td1">문의</td>
-					<td class="td3"><p><a href="qadetail.do?qano=${i.qano }">${ i.title }</a></p></td>
-					<td class="td1">${ i.mid }</td>
-					<td class="td2">${ i.date }</td>
+					<td class="td1 listtd">문의</td>
+					<td class="td3 listtd"><p><a href="qadetail.do?qano=${i.qano }">${ i.title }</a></p></td>
+					<td class="td1 listtd">${ i.mid }</td>
+					<td class="td2 listtd">${ i.date }</td>
 				<tr>
 				</c:forEach>
-			</tbody>
-		</table>
-		
-			<c:if test="${startblock>1 }">
-				<a href="qalist.do?currpage=${startblock-1 }">이전</a>
-			</c:if>
-			<span>
+				<c:if test="${member.mno!=no}">
+				<tr>
+					<td class="insert_btn" colspan="4"><p></p>
+					<p><a class="insertbtn" href="qainsert.do">문의하기</a></p></td>
+				</tr>
+				</c:if>
+				<tr>
+					<td class="pagebox" colspan="4">
+						<c:if test="${startblock>1 }">
+							<a href="qalist.do?currpage=${startblock-1 }">이전</a>
+						</c:if>
 			<c:forEach var="page" begin="${startblock }" end="${endblock }">
 				<c:if test="${page==currpage }">
 					<c:out value="${page }"></c:out>
@@ -89,12 +109,12 @@ td a, p a {
 				<a href="qalist.do?currpage=${page }"><c:out value="${page }"></c:out></a>
 			</c:if>
 			</c:forEach>
-			</span>
 			<c:if test="${endblock<totalpage }">
 				<a href="qalist.do?currpage=${endblock+1 }">다음</a>
 			</c:if>
-		<c:if test="${member.mno!=no}">
-			<p><a href="qainsert.do">문의하기</a></p>
-		</c:if>
+					</td>
+				</tr>
+			</tbody>
+		</table>		
 </body>
 </html>

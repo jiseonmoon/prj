@@ -17,7 +17,7 @@ public class QAListAction implements Action {
 	@Override
 	public ForwardAction execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+		request.setCharacterEncoding("utf-8");
 		String curr = request.getParameter("currpage");
 		int currpage= 1;
 		if(curr!=null) {

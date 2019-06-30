@@ -120,11 +120,10 @@ public class BoardService {
 		return datacount;
 	}
 	public List<QADTO> QAListService(int startrow, int pagepercount) {
-		DBConn db = DBConn.getDB();
 		Connection conn=null;
 		List<QADTO> list = null;
 		try {
-			conn=db.getConnection();
+			conn=DBConn.getDB().getConnection();
 			QADAO dao = QADAO.getDAO();
 			 list = dao.getPageData(conn,startrow,pagepercount);
 		}catch(SQLException | NamingException e) {

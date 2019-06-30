@@ -17,6 +17,7 @@ public class QAModifyFormAction implements Action {
 	public ForwardAction execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		request.setCharacterEncoding("utf-8");
 		int qano=Integer.parseInt(request.getParameter("qano"));
 		String title=request.getParameter("title");
 		String content=request.getParameter("content");
