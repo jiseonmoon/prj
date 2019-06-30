@@ -82,6 +82,12 @@
 			width: 100%;
 		}
 		
+		#main{
+			padding-top: 20px;
+			padding-bottom: 60px;
+			background-color: #FBF6F6;
+		}
+		
 		#sub{
 			margin-top: 0px;
 			width: 100%;
@@ -105,6 +111,13 @@
 	
 	
 	@media (min-width: 768px) {
+		#main{
+			padding-top: 20px;
+			padding-bottom: 60px;
+			background-color: #FBF6F6;
+			height: 870px;
+		}
+		
 		#sub{
 			margin-top: 0px;
 			width: 60%;
@@ -138,12 +151,6 @@
 	#del{
 		padding: 20px 100px;
 	}
-
-	#main{
-		padding-top: 20px;
-		padding-bottom: 60px;
-		background-color: #FBF6F6;
-	}
 	
 	#disabledInput{
 		width: 110px;
@@ -168,6 +175,9 @@
 	<c:set var="member" value="${ sessionScope.member }"></c:set> <!-- 세션 스코프 -->
 	
 	<div class="center-block" style='width:100%;' id="main">
+		<br>
+		<br>
+		<br>
 		<h1 class="text-center"><small><${ result.boardtag }> </small>${ result.boardtitle }</h1><br> <!-- 태그, 글제목 -->
 		<div class="row">
 			<div class="col-md-2">
@@ -209,12 +219,16 @@
 				
 				<!-- 멤버 세션이 있으면 후원버튼 활성화 -->
 				<c:if test="${ member != null }">
+					<c:if test="${ member.mtier == 1 || member.mtier == 2}">
+						<c:if test="${ member.mid != writer.mid }">
+							<br>
+							<br>
+							<br>
+						</c:if>
+					</c:if>
 					<c:if test="${ dateResult >= 0 }">
 			  			<!-- 글번호 넘겨주기 -->
 			  			<form action="payment1.do" method="post">
-			  				<br>
-	  						<br>
-	  						<br>
 			  				<input type="hidden" name="boardno" value="${ result.boardno }">
 			  				<button type="submit" class="btn btn-primary" id="pay">후원하기</button>
 			  			</form>

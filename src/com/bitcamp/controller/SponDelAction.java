@@ -21,7 +21,7 @@ public class SponDelAction implements Action {
 		String imagepath = request.getParameter("imagepath");
 		
 		// 이미지 파일 삭제
-		File file = new File("C:/bitcamp/prj/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/prj/upload/"+imagepath);
+		File file = new File("C:/Java/prj/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/prj/upload/"+imagepath);
 		
         if( file.exists() ){
             if(file.delete()){

@@ -52,7 +52,6 @@ public class MemberLoginResultAction implements Action {
 	   		act.setRedirect(true);
 	   		act.setPath("main.do");
 		}
-   		
 		return act;
 	}
 
