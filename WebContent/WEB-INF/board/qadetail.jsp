@@ -11,20 +11,22 @@
 	<c:set var="member" value="${ sessionScope.member }"></c:set>
 	
 	<ul>
-		<li>제목 ${dto.title }
+		<li> ${dto.title }
 		</li>
 		<li>
-		날짜${dto.date }
+		${dto.date }
 		</li>
 		<li>
-		내용
 		${dto.content }
 		</li>
 		<li>
+		
+		<c:if test="${member.mno==dto.mno}">
 		<li>
-		<a href="qamodify.do?qano=${dto.qano }"">수정</a>
-		<a href="qadelete.do?qano=${dto.qano }">삭제</a>
+			<a href="qamodify.do?qano=${dto.qano }"">수정</a>
+			<a href="qadelete.do?qano=${dto.qano }">삭제</a>
 		</li>
+		</c:if>
 	</ul>
 </body>
 </html>

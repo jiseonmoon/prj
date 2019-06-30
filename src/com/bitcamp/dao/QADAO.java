@@ -139,6 +139,52 @@ public class QADAO {
 		
 		return result;
 	}
+	
+	//∆‰¿Ã¬°
+	public int getPageCount(Connection conn) throws SQLException {
+		StringBuilder sql = new StringBuilder();
+		sql.append(" select count(*) from QAboard ");
+		int datacount = 0;
+
+		try (PreparedStatement pstmt = conn.prepareStatement(sql.toString()); ResultSet rs = pstmt.executeQuery();) {
+
+			if (rs.next()) {
+				datacount = rs.getInt(1);
+			}
+			System.out.println("data count"+datacount);
+		}
+		return datacount;
+	}
+	
+	public List<QADTO> getPageData(Connection conn, int startrow, int pagepercount) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		StringBuilder sql = new StringBuilder();
+		sql.append(" select qano, m.mno, m.mid, title, content, date ");
+		sql.append(" from QAboard q join Member m on q.mno=m.mno     ");
+		sql.append(" order by qano desc    ");
+		sql.append(" limit ?, ? ");
+		List<QADTO> arr = new ArrayList<>();
+		try {
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, startrow);
+			pstmt.setInt(2, pagepercount);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				QADTO dto = new QADTO();
+				dto.setTitle(rs.getString("title"));
+				dto.setMid(rs.getString("mid"));
+				dto.setDate(rs.getString("date"));
+				arr.add(dto);
+			}
+		} catch (SQLException e) {
+			System.out.println(e);
+		} finally {
+			if (rs != null) try { rs.close(); } catch (SQLException e) {}
+			if (pstmt != null) try { pstmt.close();} catch (SQLException e) {}
+		}
+		return arr;
+	}
 
 	
 	

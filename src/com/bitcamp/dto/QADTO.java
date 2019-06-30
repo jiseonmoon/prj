@@ -9,8 +9,6 @@ public class QADTO {
 	private int mno;
 	private String mid;
 	
-	
-
 	public String getMid() {
 		return mid;
 	}

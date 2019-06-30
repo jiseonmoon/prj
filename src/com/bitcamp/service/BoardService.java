@@ -98,4 +98,40 @@ public class BoardService {
 		
 		return result;
 	}
+	public int getPageCount() {
+		DBConn db = DBConn.getDB();
+		Connection conn = null;
+		int datacount = 0;
+		try {
+			conn = db.getConnection();
+			QADAO dao = QADAO.getDAO();
+			datacount = dao.getPageCount(conn);
+
+		} catch (SQLException | NamingException e) {
+			System.out.println(e);
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
+		return datacount;
+	}
+	public List<QADTO> QAListService(int startrow, int pagepercount) {
+		DBConn db = DBConn.getDB();
+		Connection conn=null;
+		List<QADTO> list = null;
+		try {
+			conn=db.getConnection();
+			QADAO dao = QADAO.getDAO();
+			 list = dao.getPageData(conn,startrow,pagepercount);
+		}catch(SQLException | NamingException e) {
+			System.out.println(e);
+		}finally {
+			if(conn!=null) try {conn.close();}catch(SQLException e) {}
+		}
+		return list;
+	}
 }
