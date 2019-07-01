@@ -47,7 +47,7 @@
 				<div class="card-body">
 					<div class="form-group">
 						<label for="amount">후원 금액 입력</label><input type="number"
-							name="amount" id="amount" min="${spondto.minmoney}"
+							name="amount" id="amount" min="${spondto.minmoney }"
 							class="form-control">
 					</div>
 				</div>
@@ -63,11 +63,12 @@
 					</div>
 					<div class="form-group">
 						<label for="tel">연락처</label><input type="text" name="tel" id="tel"
-							required class="form-control">
+							required class="form-control" placeholder="${memberdto.tel }">
 					</div>
 					<div class="form-group">
 						<label for="addr">주소</label><input type="text" name="addr"
-							id="addr" required class="form-control">
+							id="addr" required class="form-control"
+							placeholder="${memberdto.addr }">
 					</div>
 					<div class="form-group">
 						<input type="hidden" name="boardno" value=${spondto.boardno }
