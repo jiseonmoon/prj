@@ -57,7 +57,7 @@ p a {
 		<li class="rowname">${dto.date }</li>
 		<li class="qacontent">${dto.content }</li>
 		
-		<c:if test="${member.mno!=no}">
+		<c:if test="${member.mno==dto.mno}">
 		<li class="btnbtn">
 			<p><a class="textbtn" href="qamodify.do?qano=${dto.qano }">수정</a>
 			<a class="textbtn" href="qadelete.do?qano=${dto.qano }">삭제</a></p>
