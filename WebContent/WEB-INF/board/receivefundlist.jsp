@@ -61,17 +61,17 @@
 	<font size=5 color="darkblue"><%=session.getAttribute("sessionID") %></font>
 	<font size=5>님의 총 모금액은 </font>
 	<font size=5 color="red"><%=sum %></font>
-	<font size=5>원입니다.</font>
+	<font size=5>만 원입니다.</font>
 	<br><br>
 	<table>
 		<tr align="center">
 			<td id=title>프로젝트 번호</td>
 			<td id=title>프로젝트명</td>
 			<!-- <td id=title>프로젝트 내용</td> -->
-			<td id=title>목표금액</td>
-			<td id=title>최소후원금액</td>
+			<td id=title>목표금액(단위: 만 원)</td>
+			<td id=title>최소후원금액(단위: 원)</td>
 			<td id=title>마감일</td>
-			<td id=title>모금액</td>
+			<td id=title>모금액(단위: 만 원)</td>
 		</tr>
 		
 	<%

@@ -6,6 +6,13 @@ public class GiveFundDTO {
 	private int Sno;
 	private String Stitle;
 	private String Scontent;
+	private int Pno;
+	public int getPno() {
+		return Pno;
+	}
+	public void setPno(int pno) {
+		Pno = pno;
+	}
 	private Date Pdate;
 	private int Pmoney;
 

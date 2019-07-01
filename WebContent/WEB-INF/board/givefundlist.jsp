@@ -62,15 +62,15 @@
 	<font size=5 color="darkblue"><%=session.getAttribute("sessionID") %></font>
 	<font size=5>님의 총 후원금액은 </font>
 	<font size=5 color="red"><%=sum %></font>
-	<font size=5>원입니다.</font>
+	<font size=5>만 원입니다.</font>
 	<br><br>
 	<table>
 		<tr align="center">
-			<td id=title>프로젝트 번호</td>
+			<td id=title>결제 번호</td>
 			<td id=title>프로젝트명</td>
 			<!-- <td id=title>프로젝트 내용</td> -->
 			<td id=title>결제일</td>
-			<td id=title>결제금액</td>
+			<td id=title>결제금액(단위: 원)</td>
 		</tr>
 		
 	<%
@@ -87,11 +87,11 @@
 				
 				
 				<tr>
-					<td><%=dto.getSno() %></td>
+					<td><%=dto.getPno() %></td>
 					<td><a href="spondetail.do?no=<%=dto.getSno()%>"><%=dto.getStitle() %></a></td>
 					<%-- <td><%=dto.getScontent() %></td> --%>
 					<td><%=dto.getPdate() %></td>
-					<td><%=dto.getPmoney() %>
+					<td><%=dto.getPmoney() %></td>
 				</tr>
 				
 			

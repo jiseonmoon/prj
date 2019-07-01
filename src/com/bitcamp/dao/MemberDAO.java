@@ -313,11 +313,11 @@ public class MemberDAO {
 		
 		StringBuilder sql = new StringBuilder();
 	
-		sql.append(" select p.Sno, Stitle, Scontent, Pdate, Pmoney  ");
+		sql.append(" select Stitle, Scontent, Pno, Pdate, Pmoney  ");
 		sql.append(" from SponBoard s inner join PayInfo p          ");
-		sql.append(" on s.Mno=p.Mno and s.Sno=p.Sno                 ");
+		sql.append(" on s.Sno=p.Sno                 ");
 		sql.append(" where p.Mno=?                                          ");
-		sql.append(" order by p.Sno                                         ");
+		sql.append(" order by p.Pno                                         ");
 		
 		try {
 			pstmt=conn.prepareStatement(sql.toString());
@@ -326,7 +326,7 @@ public class MemberDAO {
 			
 			while(rs.next()) {
 				GiveFundDTO dto=new GiveFundDTO();
-				dto.setSno(rs.getInt("Sno"));
+				dto.setPno(rs.getInt("Pno"));
 				dto.setStitle(rs.getString("Stitle"));
 				dto.setScontent(rs.getString("Scontent"));
 				dto.setPdate(rs.getDate("Pdate"));
