@@ -122,7 +122,7 @@ $(document).ready(function(){
 		</div>
 		<div class="card border-primary mb-3">
 			<div class="card-header">
-				<h3>배송지 정보</h3>
+				<h3>구매자 정보</h3>
 			</div>
 			<div class="card-body">
 				<table class="table table-hover">
@@ -136,7 +136,7 @@ $(document).ready(function(){
 							<td><c:out value="${deliverydto.tel }"></c:out></td>
 						</tr>
 						<tr class="table-default">
-							<th scope="row">배송 주소</th>
+							<th scope="row">주소</th>
 							<td><c:out value="${deliverydto.addr }"></c:out></td>
 						</tr>
 					</tbody>

@@ -54,7 +54,7 @@
 			</div>
 			<div class="card border-primary mb-3">
 				<div class="card-header">
-					<h3>배송지 정보</h3>
+					<h3>구매자 정보</h3>
 				</div>
 				<div class="card-body">
 					<div class="form-group">
