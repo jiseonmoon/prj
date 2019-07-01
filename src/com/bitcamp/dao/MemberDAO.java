@@ -313,7 +313,7 @@ public class MemberDAO {
 		
 		StringBuilder sql = new StringBuilder();
 	
-		sql.append(" select Stitle, Scontent, Pno, Pdate, Pmoney  ");
+		sql.append(" select s.Sno, Stitle, Scontent, Pno, Pdate, Pmoney  ");
 		sql.append(" from SponBoard s inner join PayInfo p          ");
 		sql.append(" on s.Sno=p.Sno                 ");
 		sql.append(" where p.Mno=?                                          ");
@@ -326,6 +326,7 @@ public class MemberDAO {
 			
 			while(rs.next()) {
 				GiveFundDTO dto=new GiveFundDTO();
+				dto.setSno(rs.getInt("Sno"));
 				dto.setPno(rs.getInt("Pno"));
 				dto.setStitle(rs.getString("Stitle"));
 				dto.setScontent(rs.getString("Scontent"));
