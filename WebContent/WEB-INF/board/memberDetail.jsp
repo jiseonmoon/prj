@@ -56,11 +56,11 @@
 			<td id="title">회원 등급</td>
 				<% String grade="";
 					if(dto.getMtier()==1)
-						grade="관리자";
+						grade="일반 회원";
 					else if(dto.getMtier()==2)
 						grade="후원 회원";
 					else if(dto.getMtier()==3)
-						grade="일반 회원"; %>
+						grade="관리자"; %>
 			<td><%=grade %></td>
 		</tr>
 	
@@ -69,10 +69,10 @@
 			<td><%=dto.getMid() %></td>
 		</tr>
 		
- 		<tr>
+ 		<%-- <tr>
     		<td id="title">비밀번호</td>
     		<td><%=dto.getMpwd() %></td>
-    	</tr>
+    	</tr> --%>
  		
  		<tr>
  			<td id="title">이메일</td>
@@ -91,7 +91,7 @@
  			<td><%=dto.getAddr() %></td>
  		</tr>
  		
- 		<tr>
+ 		<%-- <tr>
  			<td id="title">무통장 계좌</td>
  			<td><%=dto.getBank() %></td>
  		</tr>
@@ -99,7 +99,7 @@
  		<tr>
  			<td id="title">카드번호</td>
  			<td><%=dto.getCard() %></td>
- 		</tr>
+ 		</tr> --%>
  		
  	</table>
  	

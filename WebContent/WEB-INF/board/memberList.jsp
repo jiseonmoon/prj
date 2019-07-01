@@ -46,12 +46,12 @@
 			<td id=title>회원번호</td>
 			<td id=title>회원등급</td>
 			<td id=title>아이디</td>
-			<td id=title>비밀번호</td>
+			<!-- <td id=title>비밀번호</td> -->
 			<td id=title>이메일</td>
 			<td id=title>전화번호</td>
 			<td id=title>주소</td>
-			<td id=title>무통장 계좌</td>
-			<td id=title>카드번호</td>
+			<!-- <td id=title>무통장 계좌</td>
+			<td id=title>카드번호</td> -->
 			<td id=title>등급 수정</td>
 			<td id=title>회원 삭제</td>
 		</tr>
@@ -81,12 +81,12 @@
 					<td><%=dto.getMno() %>
 					<td><%=grade %>
 					<td><a href="detail.do?id=<%=dto.getMid()%>"><%=dto.getMid() %></a></td>
-					<td><%=dto.getMpwd() %></td>
+					<%-- <td><%=dto.getMpwd() %></td> --%>
 					<td><%=dto.getEmail1() %></td>
 					<td><%=dto.getTel() %></td>
 					<td><%=dto.getAddr() %></td>
-					<td><%=dto.getBank() %></td>
-					<td><%=dto.getCard() %></td>
+					<%-- <td><%=dto.getBank() %></td>
+					<td><%=dto.getCard() %></td> --%>
 					<td><a href="adminmodify.do?id=<%=dto.getMid() %>">수정</a></td>
 					<td><a href="admindelete.do?id=<%=dto.getMid() %>">삭제</a></td>
 				</tr>

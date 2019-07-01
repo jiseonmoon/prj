@@ -57,6 +57,7 @@
 			}
 		}
 		%>
+	<font size=5>현재 </font>
 	<font size=5 color="darkblue"><%=session.getAttribute("sessionID") %></font>
 	<font size=5>님의 총 모금액은 </font>
 	<font size=5 color="red"><%=sum %></font>
