@@ -59,7 +59,8 @@
 				<div class="card-body">
 					<div class="form-group">
 						<label for="name">이름</label><input type="text" name="name"
-							id="name" required class="form-control" size="10">
+							id="name" required class="form-control" size="10"
+							placeholder="이름을 입력해주세요.">
 					</div>
 					<div class="form-group">
 						<label for="tel">연락처</label><input type="text" name="tel" id="tel"
