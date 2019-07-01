@@ -103,6 +103,12 @@
 				                	<option value="게임">게임</option>
 				                	<option value="디자인">디자인</option>
 				                	<option value="책">책</option>
+				                	<option value="공연">공연</option>
+				                	<option value="만화">만화</option>
+				                	<option value="미술">미술</option>
+				                	<option value="음악">음악</option>
+				                	<option value="푸드">푸드</option>
+				                	<option value="캠페인">캠페인</option>
 				                </select>
 				                <input type="button" class="btn btn-default" name="check3" id="check3" value="확인">
 				            </div>

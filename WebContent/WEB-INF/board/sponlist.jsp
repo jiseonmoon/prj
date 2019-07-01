@@ -84,6 +84,25 @@
 				    	<li role="presentation">
 				    		<a role="menuitem" tabindex="-1" href="sponlist.do?tag=<%=URLEncoder.encode("책", "UTF-8")%>">책</a>
 				    	</li>
+				    	<li role="presentation">
+				    		<a role="menuitem" tabindex="-1" href="sponlist.do?tag=<%=URLEncoder.encode("공연", "UTF-8")%>">공연</a>
+				    	</li>
+				    	<li role="presentation">
+				    		<a role="menuitem" tabindex="-1" href="sponlist.do?tag=<%=URLEncoder.encode("미술", "UTF-8")%>">미술</a>
+				    	</li>
+				    	<li role="presentation">
+				    		<a role="menuitem" tabindex="-1" href="sponlist.do?tag=<%=URLEncoder.encode("만화", "UTF-8")%>">만화</a>
+				    	</li>
+				    	<li role="presentation">
+				    		<a role="menuitem" tabindex="-1" href="sponlist.do?tag=<%=URLEncoder.encode("음악", "UTF-8")%>">음악</a>
+				    	</li>
+				    	<li role="presentation">
+				    		<a role="menuitem" tabindex="-1" href="sponlist.do?tag=<%=URLEncoder.encode("푸드", "UTF-8")%>">푸드</a>
+				    	</li>
+				    	<li role="presentation">
+				    		<a role="menuitem" tabindex="-1" href="sponlist.do?tag=<%=URLEncoder.encode("캠페인", "UTF-8")%>">캠페인</a>
+				    	</li>
+				    	
 			 		 </ul>
 				</div>
 				
