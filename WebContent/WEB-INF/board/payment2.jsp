@@ -28,7 +28,7 @@ $(document).ready(function(){
 			pg : 'html5_inicis', // version 1.1.0부터 지원.
 			pay_method : 'card',
 			merchant_uid : 'merchant_' + new Date().getTime(),
-			name : '<%=spondto.getBoardtitle()%>',
+			name : "<%=spondto.getBoardtitle()%>",
 			amount : <%=amount%>,
 			buyer_name : '<%=deliverydto.getName()%>',
 			buyer_tel : '<%=deliverydto.getTel()%>',
@@ -146,7 +146,7 @@ $(document).ready(function(){
 		<div class="button">
 			<h3 class="amount">
 				<c:out value="${amount }"></c:out>
-				원
+				만원
 			</h3>
 			<button type="button" id="payment" class="btn btn-primary btn-lg">결제하기</button>
 		</div>

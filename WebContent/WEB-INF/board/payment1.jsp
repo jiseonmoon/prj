@@ -46,7 +46,7 @@
 				</div>
 				<div class="card-body">
 					<div class="form-group">
-						<label for="amount">후원 금액 입력</label><input type="number"
+						<label for="amount">후원 금액</label><input type="number"
 							name="amount" id="amount" min="${spondto.minmoney }"
 							class="form-control"
 							placeholder="최소 금액은 ${spondto.minmoney }만원입니다.">
