@@ -70,7 +70,7 @@
 			<td id=title>프로젝트명</td>
 			<!-- <td id=title>프로젝트 내용</td> -->
 			<td id=title>결제일</td>
-			<td id=title>결제금액(단위: 원)</td>
+			<td id=title>결제금액(단위: 만 원)</td>
 		</tr>
 		
 	<%
