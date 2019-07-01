@@ -16,7 +16,7 @@ public class QADAO {
 	}
 	private QADAO() {}
 	
-	public List<QADTO> getList(Connection conn) {
+	/*public List<QADTO> getList(Connection conn) {
 		
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -51,13 +51,13 @@ public class QADAO {
 		
 		return list;
 		
-	}
+	}*/
 	public QADTO getQAdetail(Connection conn, int qano) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		StringBuilder sql=new StringBuilder();
-		sql.append(" select qano, title, content, date ");
-		sql.append(" from QAboard  ");
+		sql.append(" select qano, m.mno, m.mid, title, content, date ");
+		sql.append(" from QAboard q join Member m on q.mno=m.mno     ");
 		sql.append(" where qano = ? ");
 		QADTO dto=new QADTO();
 		try {
@@ -66,6 +66,8 @@ public class QADAO {
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				dto.setQano(rs.getInt("qano"));
+				dto.setMno(rs.getInt("mno"));
+				dto.setMid(rs.getString("mid"));
 				dto.setTitle(rs.getString("title"));
 				dto.setContent(rs.getString("content"));
 				dto.setDate(rs.getString("date"));
@@ -172,9 +174,13 @@ public class QADAO {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				QADTO dto = new QADTO();
-				dto.setTitle(rs.getString("title"));
+				dto.setQano(rs.getInt("qano"));
+				dto.setMno(rs.getInt("mno"));
 				dto.setMid(rs.getString("mid"));
+				dto.setTitle(rs.getString("title"));
+				dto.setContent(rs.getString("content"));
 				dto.setDate(rs.getString("date"));
+				
 				arr.add(dto);
 			}
 		} catch (SQLException e) {

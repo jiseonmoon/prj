@@ -17,7 +17,7 @@ public class BoardService {
 	}
 	private BoardService() {}
 	
-	public List<QADTO> getList() {
+	/*public List<QADTO> getList() {
 		Connection conn=null;
 		List<QADTO> list=null;
 		try {
@@ -31,7 +31,7 @@ public class BoardService {
 			if(conn!=null) try {conn.close();} catch(SQLException e) {}
 		}
 		return list;
-	}
+	}*/
 	
 	public QADTO qaDetail(int qano) {
 		Connection conn=null;
